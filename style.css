@@ -1,1 +1,89 @@
+*{
+    font-family: Montserrat;
+margin: 0;
+padding:0;
+}
 
+.container{
+    background-color: #1251C5;
+}
+
+.container img{
+    width: 345px;
+    height:340px;
+    float: inline-end;
+    margin-right: 150px;
+}
+
+.container .logo img{
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    margin: 30px;
+}
+
+.container .logo{
+    display: flex;
+}
+
+.container .logo .navigation ul{
+    display: flex;
+    gap: 44px;
+    margin-top: 50px;
+}
+
+.container .logo ul{
+    display: flex;
+}
+
+.container .logo ul li{ 
+    list-style-type: none;
+}
+
+.container .logo ul li h1{
+    color: #fff;
+    margin-top: 50px;
+}
+
+ .container .logo .navigation ul li{
+    list-style-type: none;
+}
+
+.container .logo .navigation ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container .logo .navigation ul{
+    margin: 30px;
+    margin-left: 400px;
+}
+
+.container .content h2{
+    color: #fff;
+    font-weight: bold;
+    font-size: 35px;
+    margin-left: 30px;
+}
+.container .content h4{
+    font-weight: normal;
+    font-size: 25px;
+    margin-left: 30px;
+}
+.container .buttons{
+    margin-left:40px;
+    margin-top: 10px;
+}
+
+.container .buttons input{
+    margin: 10px;
+    padding: 15px;
+    width: 206px;
+    height: 52px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #fff;
+}
