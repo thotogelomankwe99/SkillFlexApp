@@ -123,3 +123,191 @@ padding:0;
     padding: 10px;
     line-height: 1.2rem;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
+
+/* Body styling */
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Main container for feature boxes */
+main {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Feature box styling */
+.container {
+    border: none;
+    border-radius: none;
+    padding: 20px;
+    background: #D3E9F3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    max-width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Individual image sizes for each feature */
+img.container-1 { width: 104px; height: 104px; border-radius: 5px; }
+img.container-2 { width: 120px; height: 120px; border-radius: 5px; }
+img.container-3 { width: 159px; height: 159px; border-radius: 5px; }
+img.container-4 { width: 94px; height: 94px; border-radius: 5px; }
+
+/* Center the main heading and set its size */
+h1 {
+    text-align: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 32px;
+    width: 100%;
+    max-width: 137px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Feature title styling */
+h2 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin: 10px 0 5px;
+    text-align: center;
+    width: 100%;
+    max-width: 252px;
+}
+
+/* Paragraph styling */
+p {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 5px 0;
+    text-align: center;
+    width: 100%;
+    max-width: 244px;
+}
+
+/* Special layout for container 3: absolute positioning for requested coordinates */
+.container.container-3 {
+    position: relative;
+    display: block;
+    width: 90vw;
+    max-width: 300px;
+    height: 300px;
+    padding: 20px;
+    border: none;
+    border-radius: none;
+    background: #D3E9F3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin: 0;
+    overflow: hidden;
+}
+
+.container-3-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* h2 at top center */
+.container-3-content h2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    margin: 0;
+}
+
+/* image at bottom left */
+.container-3 img {
+    position: absolute;
+    left: -48px;
+    bottom: 0;
+    width: 159px;
+    height: 159px;
+    margin: 0;
+}
+
+/* paragraph at bottom right */
+.container-3-content p {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 199px;
+    height: 193px;
+    text-align: right;
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    main {
+        gap: 16px;
+    }
+    .container,
+    .container.container-3 {
+        max-width: 90vw;
+        height: auto;
+    }
+    img.container-1,
+    img.container-2,
+    img.container-3,
+    img.container-4 {
+        max-width: 80vw;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container,
+    .container.container-3 {
+        max-width: 98vw;
+        width: 98vw;
+        height: auto;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 22px;
+        max-width: 98vw;
+    }
+    h2 {
+        font-size: 16px;
+        max-width: 98vw;
+    }
+    p {
+        font-size: 16px;
+        max-width: 98vw;
+    }
+    .container-3-content h2,
+    .container-3-content p,
+    .container-3 img {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin: 8px 0;
+        text-align: center;
+    }
+}
