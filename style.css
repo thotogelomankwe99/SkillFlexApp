@@ -134,7 +134,12 @@ padding:0;
     border: none;}
 
 
+
 main{
+
+/* Main box for feature boxes */
+main {
+
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -142,7 +147,12 @@ main{
     align-items: flex-start;
 }
 
+
 .card{
+
+/* Feature box styling */
+.box {
+    border: none;
     border-radius: none;
     padding: 20px;
     background: #d3e9f3;
@@ -159,6 +169,15 @@ main{
 }
 
 h1{
+
+/* Individual image sizes for each feature */
+img.box-1 { width: 104px; height: 104px; border-radius: 5px; }
+img.box-2 { width: 120px; height: 120px; border-radius: 5px; }
+img.box-3 { width: 159px; height: 159px; border-radius: 5px; }
+img.box-4 { width: 94px; height: 94px; border-radius: 5px; }
+
+/* Center the main heading and set its size */
+h1 {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
@@ -187,8 +206,12 @@ p{/*border: 1px solid #000;*/
     /*max-width: 244px; */
 }
 
+
 /* special layout for card-3: absolut positioning for requested coordinates.*/
 .card.card-3{/*border: 1px solid #000;*/
+/* Special layout for box 3: absolute positioning for requested coordinates */
+.box.box-3 {
+
     position: relative;
     display: block;
     width: 90vw;
@@ -201,6 +224,7 @@ p{/*border: 1px solid #000;*/
     overflow: hidden;
 }
 
+
 .card-3-content{/*border: 1px solid #000;*/
 position: relative;
 width: 100%;
@@ -208,6 +232,16 @@ height: 100%;
 }
 
 .card-3-content h2{/*border: 1px solid #000;*/
+
+.box-3-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* h2 at top center */
+.box-3-content h2 {
+
     position: absolute;
     top: 0;
     left: 50%;
@@ -218,7 +252,11 @@ height: 100%;
     margin: 0;
 }
 
+
 .card-3 img{
+
+/* image at bottom left */
+.box-3 img {
     position: absolute;
     left: -48px;
     bottom: 0;
@@ -227,7 +265,12 @@ height: 100%;
     margin: 0;
 }
 
+
 .card-3-content p{
+
+/* paragraph at bottom right */
+.box-3-content p {
+
     position: absolute;
     right: 0;
     left: 0;
@@ -249,15 +292,15 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
     main {
         gap: 16px;
     }
-    .container,
-    .container.container-3 {
+    .box,
+    .box.box-3 {
         max-width: 90vw;
         height: auto;
     }
-    img.container-1,
-    img.container-2,
-    img.container-3,
-    img.container-4 {
+    img.box-1,
+    img.box-2,
+    img.box-3,
+    img.box-4 {
         max-width: 80vw;
         height: auto;
     }
@@ -268,8 +311,8 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
         flex-direction: column;
         align-items: center;
     }
-    .container,
-    .container.container-3 {
+    .box,
+    .box.box-3 {
         max-width: 98vw;
         width: 98vw;
         height: auto;
@@ -287,9 +330,9 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
         font-size: 16px;
         max-width: 98vw;
     }
-    .container-3-content h2,
-    .container-3-content p,
-    .container-3 img {
+    .box-3-box h2,
+    .box-3-box p,
+    .box-3 img {
         position: static;
         width: 100%;
         height: auto;
