@@ -9,7 +9,7 @@ padding:0;
 }
 
 .container img{
-    width: 345px;
+    width: 350px;
     height:340px;
     float: inline-end;
     margin-right: 150px;
@@ -86,4 +86,40 @@ padding:0;
     font-weight: bold;
     font-size: 18px;
     background-color: #fff;
+}
+
+
+/*Style login page*/
+#container{
+    display: flex;
+    height: 100vh;
+}
+.card-left, .card-right{
+    /*border: 1px solid #000;*/
+    flex: 1;
+    padding: 40px;
+    display: flex;
+}
+
+.card-left{
+    border: 1px solid #000;
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#container .card-left .card-content h1{
+    border: 1px solid #000;
+   color: #fff;
+}
+
+#container .card-left .card-content h3{
+    font-size: 28px;
+    margin-top: 100px;
+}
+#container .card-left .card-content p{
+    margin: 5px;
+    padding: 10px;
+    line-height: 1.2rem;
 }
