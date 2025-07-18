@@ -136,7 +136,7 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Main container for feature boxes */
+/* Main box for feature boxes */
 main {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping on small screens */
@@ -146,7 +146,7 @@ main {
 }
 
 /* Feature box styling */
-.container {
+.box {
     border: none;
     border-radius: none;
     padding: 20px;
@@ -163,10 +163,10 @@ main {
 }
 
 /* Individual image sizes for each feature */
-img.container-1 { width: 104px; height: 104px; border-radius: 5px; }
-img.container-2 { width: 120px; height: 120px; border-radius: 5px; }
-img.container-3 { width: 159px; height: 159px; border-radius: 5px; }
-img.container-4 { width: 94px; height: 94px; border-radius: 5px; }
+img.box-1 { width: 104px; height: 104px; border-radius: 5px; }
+img.box-2 { width: 120px; height: 120px; border-radius: 5px; }
+img.box-3 { width: 159px; height: 159px; border-radius: 5px; }
+img.box-4 { width: 94px; height: 94px; border-radius: 5px; }
 
 /* Center the main heading and set its size */
 h1 {
@@ -204,8 +204,8 @@ p {
     max-width: 244px;
 }
 
-/* Special layout for container 3: absolute positioning for requested coordinates */
-.container.container-3 {
+/* Special layout for box 3: absolute positioning for requested coordinates */
+.box.box-3 {
     position: relative;
     display: block;
     width: 90vw;
@@ -220,14 +220,14 @@ p {
     overflow: hidden;
 }
 
-.container-3-content {
+.box-3-content {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
 /* h2 at top center */
-.container-3-content h2 {
+.box-3-content h2 {
     position: absolute;
     top: 0;
     left: 50%;
@@ -239,7 +239,7 @@ p {
 }
 
 /* image at bottom left */
-.container-3 img {
+.box-3 img {
     position: absolute;
     left: -48px;
     bottom: 0;
@@ -249,7 +249,7 @@ p {
 }
 
 /* paragraph at bottom right */
-.container-3-content p {
+.box-3-content p {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -318,15 +318,15 @@ p {
     main {
         gap: 16px;
     }
-    .container,
-    .container.container-3 {
+    .box,
+    .box.box-3 {
         max-width: 90vw;
         height: auto;
     }
-    img.container-1,
-    img.container-2,
-    img.container-3,
-    img.container-4 {
+    img.box-1,
+    img.box-2,
+    img.box-3,
+    img.box-4 {
         max-width: 80vw;
         height: auto;
     }
@@ -337,8 +337,8 @@ p {
         flex-direction: column;
         align-items: center;
     }
-    .container,
-    .container.container-3 {
+    .box,
+    .box.box-3 {
         max-width: 98vw;
         width: 98vw;
         height: auto;
@@ -356,9 +356,9 @@ p {
         font-size: 16px;
         max-width: 98vw;
     }
-    .container-3-content h2,
-    .container-3-content p,
-    .container-3 img {
+    .box-3-content h2,
+    .box-3-content p,
+    .box-3 img {
         position: static;
         width: 100%;
         height: auto;
