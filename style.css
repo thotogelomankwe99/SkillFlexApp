@@ -126,27 +126,111 @@ padding:0;
 
 
 .buttons #getStartedBtn, .buttons #learnMoreBtn{
-border: 1px solid #fff;
+border: 1px solid #fff;}
+
+
+h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 32px;
+    width: 100%;
+    max-width: 137px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2{/*border: 1px solid #000;*/
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    text-align: center;
+    width: 100%;
+    /*max-width: 252px;*/
+}
+
+p{/*border: 1px solid #000;*/
+    font-size: 18px;
+    font-weight: 500;
+    margin: 5px 0;
+    text-align: center;
+    width: 100%;
+    max-width: 244px; 
+}
+
+/* special layout for card-3: absolut positioning for requested coordinates.*/
+.card, .card.card-3{/*border: 1px solid #000;*/
+    position: relative;
+    display: block;
+    width: 90vw;
+    max-width: 300px;
+    height: 300px;
+    padding: 20px;
+    background: #d3e9f3;
+    box-shadow: 0 2px 8px rgba(0,0,0, 0.05);
+    margin: 0;
+    overflow: hidden;
+}
+
+.card-3-content{/*border: 1px solid #000;*/
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.card-3-content h2{border: 1px solid #000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    margin: 0;
+}
+
+.card-3 img{
+    position: absolute;
+    left: -48px;
+    bottom: 0;
+    width: 159px;
+    height: 159px;
+    margin: 0;
+}
+
+.card-3-content p{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 199px;
+    height: 193px;
+    text-align: right;
+    margin: 0;
+    font-size: 18px;
+}
 
 /* Body styling */
-body {
+/*body {
     font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f9f9f9;
 }
 
-/* Main container for feature boxes */
+/* Main container for feature boxes 
 main {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap; /* Allow wrapping on small screens 
     gap: 24px;
     justify-content: center;
     align-items: flex-start;
-}
+}*/
 
-/* Feature box styling */
-.container {
+
+
+/*.card {
+    border: 1px solid #000;
     border: none;
     border-radius: none;
     padding: 20px;
@@ -162,13 +246,13 @@ main {
     margin: 0;
 }
 
-/* Individual image sizes for each feature */
-img.container-1 { width: 104px; height: 104px; border-radius: 5px; }
+
+img.card-1 { width: 104px; height: 104px; border-radius: 5px; }
 img.container-2 { width: 120px; height: 120px; border-radius: 5px; }
 img.container-3 { width: 159px; height: 159px; border-radius: 5px; }
 img.container-4 { width: 94px; height: 94px; border-radius: 5px; }
 
-/* Center the main heading and set its size */
+
 h1 {
     text-align: center;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -181,7 +265,7 @@ h1 {
     margin-right: auto;
 }
 
-/* Feature title styling */
+
 h2 {
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 20px;
@@ -193,7 +277,7 @@ h2 {
     max-width: 252px;
 }
 
-/* Paragraph styling */
+
 p {
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 18px;
@@ -204,8 +288,8 @@ p {
     max-width: 244px;
 }
 
-/* Special layout for container 3: absolute positioning for requested coordinates */
-.container.container-3 {
+
+.card.container-3 {
     position: relative;
     display: block;
     width: 90vw;
@@ -226,7 +310,7 @@ p {
     height: 100%;
 }
 
-/* h2 at top center */
+
 .container-3-content h2 {
     position: absolute;
     top: 0;
@@ -238,7 +322,7 @@ p {
     margin: 0;
 }
 
-/* image at bottom left */
+
 .container-3 img {
     position: absolute;
     left: -48px;
@@ -248,7 +332,7 @@ p {
     margin: 0;
 }
 
-/* paragraph at bottom right */
+
 .container-3-content p {
     position: absolute;
     right: 0;
@@ -260,7 +344,7 @@ p {
     font-size: 18px;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 900px) {
     main {
         gap: 16px;
@@ -312,7 +396,7 @@ p {
         margin: 8px 0;
         text-align: center;
     }
-}}
+}}*/
 
 /* CTA Section */
 .cta-section {
