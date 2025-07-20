@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillFlex Sign Up</title>
+  <link rel="stylesheet" href="signup.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="main-container">
+    
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <img src="Group 35 (1).png" alt="SkillFlex background" class="background-image" />
+      
+      <!-- Overlay Text -->
+      <div class="overlay-text top-left">SKILLFLEX</div>
+      <div class="overlay-text welcome-text">Welcome to SkillFlex</div>
+      <div class="overlay-text bottom-left">Strength starts with Soft</div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="form-section">
+      <h2>Sign Up</h2>
+      <h3>Create an account to continue with SkillFlex</h3>
+      
+
+      <form class="signup-form">
+        <div class="form-group">
+          <label for="name">Full name <span class="required-asterisk">*</span></label>
+          <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" id="name" placeholder="enter your full name" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address <span class="required-asterisk">*</span></label>
+          <div class="input-container">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="example@gmail.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password <span class="required-asterisk">*</span></label>
+          <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="enter your password" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password <span class="required-asterisk">*</span></label>
+          <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="confirm-password" placeholder="enter your password" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role Selection<span class="required-asterisk">*</span></label>
+<div class="signup-as">Sign up as:</div>
+          <div class="radio-group">
+            <label><input type="radio" name="role" value="learner" required /> Learner</label>
+            <label><input type="radio" name="role" value="mentor" /> Mentor</label>
+          </div>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">I agree to the <a href="#">Terms & Privacy Policy</a></label>
+        </div>
+
+        <button type="submit" class="submit-btn">Sign Up</button>
+
+        <div class="login-prompt">
+          Already have an account? <a href="#">Log in</a>
+        </div>
+
+        <div class="divider-container">
+          <div class="divider-line"></div>
+          <span class="divider-text">or</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <button type="button" class="google-btn">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google icon" />
+          Continue with Google
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
 
