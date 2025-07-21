@@ -505,3 +505,402 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
 #reset-btn:hover {
   background-color: #1A71D4;
 }
+
+
+/* Styles for Sign Up*/
+
+/* Reset and global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Layout wrapper */
+.main-box {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left image panel */
+.left-panel {
+  position: relative;
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transform: scale(1.2);
+  border: none;
+}
+
+/* Overlay text on the image */
+.overlay-text {
+  position: absolute;
+  color: white;
+  z-index: 2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.top-left {
+  top: 30px;
+  left: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.welcome-text {
+  top: 18%;
+  left: 30px;
+  font-size: 36px;
+  font-weight: 600;
+  max-width: 300px;
+  line-height: 1.4;
+  margin-top: 30px;
+}
+
+.bottom-left {
+  bottom: 30px;
+  left: 30px;
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: -10px;
+}
+
+/* Right form section */
+.form-section {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  transform: scale(0.94);
+}
+
+.form-section h2 {
+  font-size: 35px;
+  font-weight: 700;
+  color: #1251C5;
+  margin: 0 0 4px;
+  text-align: left;
+  width: 100%;
+  max-width: 480px;
+  margin-right: 90px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.form-section h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+  max-width: 480px;
+  margin-right: 90px;
+}
+
+/* Signup form */
+.signup-form {
+  width: 100%;
+  max-width: 600px;
+  background-color: #FAFAFA;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: auto;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-top: -17px;
+  margin-bottom: 2px;
+  transform: scale(0.97);
+}
+
+label .required-asterisk {
+  color: red;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Input fields */
+.form-group {
+  margin-bottom: 6px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #000;
+}
+
+.input-box {
+  background-color: #F2F2F2;
+  border-radius: 20px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 45px;
+  width: 100%;
+}
+
+.input-box i {
+  color: #999;
+  font-size: 20px;
+  width: 28px;
+  height: 28px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  width: 100%;
+  background: transparent;
+  font-size: 17px;
+  outline: none;
+  font-style: italic;
+  font-weight: 50;
+}
+
+/* Radio buttons */
+.signup-as {
+  font-weight: 500;
+  font-size: 18px;
+  color: #000;
+  margin-top: 4px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 80px;
+  margin-top: 4px;
+}
+
+.radio-group label {
+  font-weight: 300;
+  font-size: 18px;
+  color: #000;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #FFFFFF;
+  border: 1px solid #1F1F1F;
+}
+
+/* Terms checkbox */
+.terms {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: normal;
+  width: 350px;
+  color: #000;
+  margin-top: 2px;
+}
+
+.terms input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background-color: #FFFFFF;
+}
+
+.terms a {
+  color: #1251C5;
+  text-decoration: none;
+}
+
+.terms label {
+  font-weight: normal;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 20px;
+  background-color: #1251C5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+}
+
+/* Login prompt */
+.login-prompt {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.login-prompt a {
+  color: #1251C5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Divider with "or" */
+.divider-box {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 6px 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #000;
+}
+
+.divider-text {
+  padding: 0 8px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1251C5;
+  white-space: nowrap;
+}
+
+/* Google button */
+.google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  padding: 6px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 6px;
+  height: 40px;
+}
+
+.google-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .main-box {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .left-panel,
+  .form-section {
+    width: 100%;
+    height: auto;
+    flex: none;
+  }
+
+  .form-section {
+    padding: 20px;
+    transform: scale(1);
+  }
+
+  .signup-form {
+    height: auto;
+    transform: scale(1);
+  }
+
+  .form-section h2,
+  .form-section h3 {
+    margin: 10px auto;
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .radio-group {
+    gap: 30px;
+  }
+
+  .terms {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-text {
+    font-size: 26px;
+    top: 15%;
+    left: 20px;
+  }
+
+  .top-left {
+    font-size: 22px;
+    left: 20px;
+    top: 20px;
+  }
+
+  .bottom-left {
+    font-size: 18px;
+    left: 20px;
+  }
+
+  .input-box {
+    height: 42px;
+  }
+
+  .submit-btn,
+  .google-btn {
+    font-size: 16px;
+    height: 38px;
+  }
+
+  .divider-text {
+    font-size: 16px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
