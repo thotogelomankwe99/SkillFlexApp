@@ -6,6 +6,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+
 html, body {
   height: 100%;
   width: 100%;
@@ -20,6 +21,26 @@ html, body {
   width: 100%;
   position: relative;
   overflow: hidden;
+
+/* ====== HEADER ======= */
+
+
+.header-wrapper {
+  background-color: #1251C5;
+  width: 100vw;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.header-image {
+  width: 360px;
+  height: 360px;
+  float: inline-end;
+  margin-right: 200px;
+  position: relative;
+  margin-top: 30px;
+
 }
 
 /* Left image panel */
@@ -167,6 +188,15 @@ label .required-asterisk {
 /* Input fields */
 .form-group {
   margin-bottom: 6px;
+
+/* ===== FEATURES ====== */
+
+.feature-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 60px auto 32px;
+  margin-top: 34px;
 }
 
 label {
@@ -246,6 +276,7 @@ input[type="radio"] {
   margin-top: 2px;
 }
 
+
 .terms input[type="checkbox"] {
   width: 20px;
   height: 20px;
@@ -253,6 +284,14 @@ input[type="radio"] {
   border-radius: 5px;
   border: 1px solid #000;
   background-color: #FFFFFF;
+
+/* CTA Section */
+.feature-cta {
+  background-color: #E0EBFF;
+  text-align: center;
+  padding: 1.5rem;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 .terms a {
@@ -285,10 +324,22 @@ input[type="radio"] {
   margin-bottom: 4px;
 }
 
+
 .login-prompt a {
   color: #1251C5;
   text-decoration: none;
   font-weight: 500;
+
+
+/* ====== FOOTER ======= */
+
+
+.footer-section {
+  background-color: #FAFAFA;
+  border-top: 1px solid #ccc;
+  padding: 1rem 0;
+  width: 1440px;
+  margin: 0 auto;
 }
 
 /* Divider with "or" */
