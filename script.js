@@ -47,6 +47,8 @@ function resetPassword() {
   }
 }
 
+
+ e6e7187 (added js for sign up)
 // Import Firebase core and auth modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
