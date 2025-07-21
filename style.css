@@ -1,26 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
-
-*{
-font-family: Montserrat;
-margin: 0;
-padding:0;
-box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
-
-html,body{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-.container{
-    background-color: #1251C5;
-   width: 100vw;
-   margin: 0;
-   padding: 0;}
-
 
 /* ====== HEADER ======= */
 
@@ -30,6 +15,7 @@ html,body{
   width: 100vw;
   margin: 0 auto;
   position: relative;
+
   padding-bottom: 30px;
 }
 
@@ -152,15 +138,6 @@ html,body{
   border-radius: 5px;
 }
 
-
-/* Main box for feature boxes */
-main {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;}
-
 .feature-icon-1 { width: 104px; height: 104px; }
 .feature-icon-2 { width: 120px; height: 120px; }
 .feature-icon-3 { width: 159px; height: 159px; }
@@ -171,7 +148,6 @@ main {
   font-weight: bold;
   margin: 10px 0 5px;
   text-align: center;
-
 }
 
 .feature-card p {
@@ -190,169 +166,6 @@ main {
   overflow: hidden;
 }
 
-
-/* Center the main heading and set its size */
-h1 {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 32px;
-    width: 100%;
-    max-width: 137px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-h2{/*border: 1px solid #000;*/
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    text-align: center;
-    width: 100%;
-    /*max-width: 252px;*/
-}
-
-p{/*border: 1px solid #000;*/
-    font-size: 18px;
-    font-weight: 500;
-    margin: 5px 0;
-    text-align: center;
-    width: 100%;
-    /*max-width: 244px; */
-}
-
-/* Special layout for box 3: absolute positioning for requested coordinates */
-.card.card-3 {
-
-    position: relative;
-    display: block;
-    width: 90vw;
-    max-width: 300px;
-    height: 300px;
-    padding: 20px;
-    background: #d3e9f3;
-    box-shadow: 0 2px 8px rgba(0,0,0, 0.05);
-    margin: 0;
-    overflow: hidden;
-}
-
-
-.card-3-content{/*border: 1px solid #000;*/
-position: relative;
-width: 100%;
-height: 100%;
-}
-
-.card-3-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* h2 at top center */
-.card-3-content h2 {
-
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140px;
-    height: 40px;
-    text-align: center;
-    margin: 0;
-}
-
-/* image at bottom left */
-.card-3 img {
-    position: absolute;
-    left: -48px;
-    bottom: 0;
-    width: 159px;
-    height: 159px;
-    margin: 0;
-}
-
-
-/* paragraph at bottom right */
-.card-3-content p {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 199px;
-    height: 193px;
-    text-align: right;
-    margin: 0;
-    font-size: 18px;
-}
-
-img.card-1{width: 104px; height: 104px; border-radius: 5px;}
-img.card-2{width: 120px; height: 120px; border-radius: 5px;}
-img.card-3{width: 159px; height: 159px; border-radius: 5px;}
-img.card-4{width: 94px; height: 94px; border-radius: 5px;}
-
-
-/*@media (max-width: 900px) {
-    main {
-        gap: 16px;
-    }
-    .card,
-    .card.card-3.card-3 {
-        max-width: 90vw;
-        height: auto;
-    }
-    img.card-1,
-    img.card-2,
-    img.card-3,
-    img.card-4 {
-        max-width: 80vw;
-        height: auto;
-    }
-}
-
-@media (max-width: 600px) {
-    main {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card,
-    .card.card-3 {
-        max-width: 98vw;
-        width: 98vw;
-        height: auto;
-        padding: 10px;
-    }
-    h1 {
-        font-size: 22px;
-        max-width: 98vw;
-    }
-    h2 {
-        font-size: 16px;
-        max-width: 98vw;
-    }
-    p {
-        font-size: 16px;
-        max-width: 98vw;
-    }
-    .box-3-box h2,
-    .box-3-box p,
-    .box-3 img {
-        position: static;
-        width: 100%;
-        height: auto;
-        margin: 8px 0;
-        text-align: center;
-    }
-}}*/
-
-/* CTA Section */
-.cta-section {
-  background-color: #E0EBFF;
-  text-align: center;
-  padding: 1rem;
-  width: 100%;
-  margin: 0;}
-
 .feature-special-content h2 {
   position: absolute;
   top: 0;
@@ -361,6 +174,7 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
   width: 140px;
   height: 40px;
   text-align: center;
+  
 }
 
 .feature-special-content img {
@@ -392,7 +206,6 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
   padding: 1.5rem;
   width: 100vw;
   margin: 0 auto;
-
 }
 
 .feature-cta-text {
@@ -421,7 +234,10 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
   background-color: #1a71d4;
 }
 
-/*Footer*/
+
+/* ====== FOOTER ======= */
+
+
 .footer-section {
   background-color: #FAFAFA;
   border-top: 1px solid #ccc;
@@ -449,3 +265,4 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
 .footer-copy {
   font-weight: 500;
 }
+
