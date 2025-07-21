@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>landing Page navigation</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillFlex Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
-    
 <body>
+
     <div class="container">
         <img src="LOGO-2 (2).png">
         <div class="logo">
@@ -31,55 +29,85 @@
             <h4>Level up your soft skills with guidance,<br>practice, and smart feedback</h4>
         </div>
 
-        <div class="buttons">
-            <input type="button" value="Get Started" id="getStartedBtn">
-            <input type="button" value="Learn More" id="learnMoreBtn">
-        </div>
+  <!--  HEADER -->
+  <div class="header-wrapper">
+    <img src="LOGO-2 (2).png" alt="Logo Graphic" class="header-image" />
+
+    <div class="header-logo">
+      <ul class="header-logo-row">
+        <li><img src="LOGO.png" alt="SkillFlex Logo" /></li>
+        <li><h1>SKILLFLEX</h1></li>
+      </ul>
+      <nav class="header-navigation">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="sign-up.html">LOGIN</a></li>
+        </ul>
+      </nav>
     </div>
-    
-<h1>FEATURES</h1>
-<main>
-        <div class="card">
-            <img src="OIP__1_-removebg-preview.png" alt="Container first image" class="card-1">
-            <h2>Personalised Learning paths</h2>
-            <p>Choose soft skills you want to improve and follow guided journeys.</p>
-        </div>
 
-        <div class="card">
-            <img src="image number 2.png" alt="Container second image" class="card-2">
-            <h2>Mentorship match</h2>
-            <p>Get guidance and real-time feedback from experienced mentors to help you grow personally and professionally</p>
-        </div>
+    <div class="header-tagline">
+      <h2>Strength Starts with Soft.</h2>
+      <h4>Level up your soft skills with guidance,<br>practice, and smart feedback</h4>
+    </div>
 
-        <div class="card card-3">
-          <div class="card-3-content">
-            <h2>Practice with AI chatbot</h2>
-            <img src="image number 3.png" alt="Container third image" class="card-3">
-            <p>Train through real life scenarios with our smart chatbot. Practice, respond, and receive instant, constructive feedback.</p>
-          </div>
-        </div>
-        <div class="card">
-            <img src="image number 4.png" alt="Container fourth image" class="card-4">
-            <h2>Track your growth</h2>
-            <p>Visualize your progress, set soft skill goals, and celebrate every milestone in your development journey.</p>
-        </div>
-    </main>
- <!-- SkillFlex-Bottom Section -->
-<section class="cta-section">
-  <p class="cta-message">
-    <strong>Soft Skills shape Strong futures</strong><br>
-    Do not put off improving your growth mindset, communication, and leadership skills; the future is uncertain.
-  </p>
-  <button class="cta-button"><a href="sign-up.html">Start learning now</a></button>
-</section>
-
-<footer class="site-footer">
-  <div class="footer-content">
-    <a href="#" class="footer-link">Terms of Service</a>
-    <span class="footer-copy">©2025 SkillFlex</span>
-    <a href="#" class="footer-link">Help & Support</a>
+    <div class="header-actions">
+      <input type="button" value="Get Started" id="getStartedBtn">
+      <input type="button" value="Learn More" id="learnMoreBtn">
+    </div>
   </div>
-</footer>
-     <script src="script.js"></script> 
+
+  <!--  FEATURES -->
+  <h1 class="feature-title">FEATURES</h1>
+  <section class="feature-grid">
+    <div class="feature-card">
+      <img src="OIP__1_-removebg-preview.png" alt="Learning Paths" class="feature-icon-1" />
+      <h2>Personalised Learning paths</h2>
+      <p>Choose soft skills you want to improve and follow guided journeys.</p>
+    </div>
+
+    <div class="feature-card">
+      <img src="image number 2.png" alt="Mentorship" class="feature-icon-2" />
+      <h2>Mentorship match</h2>
+      <p>Get guidance and real-time feedback from experienced mentors to help you grow personally and professionally.</p>
+    </div>
+
+    <div class="feature-card feature-special">
+      <div class="feature-special-content">
+        <h2>Practice with AI chatbot</h2>
+        <img src="image number 3.png" alt="AI Bot" class="feature-icon-3" />
+        <p>Train through real life scenarios with our smart chatbot. Practice, respond, and receive instant, constructive feedback.</p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <img src="image number 4.png" alt="Track Growth" class="feature-icon-4" />
+      <h2>Track your growth</h2>
+      <p>Visualize your progress, set soft skill goals, and celebrate every milestone in your development journey.</p>
+    </div>
+  </section>
+
+  <!--  CTA -->
+  <section class="feature-cta">
+    <p class="feature-cta-text">
+      <strong>Soft Skills shape Strong futures</strong><br>
+      Do not put off improving your growth mindset, communication, and leadership skills; the future is uncertain.
+    </p>
+    <button class="feature-cta-button">
+      <a href="sign-up.html">Start learning now</a>
+    </button>
+  </section>
+
+  <!--  FOOTER -->
+  <footer class="footer-section">
+    <div class="footer-wrap">
+      <a href="terms.html" class="footer-navlink">Terms of Service</a>
+      <span class="footer-copy">©2025 SkillFlex</span>
+      <a href="#" class="footer-navlink">Help & Support</a>
+    </div>
+  </footer>
+<script src="script.js"></script> 
 </body>
 </html>
+
