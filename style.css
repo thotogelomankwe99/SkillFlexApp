@@ -19,20 +19,11 @@ html,body{
     background-color: #1251C5;
    width: 100vw;
    margin: 0;
-   padding: 0;
+   padding: 0;}
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* ===================== */
 /* ====== HEADER ======= */
-/* ===================== */
+
 
 .header-wrapper {
   background-color: #1251C5;
@@ -126,9 +117,7 @@ html,body{
   cursor: pointer;
 }
 
-/* ===================== */
 /* ===== FEATURES ====== */
-/* ===================== */
 
 .feature-title {
   text-align: center;
@@ -170,7 +159,7 @@ main {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start;}
 
 .feature-icon-1 { width: 104px; height: 104px; }
 .feature-icon-2 { width: 120px; height: 120px; }
@@ -362,7 +351,7 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
   text-align: center;
   padding: 1rem;
   width: 100%;
-  margin: 0;
+  margin: 0;}
 
 .feature-special-content h2 {
   position: absolute;
@@ -372,7 +361,6 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
   width: 140px;
   height: 40px;
   text-align: center;
-  
 }
 
 .feature-special-content img {
@@ -433,10 +421,7 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
   background-color: #1a71d4;
 }
 
-/* ===================== */
-/* ====== FOOTER ======= */
-/* ===================== */
-
+/*Footer*/
 .footer-section {
   background-color: #FAFAFA;
   border-top: 1px solid #ccc;
