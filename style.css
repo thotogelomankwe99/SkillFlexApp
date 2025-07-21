@@ -9,7 +9,9 @@ padding:0;
 
 .container{
     background-color: #1251C5;
-   width: 1440px;
+   width: 100vw;
+   margin: 0;
+   padding: 0;
 }
 
 .container img{
@@ -238,15 +240,15 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
     main {
         gap: 16px;
     }
-    .box,
-    .box.box-3 {
+    .card,
+    .card.card-3.card-3 {
         max-width: 90vw;
         height: auto;
     }
-    img.box-1,
-    img.box-2,
-    img.box-3,
-    img.box-4 {
+    img.card-1,
+    img.card-2,
+    img.card-3,
+    img.card-4 {
         max-width: 80vw;
         height: auto;
     }
@@ -257,8 +259,8 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
         flex-direction: column;
         align-items: center;
     }
-    .box,
-    .box.box-3 {
+    .card,
+    .card.card-3 {
         max-width: 98vw;
         width: 98vw;
         height: auto;
@@ -292,8 +294,10 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
     border: 1px solid #000;
   background-color: #E0EBFF;
   text-align: center;
-  padding: 1rem;
-  width: 1440px;
+  /*padding: 1rem;*/
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 .cta-message {
