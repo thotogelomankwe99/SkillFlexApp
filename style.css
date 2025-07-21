@@ -4,9 +4,16 @@
 font-family: Montserrat;
 margin: 0;
 padding:0;
-
+box-sizing: border-box;
 }
 
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
 .container{
     background-color: #1251C5;
    width: 100vw;
@@ -103,7 +110,6 @@ padding:0;
 
 /* Main box for feature boxes */
 main {
-
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -291,13 +297,11 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
 
 /* CTA Section */
 .cta-section {
-    border: 1px solid #000;
   background-color: #E0EBFF;
   text-align: center;
-  /*padding: 1rem;*/
-  width: 100vw;
+  padding: 1rem;
+  width: 100%;
   margin: 0;
-  padding: 0;
 }
 
 .cta-message {
