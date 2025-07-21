@@ -107,7 +107,6 @@ padding:0;
 }
 
 .card-left{
-    border: 1px solid #000;
     background-image: url(background.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -125,10 +124,10 @@ padding:0;
     margin-top: 100px;
     font-weight: bold;
     color: #fff;
-    text-align: center;
+    text-align: left;
 }
-#container .card-left .card-content p{
-    text-align: center;
+#container .card-left .card-content p{position: relative;
+    text-align: left;
     margin: 10px;
     margin-top: 20px;
     padding: 15px;
@@ -137,7 +136,58 @@ padding:0;
     text-wrap: wrap;
 
 }
-#cntainer .card-left .card-content span{border: 1px solid #000;}
+#container .card-left .card-content .bottom-text{
+position: absolute;
+bottom: 0;
+text-align: left;
+padding: 10px;
+color: #fff;
+font-size: 20px;
+font-weight: lighter;}
+
+#container .card-right .form h2{
+    margin-left: 40px;
+    color: #1251c5;
+    text-align: left;
+    font-weight: bold;
+    font-size: 45px;
+}
+#container .card-right .form p{
+    margin-left: 40px;
+    margin: 10px;
+    font-size: 25px;
+}
+#container .card-right .form fieldset{
+    border: none;
+width: fit-content;
+margin: 50px;
+padding: 30px;
+background-color: #fAfAfA;
+box-sizing: border-box;
+box-shadow: 0 6px 6px rgba(0,0,0,0.25);
+backdrop-filter: blur(6px);
+border-radius: 20px;
+}
+
+#container .card-right .form fieldset form label{
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+#container .card-right .form fieldset form input{
+    width: fit-content;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    /*height: 40px;*/
+}
+#container .card-right .form fieldset form input::placeholder{
+    border: 1px solid #000;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 14px;
+}
 
 
 .buttons #getStartedBtn, .buttons #learnMoreBtn{
