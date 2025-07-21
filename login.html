@@ -4,40 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
 </head>
 <body>
     <div id="container">
         <div class="card-left">
             <div class="card-content">
                 <h1>SKILLFLEX</h1>
-                <h3> Welcome to skillflex app!</h3>
+                <h3> Welcome to<br> SKILLFLEX!</h3>
                 <p>Your gateway to learning soft skills thorugh interactive practice,<br>
-                     expext guidance, and smart AI feedback. <b>Login</b> to explore real-world scenarios and  track your progress.</p>
-            </div>
+                     expext guidance, and smart AI feedback. 
+                     <br>
+                     <b>Login</b> 
+                     to explore real-world scenarios and  track your progress.
+                </p>
+                 <div class="bottom-text">Strength Starts with Soft</div>
+                </div>
         </div>
         <div class="card-right">
             <div class="form">
                 <h2>Log in</h2>
-                <p>Login to skillflex to continue</p>
+                <p>Welcome! Login to skillflex to continue</p>
 
                 <fieldset>
                     <form>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="example@gmail.com">
-                        <br><br>
-                        <label for="Password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Enter your password">
-                        <br><br>
-                        <input type="checkbox" name="Remember me" id="remember-me"> Remember me
-                        <br><br>
-                        <a href="#" class="button">Login</a>
-                        <br><br>
-                        <p>Don't have an account? <a href="#">Sign Up</a></p>
-                        <br><br>
-                        <p><span>or</span></p>
+                        <div class="form-group ">
+                            <label for="email">Email</label>
+                            <div class="input-wrapper">
+                                <i class="fa fa-envelope"></i>
+                                <input type="email" id="email" placeholder="example@gmail.com" required>
+                            </div>     
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-wrapper">
+                                <i class="fa fa-lock"></i>
+                            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <label class="remember-me"><input type="checkbox">Remember Me</label>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <div id="log-btn"><a href="#">Login</a></div>
+                        <div class="signup-text">Don't have an account? <a href="#">Sign Up</a></div>
+                        <div class="divider"><span>or</span></div>
                         <br>
-                        <a href="#" class="button">Continue with Google</a>
+                        <button class="google-btn">
+                        <i class="fab fa-google"></i>Continue with Google
+                        </button>
                     </form>
                 </fieldset>
             </div>
