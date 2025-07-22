@@ -9,6 +9,13 @@ body {
     padding: 0;
 }
 
+.logo img {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border-radius: 10px;
+}
+
 .logo a{
     cursor: pointer;
 }
