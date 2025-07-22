@@ -459,6 +459,7 @@ img.card-4{width: 94px; height: 94px; border-radius: 5px;}
 
 .required {
   color: red;
+  /*font-weight: bold;*/
 }
 
 #new-password, #confirm-password {
