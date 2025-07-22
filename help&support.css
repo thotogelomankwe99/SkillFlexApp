@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcf1fd;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.logo a{
+    cursor: pointer;
+}
+
+h1{
+    text-align: center;
+}
+
+
+header {
+    background-color: #4351ee;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+section {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+h2 {
+    color: #4351ee;
+    margin-bottom: 1rem;
+}
+
+.question {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #fff;
+    border-left: 5px solid #4351ee;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact li {
+    margin: 0.5rem 0;
+}
+
+a {
+    color: #4351ee;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #fAfAfA;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footer-link {
+  color: #000000;
+  text-decoration: none;}
+
+/*Responsive Layouts*/
+/* Mobile: 320px - 767px */
+@media screen and (max-width: 767px) {
+    header {
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    .logo ul {
+        padding: 0;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .logo img {
+        height: 60px;
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        font-size: 0.95rem;
+    }
+
+    section {
+        padding: 1.2rem 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .question h3 {
+        font-size: 1rem;
+    }
+
+    .question p {
+        font-size: 0.95rem;
+    }
+
+    .contact li {
+        font-size: 0.95rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .footer-link {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablet: 768px - 1043px */
+@media screen and (min-width: 768px) and (max-width: 1043px) {
+    header {
+        padding: 2rem 1rem;
+    }
+
+    .logo img {
+        height: 70px;
+        width: 70px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+    .footer-content {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* Desktop: 1044px and above */
+@media screen and (min-width: 1044px) {
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem 3rem;
+    }
+
+    .logo ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .logo li {
+        display: inline-block;
+    }
+
+    .logo img {
+        display: block;
+        height: 80px;
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin: 0;
+    }
+
+    .title {
+        display: block;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .footer-content {
+        flex-direction: row;
+    }
+}
