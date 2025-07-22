@@ -9,7 +9,13 @@
       measurementId: "G-PJ701TTVZJ"
     };
 
-    //Firebase initialization
+// Import Firebase core and auth modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+   
+
+//Firebase initialization
     firebase.initializeApp(firebaseConfig);
 
 //Linking buttons to external html files
@@ -47,23 +53,6 @@ function resetPassword() {
   }
 }
 
-
- e6e7187 (added js for sign up)
-// Import Firebase core and auth modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
-  authDomain: "skillflexapp.firebaseapp.com",
-  projectId: "skillflexapp",
-  storageBucket: "skillflexapp.appspot.com",
-  messagingSenderId: "827795374450",
-  appId: "1:827795374450:web:4f64fa1bb85c158badddeb",
-  measurementId: "G-PJ701TTVZJ"
-};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
