@@ -1,3 +1,17 @@
+ //SkillFlexApp's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
+      authDomain: "skillflexapp.firebaseapp.com",
+      projectId: "skillflexapp",
+      storageBucket: "skillflexapp.firebasestorage.app",
+      messagingSenderId: "827795374450",
+      appId: "1:827795374450:web:4f64fa1bb85c158badddeb",
+      measurementId: "G-PJ701TTVZJ"
+    };
+
+    //Firebase initialization
+    firebase.initializeApp(firebaseConfig);
+
 //Linking buttons to external html files
 document.getElementById("getStartedBtn").addEventListener("click", function(){
   window.location.href="sign-up.html";
