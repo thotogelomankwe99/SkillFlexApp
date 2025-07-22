@@ -9,7 +9,13 @@
       measurementId: "G-PJ701TTVZJ"
     };
 
-    //Firebase initialization
+// Import Firebase core and auth modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+   
+
+//Firebase initialization
     firebase.initializeApp(firebaseConfig);
 
 //Linking buttons to external html files
