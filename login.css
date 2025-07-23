@@ -19,7 +19,6 @@ font-family: Montserrat;}
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    
 }
 
 #container .card-left .card-content h1{
@@ -45,8 +44,8 @@ font-family: Montserrat;}
     line-height: 2rem;
     font-size: 24px;
     text-wrap: wrap;
-
 }
+
 #container .card-left .card-content .bottom-text{
 position: absolute;
 bottom: 0;
@@ -71,21 +70,21 @@ font-weight: lighter;}
     font-weight: bold;
     font-size: 45px;
 }
-#container .card-right .form p{
+#container .card-right .form h3{
     margin-left: 40px;
     margin: 10px;
     font-size: 25px;
 }
 #container .card-right .form fieldset{
     border: none;
-width: 100%;
-margin: 50px;
-padding: 40px;
-background-color: #fAfAfA;
-box-sizing: border-box;
-box-shadow: 0 6px 6px rgba(0,0,0,0.25);
-backdrop-filter: blur(6px);
-border-radius: 20px;
+    width: 100%;
+    margin: 50px;
+    padding: 40px;
+    background-color: #fAfAfA;
+    box-sizing: border-box;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.25);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
 }
 
 .form-group{
