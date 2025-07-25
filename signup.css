@@ -3,27 +3,32 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
 }
 
-html, body {
+/*html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
   background-color: #ffffff;
-}
+}*
 
 /* Layout wrapper */
 .main-container {
   display: flex;
   height: 100vh;
+  /*
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;*/
 }
 
 /* Left image panel */
 .left-panel {
+  background-image: url(Group\ 35\ \(1\).png);
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
   position: relative;
   flex: 1;
   height: 100vh;
@@ -32,18 +37,29 @@ html, body {
   align-items: flex-start;
   justify-content: center;
 }
+.left-panel, .form-section{
+flex: 1;
+padding: 40px;
+display: flex;
+}
+.form-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
 
-.background-image {
+/*.background-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   transform: scale(1.2);
   border: none;
-}
+}*/
 
 /* Overlay text on the image */
-.overlay-text {
+/*.overlay-text {
   position: absolute;
   color: white;
   z-index: 2;
@@ -51,12 +67,17 @@ html, body {
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.top-left {
+.left-panel h1 {
+  color: #FFFFFF;
+  margin-left: 0;
+  font-size: 45px;
+  
+  /*
   top: 30px;
   left: 30px;
   font-size: 45px;
   font-weight: 700;
-  margin-top: -20px;
+  margin-top: -20px; 
 }
 
 .join-text {
@@ -101,7 +122,7 @@ html, body {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 300px;
 }
-/* Right form section */
+/* Right form section 
 .form-section {
   flex: 1;
   background-color: #ffffff;
@@ -137,7 +158,7 @@ html, body {
   width: 100%;
   max-width: 480px;
   margin-right: 90px;
-}
+}*/
 
 /* Signup form */
 .signup-form {
