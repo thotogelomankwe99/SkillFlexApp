@@ -135,6 +135,7 @@ label {
 /*Input fields*/
 .form-group {
   margin-bottom: 6px;
+  padding-left: -30px;
 }
 
 label{

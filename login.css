@@ -184,7 +184,7 @@ align-items: center;
     align-items: center;
     text-align: center;
     margin: 10px 0;
-
+    color: #1251C5;
 }
 
 .divider::before, .divider::after{
