@@ -1,146 +1,93 @@
-/* Reset and global styles */
-* {
-  box-sizing: border-box;
+*{
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-/* Layout wrapper */
-.main-container {
+.main-container{
   display: flex;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
+  height: 100%;
 }
+
+
+
 
 /* Left image panel */
 .left-panel {
   border: 2px solid #000;
   position: relative;
-  flex: 1;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
 
-.background-image {
-  width: 100%;
+ flex: 1;
+  padding: 40px;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transform: scale(1.2);
-  border: none;
 }
 
-/* Overlay text on the image */
-.overlay-text {
-  position: absolute;
-  color: white;
-  z-index: 2;
-  font-family: 'Montserrat', sans-serif;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+.left-panel{
+  background-image: url(Group\ 35\ \(1\).png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
-.top-left {
-  top: 30px;
-  left: 30px;
+.main-container .left-panel h1{
+  color: #fff;
+  margin-left: 0;
   font-size: 45px;
-  font-weight: 700;
-  margin-top: -20px;
 }
 
-.join-text {
-  top: 18%;
-  left: 30px;
-  font-size: 36px;
-  font-weight: 600;
-  max-width: 300px;
-  line-height: 1.4;
-  margin-top: 30px;
+.main-container .left-panel h3{
+  font-size: 45px;
+    margin-top: 100px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
 }
 
-.bottom-left {
-  bottom: 30px;
-  left: 30px;
-  font-size: 25px;
-  font-weight: 400;
+.main-container .left-panel p{
+  color: #fdfdfd;
+    position: relative;
+    text-align: left;
+    margin: 10px;
+    margin-top: 30px;
+    padding: 15px;
+    line-height: 2rem;
+    font-size: 24px;
+    text-wrap: wrap;
+}
+
+.main-container .left-panel .bottom-text {
   position: absolute;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: -10px;
+  bottom: 0;
+  text-align: left;
+  padding: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: lighter;
 }
 
-.overlay-paragraph {
-  position: absolute;
-  bottom: 10px;
-  left: 30px;
-  font-size: 24px;
-  font-weight: 400;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 260px;
-} 
-
-.overlay-paragraph-p {
-  position: absolute;
-  bottom: 50px;
-  left: 30px;
-  font-size: 24px;
-  font-weight: 400;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: 300px;
-}
-/* Right form section */
-.form-section {
-  flex: 1;
-  background-color: #ffffff;
+.main-container .form-section{
   display: flex;
-  flex-direction: column;
+  flex: 1;
+  padding: 40px;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  height: 100vh;
-  overflow: hidden;
-  transform: scale(0.94);
 }
 
-.form-section h2 {
-  font-size: 35px;
-  font-weight: 700;
-  color: #1251C5;
-  margin: 0 0 4px;
-  text-align: left;
-  width: 100%;
-  max-width: 480px;
-  margin-right: 90px;
-  margin-bottom: 10px;
-  margin-top: 15px;
+.main-container .form-section .form h2{
+margin-left: 40px;
+color: #1251c5;
+text-align: left;
+font-weight: bold;
+font-size: 45px;
 }
 
-.form-section h3 {
-  font-size: 20px;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 10px;
-  text-align: left;
-  width: 100%;
-  max-width: 480px;
-  margin-right: 90px;
+.main-container .form-section .form h3{
+margin-left: 40px;
+    margin: 10px;
+    font-size: 25px;
 }
 
-/* Signup form */
 .signup-form {
   width: 100%;
   max-width: 600px;
@@ -165,7 +112,7 @@ label .required-asterisk {
   margin-left: 2px;
 }
 
-/* Input fields */
+/*Input fields*/ 
 .form-group {
   margin-bottom: 6px;
 }
@@ -178,6 +125,8 @@ label {
   color: #000;
 }
 
+/*continue from here*/
+
 .input-container {
   background-color: #F2F2F2;
   border-radius: 20px;
@@ -187,6 +136,21 @@ label {
   gap: 8px;
   height: 45px;
   width: 100%;
+}
+
+
+/*Input fields*/
+.form-group {
+  margin-bottom: 6px;
+  padding-left: -30px;
+}
+
+label{
+  display: block;
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #000;
 }
 
 .input-container i {
@@ -208,7 +172,7 @@ input[type="password"] {
   font-weight: 50;
 }
 
-/* Radio buttons */
+/* Radio buttons*/ 
 .signup-as {
   font-weight: 500;
   font-size: 18px;
@@ -236,7 +200,7 @@ input[type="radio"] {
   border: 1px solid #1F1F1F;
 }
 
-/* Terms checkbox */
+/* Terms checkbox*/
 .terms {
   display: flex;
   align-items: center;
@@ -265,7 +229,7 @@ input[type="radio"] {
   font-weight: normal;
 }
 
-/* Submit button */
+/* Submit button*/
 .submit-btn {
   width: 100%;
   padding: 10px;
@@ -279,7 +243,7 @@ input[type="radio"] {
   height: 40px;
 }
 
-/* Login prompt */
+/* Login prompt*/ 
 .login-prompt {
   text-align: center;
   font-size: 18px;
@@ -337,8 +301,8 @@ input[type="radio"] {
   height: 24px;
 }
 
-/* Responsive Styles */
-/* Tablet Devices: ≤1024px */
+/* Responsive Styles 
+/* Tablet Devices: ≤1024px 
 @media (max-width: 1024px) {
   .main-container {
     flex-direction: column;
@@ -396,7 +360,7 @@ input[type="radio"] {
 }
 
 
-/* Mobile Devices: ≤600px */
+/* Mobile Devices: ≤600px 
 @media (max-width: 600px) {
   .welcome-text {
     font-size: 26px;
