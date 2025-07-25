@@ -9,8 +9,15 @@
   height: 100%;
 }
 
-.left-panel, .form-section{
-  flex: 1;
+
+
+
+/* Left image panel */
+.left-panel {
+  border: 2px solid #000;
+  position: relative;
+
+ flex: 1;
   padding: 40px;
   height: 100%;
 }
