@@ -119,9 +119,8 @@ html, body {
   cursor: pointer;
 }
 
-/* ===================== */
 /* ===== FEATURES ====== */
-/* ===================== */
+
 
 .feature-title {
   text-align: center;
@@ -252,9 +251,8 @@ html, body {
   background-color: #1a71d4;
 }
 
-/* ===================== */
 /* ====== FOOTER ======= */
-/* ===================== */
+
 
 .footer-section {
   background-color: #FAFAFA;
@@ -286,7 +284,7 @@ html, body {
 
 /* =============================== */
 /* ======= RESPONSIVENESS ======= */
-/* =============================== */
+
 
 /* Tablet Devices (≤1024px) */
 @media (max-width: 1024px) {
