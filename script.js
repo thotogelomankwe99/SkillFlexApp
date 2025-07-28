@@ -17,16 +17,8 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebas
 
 //Firebase initialization
     firebase.initializeApp(firebaseConfig);
-
-//Linking buttons to external html files
-document.getElementById("getStartedBtn").addEventListener("click", function(){
-  window.location.href="sign-up.html";
-});
-document.getElementById("learnMoreBtn").addEventListener("click",function(){
-  window.location.href="about.html";
-});
-
-function resetPassword() {
+    
+    function resetPassword() {
   const newPassword = document.getElementById("new-password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 

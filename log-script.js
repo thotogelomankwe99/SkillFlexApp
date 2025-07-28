@@ -1,31 +1,62 @@
-//get references
-const loginBtn = document.querySelector('#log-btn a');
-const emailInput = document.querySelector('#email');
-const passwordInput =document.querySelector('#password');
+// For Firebase 
+const firebaseConfig = {
+  apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
+  authDomain: "skillflexapp.firebaseapp.com",
+  projectId: "skillflexapp",
+  storageBucket: "skillflexapp.firebasestorage.app",
+  messagingSenderId: "827795374450",
+  appId: "1:827795374450:web:7a1aaa93bbda644dadddeb",
+  measurementId: "G-X9BKZGZX42"
+};
 
-// Prevent default <a> click
-loginBtn.addEventListener("click", function (e) {
-  e.preventDefault();
+//Initialize firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
 
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
+document.getElementById("googleBtn").addEventListener("click", ()=>{
+  auth.signInWithPopup(provider)
+  .then((result)=>{
+    const user = result.user;
+    alert("Logged in as: "+ user.displayName);
 
-  if (!email || !password) {
-    alert("Please fill in both email and password.");
-    return;
-  }
-
-  if (!validateEmail(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
-
-  // Simulated login success
-  alert("Login successful!");
-  window.location.href = "dashboard.html"; // Change to dashboard page
+    window.location.href = "dashborad.html";
+  })
+  .catch((error)=>{
+    console.error("Google Login error: ", error.message);
+  });
 });
 
-// Simple email validation
+//email and password login
+
+document.querySelector("#log-btn").addEventListener("click", function(e){
+  e.preventDefault();
+  const email = document.querySelector("#email").value.trim();
+  const password = document.querySelector("#password").value.trim();
+
+  if (!email || !password){
+    alert("please fill in both email and password.");
+    return;}
+
+    if(!validateEmail(email)){
+      alert("please enter a valid email address.");
+      return;
+    }
+
+    //firebase sign-in with email/password
+    auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential)=>{
+      alert("Login successful!");
+      window.location.href="dashboard.html" //go to dashboard
+    })
+    .catch((error)=>{
+      console.error("google login error: "+ error);
+      alert("Login failed: "+ error.message);
+    });
+})
+
 function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
 }
+
