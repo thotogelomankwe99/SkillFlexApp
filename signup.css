@@ -14,21 +14,28 @@
 
 /* Left image panel */
 .left-panel {
-  border: 2px solid #000;
+ 
   position: relative;
-
  flex: 1;
   padding: 40px;
-  height: 100%;
+  height: 100vh;
+ padding-bottom: 20px;
+ overflow: hidden;
+ ;
 }
 
 .left-panel{
+
   background-image: url(Group\ 35\ \(1\).png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
+  margin-top: -30px;
+
+
 }
+
 
 .main-container .left-panel h1{
   color: #fff;
@@ -115,6 +122,7 @@ label .required-asterisk {
 /*Input fields*/ 
 .form-group {
   margin-bottom: 6px;
+  padding: -30px;;
 }
 
 label {
@@ -127,15 +135,18 @@ label {
 
 /*continue from here*/
 
+
 .input-container {
   background-color: #F2F2F2;
   border-radius: 20px;
-  padding: 6px 10px;
   display: flex;
   align-items: center;
   gap: 8px;
   height: 45px;
   width: 100%;
+  padding: 6px 10px;
+  box-sizing: border-box;
+
 }
 
 
@@ -172,13 +183,6 @@ input[type="password"] {
   font-weight: 50;
 }
 
-/* Radio buttons*/ 
-.signup-as {
-  font-weight: 500;
-  font-size: 18px;
-  color: #000;
-  margin-top: 4px;
-}
 
 .radio-group {
   display: flex;
