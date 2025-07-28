@@ -14,6 +14,38 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
    
+
+
+//Firebase initialization
+    firebase.initializeApp(firebaseConfig);
+    
+    function resetPassword() {
+  const newPassword = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+
+  if (!newPassword || !confirmPassword) {
+    alert("Please fill in both fields.");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    user.updatePassword(newPassword).then(() => {
+      alert("Password has been reset successfully.");
+    }).catch((error) => {
+      alert("Error: " + error.message);
+    });
+  } else {
+    alert("No user is signed in. Please log in first.");
+  }
+}
+
 //Linking buttons to external html files
 document.getElementById("getStartedBtn").addEventListener("click", function(){
   window.location.href="sign-up.html";
@@ -21,6 +53,7 @@ document.getElementById("getStartedBtn").addEventListener("click", function(){
 document.getElementById("learnMoreBtn").addEventListener("click",function(){
   window.location.href="about.html";
 });
+
 
 // Import Firebase core and auth modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
