@@ -1,49 +1,37 @@
-*{
+/* Reset and base */
+* {
   margin: 0;
   padding: 0;
   font-family: Montserrat;
 }
 
-.main-container{
+.main-container {
   display: flex;
-  height: 100%;
+  height: 100vh;       /* Full viewport height */
+  overflow: hidden;    /* Prevent overall page scroll */
 }
 
-
-
-
-/* Left image panel */
+/* Left image panel - fixed, no scroll */
 .left-panel {
- 
+  flex: 1;
   position: relative;
- flex: 1;
-  padding: 40px;
   height: 100vh;
- padding-bottom: 20px;
- overflow: hidden;
- ;
-}
-
-.left-panel{
-
+  overflow: hidden;
   background-image: url(Group\ 35\ \(1\).png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
   margin-top: -30px;
-
-
+  padding: 40px 40px 20px 40px;
+  color: #fff;
 }
 
-
-.main-container .left-panel h1{
+.left-panel h1 {
   color: #fff;
   margin-left: 0;
   font-size: 45px;
 }
-
-.main-container .left-panel h3{
+.left-panel h3 {
   font-size: 45px;
     margin-top: 100px;
     font-weight: bold;
@@ -51,7 +39,7 @@
     text-align: left;
 }
 
-.main-container .left-panel p{
+.left-panel p {
   color: #fdfdfd;
     position: relative;
     text-align: left;
@@ -63,41 +51,55 @@
     text-wrap: wrap;
 }
 
-.main-container .left-panel .bottom-text {
+.left-panel .bottom-text {
   position: absolute;
-  bottom: 0;
-  text-align: left;
+  bottom: 20px;
+  left: 40px;
   padding: 10px;
-  color: #fff;
   font-size: 20px;
   font-weight: lighter;
+  color: #fff;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
-.main-container .form-section{
-  display: flex;
+/* Right form panel - scrollable */
+.form-section {
   flex: 1;
+  height: 100vh;
+  overflow-y: auto;
   padding: 40px;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Align form to top */
 }
 
-.main-container .form-section .form h2{
-margin-left: 40px;
+/* Form container */
+.form {
+  width: 100%;
+  max-width: 800px;
+  margin-left: 50px;
+}
+
+.form h2 {
+ margin-left: 40px;
 color: #1251c5;
 text-align: left;
 font-weight: bold;
 font-size: 45px;
 }
 
-.main-container .form-section .form h3{
-margin-left: 40px;
+.form h3 {
+ margin-left: 40px;
     margin: 10px;
     font-size: 25px;
+
 }
 
+/* Signup form */
 .signup-form {
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   background-color: #FAFAFA;
   padding: 10px;
   border-radius: 20px;
@@ -108,34 +110,27 @@ margin-left: 40px;
   height: auto;
   justify-content: space-between;
   overflow: hidden;
-  margin-top: -17px;
-  margin-bottom: 2px;
-  transform: scale(0.97);
+  margin-top: -10px;
+  margin-bottom: 35px;
+  transform: scale(0.88);
 }
 
-label .required-asterisk {
+/* Labels */
+label {
+  display: block;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.required-asterisk {
   color: red;
   font-weight: bold;
   margin-left: 2px;
 }
 
-/*Input fields*/ 
-.form-group {
-  margin-bottom: 6px;
-  padding: -30px;;
-}
-
-label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 2px;
-  font-size: 18px;
-  color: #000;
-}
-
-/*continue from here*/
-
-
+/* Input container */
 .input-container {
   background-color: #F2F2F2;
   border-radius: 20px;
@@ -146,22 +141,6 @@ label {
   width: 100%;
   padding: 6px 10px;
   box-sizing: border-box;
-
-}
-
-
-/*Input fields*/
-.form-group {
-  margin-bottom: 6px;
-  padding-left: -30px;
-}
-
-label{
-  display: block;
-  font-weight: 700;
-  margin-bottom: 2px;
-  font-size: 18px;
-  color: #000;
 }
 
 .input-container i {
@@ -183,7 +162,17 @@ input[type="password"] {
   font-weight: 50;
 }
 
+input::placeholder {
+  font-style: italic;
+  color: #999;
+}
 
+/* Form groups spacing */
+.form-group {
+  margin-bottom: 12px;
+}
+
+/* Radio buttons */
 .radio-group {
   display: flex;
   gap: 80px;
@@ -194,17 +183,19 @@ input[type="password"] {
   font-weight: 300;
   font-size: 18px;
   color: #000;
+  cursor: pointer;
 }
 
 input[type="radio"] {
   margin-right: 5px;
   width: 20px;
   height: 20px;
-  background-color: #FFFFFF;
+  background-color: #fff;
   border: 1px solid #1F1F1F;
+  cursor: pointer;
 }
 
-/* Terms checkbox*/
+/* Terms checkbox */
 .terms {
   display: flex;
   align-items: center;
@@ -214,7 +205,6 @@ input[type="radio"] {
   color: #000;
   margin-top: 2px;
 }
-
 .terms input[type="checkbox"] {
   width: 20px;
   height: 20px;
@@ -233,7 +223,7 @@ input[type="radio"] {
   font-weight: normal;
 }
 
-/* Submit button*/
+/* Submit button */
 .submit-btn {
   width: 100%;
   padding: 10px;
@@ -245,13 +235,19 @@ input[type="radio"] {
   border: none;
   cursor: pointer;
   height: 40px;
+  margin-top: 8px;
+  transition: background-color 0.3s ease;
 }
 
-/* Login prompt*/ 
+.submit-btn:hover {
+  background-color: #0f3c99;
+}
+
+/* Login prompt */
 .login-prompt {
   text-align: center;
   font-size: 18px;
-  margin-bottom: 4px;
+  margin: 12px 0 8px;
 }
 
 .login-prompt a {
@@ -265,7 +261,7 @@ input[type="radio"] {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 6px 0;
+  margin: 6px 0 12px;
 }
 
 .divider-line {
@@ -298,6 +294,11 @@ input[type="radio"] {
   cursor: pointer;
   margin-bottom: 6px;
   height: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #f2f2f2;
 }
 
 .google-btn img {
@@ -305,149 +306,50 @@ input[type="radio"] {
   height: 24px;
 }
 
-/* Responsive Styles 
-/* Tablet Devices: ≤1024px 
-@media (max-width: 1024px) {
-  .main-container {
-    flex-direction: column;
-    overflow-y: auto;
-  }
-
-  .left-panel,
-  .form-section {
-    width: 100%;
-    height: auto;
-    flex: none;
-  }
-
-  .form-section {
-    padding: 20px;
-    transform: scale(1);
-    align-items: center;
-  }
-
-  .form-section h2,
-  .form-section h3 {
-    text-align: center;
-    margin: 10px auto;
-    margin-right: 0;
-  }
-
-  .signup-form {
-    transform: scale(1);
-    margin: 0 auto;
-  }
-
-  .radio-group {
-    gap: 30px;
-  }
-
-  .terms {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .overlay-paragraph,
-  .overlay-paragraph-p {
-    font-size: 18px;
-    left: 20px;
-    max-width: 90%;
-  }
-
-  .top-left,
-  .welcome-text,
-  .bottom-left {
-    left: 20px;
-  }
+/* Scrollbar styling for form-section (optional) */
+.form-section::-webkit-scrollbar {
+  width: 8px;
 }
 
+.form-section::-webkit-scrollbar-thumb {
+  background-color: rgba(18, 81, 197, 0.5);
+  border-radius: 20px;
+}
 
-/* Mobile Devices: ≤600px 
-@media (max-width: 600px) {
-  .welcome-text {
-    font-size: 26px;
-    top: 15%;
-    left: 20px;
-  }
-
-  .top-left {
-    font-size: 22px;
-    left: 20px;
-    top: 20px;
-  }
-
-  .bottom-left {
-    font-size: 18px;
-    left: 20px;
-  }
-
-  .overlay-paragraph {
-    font-size: 14px;
-    left: 20px;
-    margin-bottom: 220px;
-    max-width: 90%;
-  }
-
-  .overlay-paragraph-p {
-    font-size: 14px;
-    left: 20px;
-    margin-bottom: 260px;
-    max-width: 90%;
-  }
-
-  .form-section h2 {
-    font-size: 26px;
-  }
-
-  .form-section h3 {
-    font-size: 16px;
-  }
-
-  .input-container {
-    height: 42px;
-  }
-
-  .submit-btn,
-  .google-btn {
-    font-size: 16px;
-    height: 38px;
-  }
-
-  .divider-text {
-    font-size: 16px;
-  }
-
-  .radio-group {
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .main-container {
     flex-direction: column;
-    gap: 12px;
   }
 
-  .terms {
-    font-size: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 10px;
+  .left-panel, .form-section {
+    height: auto;
+    padding: 20px;
+    margin-top: 0;
   }
 
-  .google-btn img {
-    width: 20px;
-    height: 20px;
+  .left-panel h3 {
+    font-size: 32px;
+    margin-top: 40px;
+  }
+
+  .form h2 {
+    font-size: 32px;
+    margin-left: 0;
+  }
+
+  .form h3 {
+    font-size: 20px;
+    margin-left: 0;
   }
 
   .signup-form {
-    padding: 10px;
-    border-radius: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+    transform: none;
   }
 
-  .form-group label {
-    font-size: 16px;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    font-size: 15px;
+  .terms {
+    width: 100%;
   }
 }
