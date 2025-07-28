@@ -57,6 +57,13 @@ html, body{
   margin-left: 10px;
 }
 
+.header-navigation{
+  display: block;
+  position: static;
+  left: 0;
+
+}
+
 .header-navigation ul {
   display: flex;
   gap: 44px;
@@ -107,6 +114,10 @@ html, body{
   cursor: pointer;
 }
 
+/*navigation default for mobile and tablet*/
+.header-wrapper .header-logo .menu-toggle{
+ display: none; /*hidden on desktop*/
+}
 /* ===================== */
 /* ===== FEATURES ====== */
 /* ===================== */
@@ -272,9 +283,9 @@ html, body{
   font-weight: 500;
 }
 
-/* =============================== */
+
 /* ======= RESPONSIVENESS ======= */
-/* =============================== */
+
 
 /* Tablet Devices (≤1024px) */
 @media (max-width: 1024px) {
@@ -282,16 +293,17 @@ html, body{
   .feature-cta,
   .footer-section {
     width: 100%;
-    padding: 0 20px;
+    padding: 20px;
   }
 
   .header-logo {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    padding: 10px;
   }
 
-  .header-navigation ul {
+  .header-navigation ul {display: none;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
@@ -299,32 +311,38 @@ html, body{
 
   .header-tagline h2 {
     font-size: 28px;
+    margin-left: 60px;
+    padding: 3px;
   }
 
   .header-tagline h4 {
     font-size: 20px;
+    margin-left: 60px;
+    padding: 3px;
   }
 
   .header-image {
-    width: 250px;
-    height: 250px;
-    margin-right: 30px;
-    float: none;
-    display: block;
-    margin: 0 auto;
+    display: none; /* hides image on mobile*/
   }
-
   .feature-cta-text {
     font-size: 16px;
+  }
+
+   .header-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px auto;
+    justify-content: space-evenly;
   }
 }
 
 
 /* Mobile Devices (≤600px) */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   /* Header Responsiveness */
   .header-wrapper {
-    padding: 20px 10px 40px;
+    padding: 5px;
   }
 
   .header-logo {
@@ -337,26 +355,27 @@ html, body{
   }
 
   .header-navigation ul {
-    flex-direction: column;
+    display: none;
+    /*flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 15px;*/
   }
 
   .header-tagline h2 {
     font-size: 22px;
-    text-align: center;
+    text-align: left;
   }
 
   .header-tagline h4 {
     font-size: 16px;
-    text-align: center;
+    text-align: left;
   }
 
   .header-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    margin: 20px auto;
+    margin: 10px auto;
   }
 
   .header-actions input {
@@ -372,23 +391,11 @@ html, body{
     float: none;
   }
 
+
   /* Feature Section */
   .feature-title {
     font-size: 24px;
     margin: 30px 0;
-  }
-
-  .feature-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .feature-card,
-  .feature-card.feature-special {
-    width: 100%;
-    max-width: 90%;
-    height: auto;
   }
 
   .feature-card h2,
@@ -404,13 +411,19 @@ html, body{
     margin-bottom: 10px;
   }
 
-  .feature-special-content img,
-  .feature-special-content p {
-    position: static;
-    width: 100px;
+  .feature-special-content img{
+    position: absolute;
+    top: 100px;
     height: auto;
-    margin: 10px auto;
+    width: auto;
+
+  }
+
+  .feature-special-content p{
+    position: relative;
+    top: 15px;
     text-align: center;
+    padding: 8px;
   }
 
   .feature-cta {
@@ -426,14 +439,51 @@ html, body{
     padding: 10px 20px;
   }
 
+  /*scroll-container*/
+.feature-scroll-container{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.feature-grid{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 2rem;
+  padding:0 1rem;
+  height: 300px;
+  width: max-content;
+}
+
+.feature-card,
+  .feature-card.feature-special {
+    flex: 0 0 auto;
+    min-width: 80vw;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+
+
+  /*hide scrollbar for better look */
+  .feature-grid::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Footer Section */
   .footer-wrap {
     flex-direction: column;
     text-align: center;
     gap: 10px;
+    padding: 5px;
+    margin: 5px;
   }
 
   .footer-copy {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
+
+/*Mobile sidebar navigation*/
