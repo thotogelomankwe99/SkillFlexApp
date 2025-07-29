@@ -61,7 +61,6 @@ html, body{
   display: block;
   position: static;
   left: 0;
-
 }
 
 .header-navigation ul {
@@ -286,7 +285,6 @@ html, body{
   font-weight: 500;
 }
 
-
 /* ======= RESPONSIVENESS ======= */
 
 
@@ -466,6 +464,20 @@ html, body{
   -webkit-overflow-scrolling: touch;
 }
 
+.feature-scroll-container::-webkit-scrollbar{
+  height: 8px;
+}
+.feature-scroll-container::-webkit-scrollbar-track{
+  background: #E0EBFF;
+  border-radius: 10px;
+}
+.feature-scroll-container::-webkit-scrollbar-thumb{
+  background: #1251C5;
+  border-radius: 10px;
+}
+.feature-scroll-container::-webkit-scrollbar-thumb:hover{
+  background: #0e3fa2;
+}
 .feature-grid{
   display:flex;
   flex-direction: row;
