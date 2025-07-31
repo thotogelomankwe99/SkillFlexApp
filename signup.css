@@ -1,69 +1,63 @@
-/* Reset and base */
 * {
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
 }
 
 .main-container {
   display: flex;
-  height: 100vh;       /* Full viewport height */
-  overflow: hidden;    /* Prevent overall page scroll */
-}
-
-/* Left image panel - fixed, no scroll */
-.left-panel {
-  flex: 1;
-  position: relative;
+  flex-direction: row;
   height: 100vh;
   overflow: hidden;
+  margin-top: -10px;
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 1;
+  height: 100vh;
   background-image: url(Group\ 35\ \(1\).png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin-top: -30px;
-  padding: 40px 40px 20px 40px;
+  padding: 40px;
+  position: relative;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+
+  
+  
 }
 
 .left-panel h1 {
-  color: #fff;
-  margin-left: 0;
   font-size: 45px;
 }
+
 .left-panel h3 {
   font-size: 45px;
-    margin-top: 100px;
-    font-weight: bold;
-    color: #fff;
-    text-align: left;
+  margin-top: 100px;
+  font-weight: bold;
 }
 
 .left-panel p {
-  color: #fdfdfd;
-    position: relative;
-    text-align: left;
-    margin: 10px;
-    margin-top: 30px;
-    padding: 15px;
-    line-height: 2rem;
-    font-size: 24px;
-    text-wrap: wrap;
+  margin-top: 30px;
+  padding: 15px 0;
+  font-size: 24px;
+  line-height: 2rem;
 }
 
-.left-panel .bottom-text {
-  position: absolute;
-  bottom: 20px;
-  left: 40px;
+.bottom-text {
+  margin-top: auto;
   padding: 10px;
   font-size: 20px;
   font-weight: lighter;
-  color: #fff;
-  text-align: left;
-  margin-bottom: 5px;
 }
 
-/* Right form panel - scrollable */
+/* Right Panel */
 .form-section {
   flex: 1;
   height: 100vh;
@@ -71,51 +65,39 @@
   padding: 40px;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align form to top */
+  align-items: flex-start;
 }
 
-/* Form container */
 .form {
   width: 100%;
-  max-width: 800px;
-  margin-left: 50px;
+  max-width: 600px;
 }
 
 .form h2 {
- margin-left: 40px;
-color: #1251c5;
-text-align: left;
-font-weight: bold;
-font-size: 45px;
+  margin-left: 40px;
+  color: #1251c5;
+  font-weight: bold;
+  font-size: 45px;
+  text-align: left;
 }
 
 .form h3 {
- margin-left: 40px;
-    margin: 10px;
-    font-size: 25px;
-
+  margin-left: 40px;
+  margin: 10px 0 20px;
+  font-size: 25px;
 }
 
-/* Signup form */
 .signup-form {
-  width: 100%;
-  max-width: 750px;
   background-color: #FAFAFA;
-  padding: 10px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  height: auto;
-  justify-content: space-between;
-  overflow: hidden;
-  margin-top: -10px;
-  margin-bottom: 35px;
-  transform: scale(0.88);
+  gap: 12px;
+  transform: scale(0.97);
 }
 
-/* Labels */
 label {
   display: block;
   font-weight: 700;
@@ -130,7 +112,6 @@ label {
   margin-left: 2px;
 }
 
-/* Input container */
 .input-container {
   background-color: #F2F2F2;
   border-radius: 20px;
@@ -140,14 +121,12 @@ label {
   height: 45px;
   width: 100%;
   padding: 6px 10px;
-  box-sizing: border-box;
 }
 
 .input-container i {
   color: #999;
   font-size: 20px;
   width: 28px;
-  height: 28px;
 }
 
 input[type="text"],
@@ -162,17 +141,10 @@ input[type="password"] {
   font-weight: 50;
 }
 
-input::placeholder {
-  font-style: italic;
-  color: #999;
-}
-
-/* Form groups spacing */
 .form-group {
   margin-bottom: 12px;
 }
 
-/* Radio buttons */
 .radio-group {
   display: flex;
   gap: 80px;
@@ -195,23 +167,24 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-/* Terms checkbox */
 .terms {
   display: flex;
   align-items: center;
   font-size: 18px;
-  font-weight: normal;
   width: 350px;
   color: #000;
-  margin-top: 2px;
+  margin-top: 8px;
+  cursor: pointer;
 }
+
 .terms input[type="checkbox"] {
   width: 20px;
   height: 20px;
   margin-right: 6px;
   border-radius: 5px;
   border: 1px solid #000;
-  background-color: #FFFFFF;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .terms a {
@@ -219,11 +192,6 @@ input[type="radio"] {
   text-decoration: none;
 }
 
-.terms label {
-  font-weight: normal;
-}
-
-/* Submit button */
 .submit-btn {
   width: 100%;
   padding: 10px;
@@ -243,7 +211,6 @@ input[type="radio"] {
   background-color: #0f3c99;
 }
 
-/* Login prompt */
 .login-prompt {
   text-align: center;
   font-size: 18px;
@@ -256,7 +223,6 @@ input[type="radio"] {
   font-weight: 500;
 }
 
-/* Divider with "or" */
 .divider-container {
   display: flex;
   align-items: center;
@@ -278,7 +244,6 @@ input[type="radio"] {
   white-space: nowrap;
 }
 
-/* Google button */
 .google-btn {
   width: 100%;
   display: flex;
@@ -306,50 +271,54 @@ input[type="radio"] {
   height: 24px;
 }
 
-/* Scrollbar styling for form-section (optional) */
-.form-section::-webkit-scrollbar {
-  width: 8px;
-}
-
-.form-section::-webkit-scrollbar-thumb {
-  background-color: rgba(18, 81, 197, 0.5);
-  border-radius: 20px;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
+/* Responsive Fix for Mobile and Tablets */
+@media (max-width: 1024px) {
   .main-container {
     flex-direction: column;
-  }
-
-  .left-panel, .form-section {
     height: auto;
-    padding: 20px;
-    margin-top: 0;
+    overflow: visible;
   }
 
-  .left-panel h3 {
-    font-size: 32px;
+  .left-panel {
+    height: auto;
+    padding-bottom: px;
+  }
+
+  .left-panel .bottom-text {
+    position: static;
     margin-top: 40px;
+    text-align: center;
   }
 
-  .form h2 {
-    font-size: 32px;
-    margin-left: 0;
+  .form-section {
+    height: auto;
+    overflow: visible;
+    padding: 30px 20px;
   }
 
+  .form {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .form h2,
   .form h3 {
-    font-size: 20px;
     margin-left: 0;
+    text-align: left;
   }
 
   .signup-form {
-    max-width: 100%;
-    margin: 0 auto;
     transform: none;
+    padding: 20px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 10px;
   }
 
   .terms {
     width: 100%;
+    flex-wrap: wrap;
   }
 }

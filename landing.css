@@ -47,6 +47,7 @@ html, body{
 }
 
 .header-logo-row img {
+  border: 2px solid #fff;
   width: 70px;
   height: 70px;
   border-radius: 20px;
