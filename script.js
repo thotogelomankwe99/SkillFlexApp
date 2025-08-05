@@ -1,4 +1,4 @@
-//SkillFlexApp's Firebase configuration
+ //SkillFlexApp's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
       authDomain: "skillflexapp.firebaseapp.com",
@@ -9,10 +9,17 @@
       measurementId: "G-PJ701TTVZJ"
     };
 
-    //Firebase initialization
-    firebase.initializeApp(firebaseConfig);
+// Import Firebase core and auth modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+   
 
-function resetPassword() {
+
+//Firebase initialization
+    firebase.initializeApp(firebaseConfig);
+    
+    function resetPassword() {
   const newPassword = document.getElementById("new-password").value;
   const confirmPassword = document.getElementById("confirm-password").value;
 
@@ -38,3 +45,49 @@ function resetPassword() {
     alert("No user is signed in. Please log in first.");
   }
 }
+
+//Linking buttons to external html files
+document.getElementById("getStartedBtn").addEventListener("click", function(){
+  window.location.href="sign-up.html";
+});
+document.getElementById("learnMoreBtn").addEventListener("click",function(){
+  window.location.href="about.html";
+});
+
+
+// Import Firebase core and auth modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+console.log("Firebase initialized:", app.name);
+
+// Initialize Firebase Auth
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+//  Wait until DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const googleBtn = document.querySelector(".google-btn");
+
+  if (googleBtn) {
+    googleBtn.addEventListener("click", () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("Signed in as:", user.displayName);
+          alert(`Welcome, ${user.displayName}!`);
+        })
+        .catch((error) => {
+          console.error("Sign-in error:", error.message);
+          alert("Google sign-in failed: " + error.message);
+        });
+    });
+  } else {
+    console.warn("Google button not found. Make sure it has class 'google-btn'");
+  }
+});
