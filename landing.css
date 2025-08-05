@@ -82,6 +82,17 @@ html, body {
   font-size: 16px;
 }
 
+.header-navigation a:hover{
+  text-decoration: underline;
+  font-weight: 17px;
+  color: #021231;
+}
+.header-navigation .active{
+  cursor: pointer; 
+  color: #021231;
+  border-bottom: 2px solid #121212;
+}
+
 /* Right logo image */
 .header-image {
   display: block;
@@ -201,7 +212,7 @@ html, body {
 }
 
 .feature-card.feature-special {
-  border: 2px solid #000;
+  /*border: 2px solid #000;*/
   position: relative;
   padding: 20px;
   background: #d3e9f3;
@@ -267,10 +278,9 @@ html, body {
 
 .feature-cta-button a {
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-weight: bold;
 }
-
 /* ========== FOOTER ========== */
 .footer-section {
   background-color: #FAFAFA;
