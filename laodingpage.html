@@ -4,13 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SkillFlex Landing Page</title>
-  <link rel="stylesheet" href="landing.css" />
+  <link rel="stylesheet" href="loadingpage.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!--  HEADER -->
-  <div class="header-wrapper">
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <img src="https://media.tenor.com/G7LfW0O5qb8AAAAi/loading-gif.gif" alt="Loading..." />
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-wrapper blur">
     <img src="LOGO-2 (2).png" alt="Logo Graphic" class="header-image" />
 
     <div class="header-logo">
@@ -18,15 +25,11 @@
         <li><img src="LOGO.png" alt="SkillFlex Logo" /></li>
         <li><h1>SKILLFLEX</h1></li>
       </ul>
-
-      <!--HAMBURGER ICON FOR MOBILE -->
-      <div class="menu-toggle">☰</div>
-
       <nav class="header-navigation">
         <ul>
-          <li><a href="index.html">HOME</a></li>
+          <li><a href="#">HOME</a></li>
           <li><a href="#">ABOUT</a></li>
-          <li><a href="login.html">LOGIN</a></li>
+          <li><a href="sign-up.html">LOGIN</a></li>
         </ul>
       </nav>
     </div>
@@ -42,7 +45,7 @@
     </div>
   </div>
 
-  <!--  FEATURES -->
+  <!-- FEATURES -->
   <h1 class="feature-title">FEATURES</h1>
   <section class="feature-grid">
     <div class="feature-card">
@@ -75,8 +78,7 @@
   <!--  CTA -->
   <section class="feature-cta">
     <p class="feature-cta-text">
-      <strong>Soft Skills shape Strong futures</strong>
-      <br>
+      <strong>Soft Skills shape Strong futures</strong><br>
       Do not put off improving your growth mindset, communication, and leadership skills; the future is uncertain.
     </p>
     <button class="feature-cta-button">
@@ -87,24 +89,12 @@
   <!--  FOOTER -->
   <footer class="footer-section">
     <div class="footer-wrap">
-      <a href="terms-privacy.html" class="footer-navlink">Terms of Service</a>
+      <a href="terms.html" class="footer-navlink">Terms of Service</a>
       <span class="footer-copy">©2025 SkillFlex</span>
-      <a href="help&support.html" class="footer-navlink">Help & Support</a>
+      <a href="#" class="footer-navlink">Help & Support</a>
     </div>
+    
   </footer>
 
-  <!--  ADD SCRIPT FOR HAMBURGER FUNCTIONALITY -->
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.header-navigation');
-
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
-
-  <script src="script.js"></script> 
-  <script src="index.js"></script>
-<script src="landing.js"></script> 
 </body>
 </html>
