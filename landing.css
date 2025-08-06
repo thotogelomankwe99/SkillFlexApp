@@ -281,6 +281,32 @@ html, body {
   color: #fff;
   font-weight: bold;
 }
+
+/* ===== Custom Scrollbar Styling ===== */
+.feature-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.feature-grid::-webkit-scrollbar-track {
+  background: #1251c5;
+  border-radius: 10px;
+}
+
+.feature-grid::-webkit-scrollbar-thumb {
+  background: #0e3fa2;
+  border-radius: 10px;
+}
+
+.feature-grid::-webkit-scrollbar-thumb:hover {
+  background: #0b2d79;
+}
+
+/* Firefox support */
+.feature-grid {
+  scrollbar-width: thin;
+  scrollbar-color: #0e3fa2 #1251c5;
+}
+
 /* ========== FOOTER ========== */
 .footer-section {
   background-color: #FAFAFA;
@@ -308,6 +334,7 @@ html, body {
 .footer-copy {
   font-weight: 500;
 }
+
 
 /* ========== RESPONSIVENESS ========== */
 @media (max-width: 1024px) {
