@@ -5,10 +5,10 @@
 }
 
 body{
-    background-color: #E8E6F5;
+    background-color: #f5f7fa;
 }
 .header{
-    background-color: #fafafa;
+    background-color: white;
     padding: 5px;
     display: flex;
     justify-content: space-between;
@@ -55,22 +55,30 @@ body{
     justify-content: space-between;
     margin-left: 20px;
     max-width: max-content;
-    /*width: 100%;*/
+
 }
+
 
 .icon-text {
   display: flex;
   align-items: center;
-  gap: 8px; /* space between icon and text */
+  gap: 8px;
 }
+
 .card1, .card2, .card3{
     /*border: 1px solid #000;*/
-    background-color: #fafafa;
+    background-color: white;
     height:150px;
     width: 270px;
     border-radius: 10px;
     margin: 10px 20px;
      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card1:hover, .card2:hover, .card3:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 .card1 h3, .card2 h3{
     font-weight: bold;
@@ -146,7 +154,7 @@ h2{
 }
 #card-1, #card-2{
    /* border: 1px solid #000;*/
-    background-color: #fafafa;
+    background-color: white;
     width: 420px;
     height: 94px;
     text-align: left;
@@ -234,13 +242,19 @@ h2{
 
 .box1, .box2, .box3{
     /*border: 1px solid #000;*/
-    background-color: #fafafa;
+    background-color: white;
     margin: 5px 30px;
     border-radius: 10px;
     width: 275.13px;
     height: 150px;
     padding: 10px;
-     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+     border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.box1:hover, .box2:hover, .box3:hover{
+    transform: translateX(4px);
+    background-color: #e9ecef;
 }
 
 h3{
@@ -257,9 +271,9 @@ p{
     margin-left: 130px;
     text-decoration: none;
     color: #1215C5;
-    font-weight: bold;
-      
+    font-weight: bold;    
 }
+
 .box1 a:hover, .box2 a:hover, .box3 a:hover{
     text-decoration: underline;
 }
@@ -276,14 +290,15 @@ p{
 }
 
 .notification-panel {
-    
-    background-color: #fafafa;
+    background-color: white;
     width: 300px;
     border-left: 4px solid #1215C5;
     padding: 20px;
     border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+
 
 .notification-panel h3 {
   font-size: 1.2rem;
@@ -297,6 +312,10 @@ p{
   padding: 10px;
   background-color: #DFF9F9;
   border-radius: 8px;
+}
+.notification1:hover, .notification2:hover{
+     transform: translateX(4px);
+    background-color: #e9ecef;
 }
 
 .notification1 p, .notification2 p{
@@ -315,22 +334,6 @@ p{
     font-weight: bold;
 }
 
-/*.btn-download {
-  display: inline-block;
-  margin-top: 10px;
-  background-color:#1215C5 ;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn-download:hover, .quick-practice:hover, .take-quiz:hover{
-    cursor: pointer;
-    color: #fff;
-    font-size: 18px;
-}*/
 
 .bottom-container{
     display: flex;
@@ -339,7 +342,7 @@ p{
 
 /*Chatbot and cta quiz containers*/
 .container1, .container2{
-    background-color: #fafafa;
+    background-color: white;
     width: 450px;
     height: 145px;
     margin: 15px 30px;
@@ -415,4 +418,11 @@ p{
 
 .footer-copy {
   font-weight: 500;
+}
+
+#viewWalkthroughBtn{
+    border: 1px solid #000;
+    background-color: #4144ed;
+    border-radius: 20px;
+    height: 100px;
 }
