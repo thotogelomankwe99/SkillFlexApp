@@ -295,7 +295,7 @@ p{
 .notification-panel .notification2 {
   margin-bottom: 20px;
   padding: 10px;
-  background-color: #d9d9d9;
+  background-color: #DFF9F9;
   border-radius: 8px;
 }
 
@@ -303,19 +303,19 @@ p{
     border-left: 5px solid #67a005;
     padding: 5px;
 }
-.notification1 a{
+.notification1 a, .btn-download{
     margin: 10px;
     text-decoration: none;
     color: #000;
 }
 
-.notification1 a:hover{
+.notification1 a:hover, .btn-download:hover{
     text-decoration: underline;
     color: #000;
     font-weight: bold;
 }
 
-.btn-download {
+/*.btn-download {
   display: inline-block;
   margin-top: 10px;
   background-color:#1215C5 ;
@@ -330,7 +330,7 @@ p{
     cursor: pointer;
     color: #fff;
     font-size: 18px;
-}
+}*/
 
 .bottom-container{
     display: flex;
@@ -389,7 +389,6 @@ p{
     height: 30px;
     margin: 5px;
 }
-
 /* ========== FOOTER ========== */
 .footer-section {
   background-color: #FAFAFA;
