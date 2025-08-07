@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.about-header {
+  background-color: #1251c5;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.logo img {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border-radius: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  padding: 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: #1251c5;
+  margin-bottom: 1rem;
+}
+
+.team ul, .values ul{
+  list-style-type:none;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.8rem;
+}
+
+.site-footer {
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.footer-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-copy {
+  font-weight: 500;
+}
+
+/* Responsive Design */
+/* Base styles (≥320px - default mobile layout) */
+@media (min-width: 320px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  section {
+    padding: 1rem 1.2rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+/* Tablet (≥768px) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+  }
+
+  .about-header {
+    padding: 3rem;
+  }
+
+  section {
+    padding: 2rem;
+  }
+
+  .logo img {
+    height: 70px;
+    width: 70px;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+  }
+}
+
+/* Desktop (≥1024px) */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p, li {
+    font-size: 1.2rem;
+  }
+
+  section {
+    padding: 2rem 3rem;
+    max-width: 1100px;
+  }
+
+  .about-header {
+    padding: 4rem 2rem;
+  }
+
+  .logo img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    padding: 0 40px;
+  }
+}
+
