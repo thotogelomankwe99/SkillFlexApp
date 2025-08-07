@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillflex Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="L-dashboard.css">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="menu-toggle" onclick="toggleSidebar()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="mobile-logo">
+            
+            <h2>Skillflex</h2>
+        </div>
+        <div class="mobile-notifications">
+            <div class="notification-wrapper">
+                <i data-feather="bell" class="icon"></i>
+                <span class="notification-count">5</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo-section">
+                     <div class="header-itext">
+            <img src="LOGO.png" width="50px" height="50px">
+        </div>
+
+                </i>
+                <div class="brand">
+                    <h2>Skillflex</h2>
+                    <p>Admin Portal</p>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <i data-feather="user" class="profile-pic"></i>
+                <div>
+                    <h4>Admin User</h4>
+                    <p>System Administrator</p>
+                </div>
+            </div>
+
+            <div class="nav-menu">
+                <div class="nav-item active">
+                    <i data-feather="home" class="icon"></i>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item1">
+                    <i data-feather="user-check" class="icon"></i>
+                    <span>Learner Management</span>
+                    <span class="count">1247</span>
+                </div>
+                <div class="nav-item2">
+                    <i data-feather="users" class="icon"></i>
+                    <span>Mentor Management</span>
+                    <span class="count">89</span>
+                </div>
+                <div class="nav-item">
+                    <i data-feather="bar-chart-2" class="icon"></i>
+                    <span>Session Analytics</span>
+                </div>
+                <div class="nav-item">
+                    <i data-feather="folder" class="icon"></i>
+                    <span>Content Management</span>
+                </div>
+                <div class="nav-item">
+                    <i data-feather="file-text" class="icon"></i>
+                    <span>Reports</span>
+                </div>
+                <div class="nav-item">
+                    <i data-feather="settings" class="icon"></i>
+                    <span>System Settings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Header -->
+            <div class="top-header">
+                <div class="header-left">
+                    <h1>Admin Dashboard</h1>
+                    <p>System overview and admin management control</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-wrapper desktop-only">
+                        <i data-feather="bell" class="icon"></i>
+                        <span class="notification-count">5</span>
+                    </div>
+                    <button class="add-user-btn">
+                        <i data-feather="plus" style="width: 16px; height: 16px; margin-right: 5px;"></i>
+                        Add User
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards Grid -->
+            <div class="stats-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-info">
+                            <h4>Total Users</h4>
+                            <div class="card-value">1,245</div>
+                            <div class="growth">
+                                <span class="arrow-up">↗</span> +12% this month
+                            </div>
+                        </div>
+                        <div class="card-icon-container bg-blue">
+                            <i data-feather="users" class="card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-info">
+                            <h4>Active Mentors</h4>
+                            <div class="card-value">89</div>
+                            <div class="growth">
+                                <span class="arrow-up">↗</span> +5 this week
+                            </div>
+                        </div>
+                        <div class="card-icon-container bg-green">
+                            <i data-feather="award" class="card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-info">
+                            <h4>Active Learners</h4>
+                            <div class="card-value">1,158</div>
+                            <div class="growth">
+                                <span class="arrow-up">↗</span> +419 this week
+                            </div>
+                        </div>
+                        <div class="card-icon-container bg-orange">
+                            <i data-feather="book-open" class="card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-info">
+                            <h4>Monthly Sessions</h4>
+                            <div class="card-value">206</div>
+                            <div class="growth">
+                                <span class="arrow-up">↗</span> +15 this week
+                            </div>
+                        </div>
+                        <div class="card-icon-container bg-purple">
+                            <i data-feather="calendar" class="card-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Panels Container -->
+            <div class="panels-container">
+                <!-- System Activity Panel -->
+                <div class="panel system-activity">
+                    <h3>
+                        <i data-feather="zap" class="icon"></i>
+                        System Activity
+                    </h3>
+                    
+                    <div class="activity-box">
+                        <div class="icon-container red-bg">
+                          <i data-feather="user-plus" class="icon"></i>  
+                            
+                        </div>
+                        <div class="activity-details">
+                            <div class="priority">New Learner Registered</div>
+                            <p>Lerato Khumalo joined critical thinking course</p>
+                            <div class="status-badge active">Status: Active</div>
+                        </div>
+                        <div class="action-wrapper">
+                            <div class="time">2 min ago</div>
+                            <button class="action-btn">View Profile</button>
+                        </div>
+                    </div>
+
+                    <div class="activity-box1">
+                        <div class="icon-container green-bg">
+                            <i data-feather="user-check" class="icon"></i>
+                        </div>
+                        <div class="activity-details">
+                            <div class="approved">New Mentor Approved</div>
+                            <p>Dr. Sarah Williams - Leadership Expert</p>
+                            <div class="status-badge approved">Status: Active</div>
+                        </div>
+                        <div class="action-wrapper">
+                            <div class="time">15 min ago</div>
+                            <button class="action-btn1">View Profile</button>
+                        </div>
+                    </div>
+
+                    <div class="activity-box2">
+                        <div class="icon-container purple-bg">
+                            <i data-feather="key" class="icon"></i>
+                        </div>
+                        <div class="activity-details">
+                            <div class="backup">Password Reset Request</div>
+                            <p>Learner linda.learns@gmail.com requested a password reset</p>
+                            <div class="status-badge pending">Status: Pending</div>
+                        </div>
+                        <div class="action-wrapper">
+                            <div class="time">1 hour ago</div>
+                            <button class="action-btn">Reset Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="panel quick-actions">
+                    <h3>
+                        <i data-feather="zap" class="icon"></i>
+                        Quick Actions
+                    </h3>
+                    
+                    <div class="action-item">
+                        <div class="icon-container green-bg">
+                            <i data-feather="user-plus" class="icon"></i>
+                        </div>
+                        <div>
+                            <h4>Add New User</h4>
+                            <p>Create mentor or learner account</p>
+                        </div>
+                    </div>
+
+                    <div class="action-item">
+                        <div class="icon-container blue-bg">
+                            <i data-feather="file-text" class="icon"></i>
+                        </div>
+                        <div>
+                            <h4>Generate Report</h4>
+                            <p>Monthly Analysis Report</p>
+                        </div>
+                    </div>
+
+                    <div class="action-item">
+                        <div class="icon-container red-bg">
+                            <i data-feather="mail" class="icon"></i>
+                        </div>
+                        <div>
+                            <h4>Send Announcements</h4>
+                            <p>Broadcast to all users</p>
+                        </div>
+                    </div>
+
+                    <div class="action-item">
+                        <div class="icon-container purple-bg">
+                            <i data-feather="settings" class="icon"></i>
+                        </div>
+                        <div>
+                            <h4>System Settings</h4>
+                            <p>Configure platform settings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- FOOTER -->
+  <footer class="footer-section">
+    <div class="footer-wrap">
+      <a href="terms-privacy.html" class="footer-navlink">Terms of Service</a>
+      <span class="footer-copy">©2025 SkillFlex</span>
+      <a href="help&support.html" class="footer-navlink">Help & Support</a>
+    </div>
+    <!-- Overlay for mobile sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
