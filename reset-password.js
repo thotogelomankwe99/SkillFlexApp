@@ -1,4 +1,19 @@
-import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
+  authDomain: "skillflexapp.firebaseapp.com",
+  projectId: "skillflexapp",
+  storageBucket: "skillflexapp.firebasestorage.app",
+  messagingSenderId: "827795374450",
+  appId: "1:827795374450:web:4f64fa1bb85c158badddeb",
+  measurementId: "G-PJ701TTVZJ"
+};
+
+//Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 document.getElementById("resetForm").addEventListener("submit", async (e) => {
   e.preventDefault();
