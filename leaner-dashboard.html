@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="pop-up.css">
+
 </head>
 <body>
     <div class="header">
@@ -22,7 +24,11 @@
         <a href="#"><i class="fa-solid fa-circle-user" aria-hidden="true"></i></a>
     </div>
  </div>
+
  <!--Left &Right wrap-->
+
+ <!--Pop-up walkthrough-->
+    <button id="viewWalkthroughBtn">View Walkthrough</button>
 <div class="dashboard-layout">
     <!--Left main content-->
     <div class="main-content">
@@ -113,9 +119,6 @@
     </div>
     </div>
     </div>
- 
-    <!--Pop-up walkthrough-->
-    <button id="viewWalkthroughBtn">View Walkthrough</button>
 
     <!--Right Notification-->
     <aside class="notification-panel">
@@ -148,5 +151,44 @@
     </div>
   </footer>
 <script></script>
+
+<!-- Walkthrough Modal -->
+<div id="walkthroughModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+
+    <!-- Slide 1 -->
+    <div class="walkthrough-slide active">
+      <h2>Welcome to Your Dashboard 🎉</h2>
+      <p>Get ready to grow your soft skills and become certified!</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="walkthrough-slide">
+      <h2>How to Be Soft Skill Certified</h2>
+      <div class="steps">
+        <div class="step">1. Choose a Skill</div>
+        <div class="step">2. Complete Lessons</div>
+        <div class="step">3. Practice Skills</div>
+        <div class="step">4. Take a Quiz</div>
+        <div class="step">5. Pass the Assessment</div>
+        <div class="step">6. Earn Certificate</div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="walkthrough-slide">
+      <h2>You’re All Set 🚀</h2>
+      <p>Explore your dashboard and start your learning journey!</p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="walkthrough-buttons">
+      <button id="prevBtn">Back</button>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+</div>
+<script src="pop-up.js" defer></script>
 </body>
 </html>
