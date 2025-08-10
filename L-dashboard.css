@@ -48,9 +48,30 @@ body{
     color: #1215C5;
 }
 
+/*Walkthrough button*/
+#viewWalkthroughBtn{
+    border: 1px solid #000;
+    margin: 20px 380px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    padding: 10px 30px;
+    width: 300px;
+    text-align: center;
+    background-color: #1215C5;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#viewWalkthroughBtn:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    font-weight: bold
+
+}
 /*learner overview*/
 .cards{
-    /*border: 1px solid #000;*/
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
@@ -418,11 +439,4 @@ p{
 
 .footer-copy {
   font-weight: 500;
-}
-
-#viewWalkthroughBtn{
-    border: 1px solid #000;
-    background-color: #4144ed;
-    border-radius: 20px;
-    height: 100px;
 }
