@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillflex - Mentor Dashboard</title>
+    <link rel="stylesheet" href="mentorDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon"><a href="mentorDash.html"><img src="LOGO.png" alt="App-logo" height="80" width="80" class="icon-logo"></a></div>
+                    <span class="logo-text">Skillflex</span>
+                </div>
+            </div>
+            
+            <h1 class="welcome-message">Welcome, Mentor!</h1>
+            
+            <div class="header-actions">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="profile-icon" id="profileIcon">
+                        <i class="fas fa-user-circle"></i>
+                        <div class="profile-tooltip" id="profileTooltip">Dr. Sarah Johnson</div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Profile Settings
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-calendar"></i> My Schedule
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-chart-bar"></i> Performance
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <hr>
+                            <a href="#" class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Statistics Cards -->
+        <section class="stats-section">
+            <div class="stat-card" id="mentorSessionsCard">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Mentor sessions</h3>
+                    <p>Total number of sessions scheduled with mentees</p>
+                    <span class="stat-number">3</span>
+                </div>
+            </div>
+            
+            <div class="stat-card" id="upcomingSessionsCard">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Upcoming sessions</h3>
+                    <p>Total number of sessions scheduled in the near future</p>
+                    <span class="stat-number">2</span>
+                </div>
+            </div>
+            
+            <div class="stat-card" id="completedSessionsCard">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Completed sessions</h3>
+                    <p>Number of sessions completed successfully</p>
+                    <span class="stat-number">14</span>
+                </div>
+            </div>
+            
+            <div class="stat-card" id="pendingFeedbackCard">
+                <div class="stat-icon">
+                    <i class="fas fa-comment-dots"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Pending feedback</h3>
+                    <p>Number of sessions that still require feedback</p>
+                    <span class="stat-number">4</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Mentor Sessions List -->
+            <section class="mentor-sessions-section">
+                <h2><i class="fas fa-calendar-alt"></i> Mentor sessions</h2>
+                <div class="sessions-header">
+                    <span class="header-names">Names</span>
+                    <span class="header-focus">Focus Area</span>
+                    <span class="header-contact">Contact</span>
+                </div>
+                <div class="sessions-list">
+                    <div class="session-item">
+                        <div class="mentee-info">
+                            <div class="mentee-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span class="mentee-name">Letago Ramautla</span>
+                        </div>
+                        <div class="focus-area">Communication</div>
+                        <div class="contact-action">
+                            <button class="message-btn" data-mentee="Letago Ramautla" data-focus="Communication">
+                                Message
+                            </button>
+                        </div>
+                    </div>
+                    <div class="session-item">
+                        <div class="mentee-info">
+                            <div class="mentee-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span class="mentee-name">Praise Rynn</span>
+                        </div>
+                        <div class="focus-area">Leadership</div>
+                        <div class="contact-action">
+                            <button class="message-btn" data-mentee="Praise Rynn" data-focus="Leadership">
+                                Message
+                            </button>
+                        </div>
+                    </div>
+                    <div class="session-item">
+                        <div class="mentee-info">
+                            <div class="mentee-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span class="mentee-name">Ayanda Mbili</span>
+                        </div>
+                        <div class="focus-area">Emotional Intelligence</div>
+                        <div class="contact-action">
+                            <button class="message-btn" data-mentee="Ayanda Mbili" data-focus="Emotional Intelligence">
+                                Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="analytics-section">
+                <h2><i class="fas fa-chart-line"></i> Analytics</h2>
+                <div class="analytics-content">
+                    <div class="chart-header">
+                        <h3>Booking Overview</h3>
+                        <span class="chart-period">...past 6 months</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="bookingChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for Contact Form -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contact Mentee</h2>
+                <span class="close" id="closeContactModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="menteeName">Mentee Name:</label>
+                        <input type="text" id="menteeName" name="menteeName" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="focusArea">Focus Area:</label>
+                        <input type="text" id="focusArea" name="focusArea" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageSubject">Subject:</label>
+                        <input type="text" id="messageSubject" name="messageSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageContent">Message:</label>
+                        <textarea id="messageContent" name="messageContent" rows="5" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="cancelMessage">Cancel</button>
+                        <button type="submit" class="btn-send">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Detailed Views -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="detailModalTitle">Details</h2>
+                <span class="close" id="closeDetailModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="detailModalContent">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--  FOOTER -->
+  <footer class="footer-section">
+    <div class="footer-wrap">
+      <a href="terms-privacy.html" class="footer-navlink">Terms of Service</a>
+      <span class="footer-copy">©2025 SkillFlex</span>
+      <a href="help&support.html" class="footer-navlink">Help & Support</a>
+    </div>
+  </footer>
+
+    <script src="mentorDashboard.js"></script>
+</body>
+</html>
+
