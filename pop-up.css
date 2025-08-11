@@ -1,0 +1,86 @@
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* When modal is visible */
+.modal.show {
+  display: flex;
+}
+
+/* Modal box */
+.modal-content {
+  background-color: #ffffff; /* White background */
+  padding: 30px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  color: #000000; /* Black text */
+  text-align: center;
+}
+
+/* Slides */
+.walkthrough-slide {
+  display: none;
+}
+.walkthrough-slide.active {
+  display: block;
+}
+
+/* Steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.step {
+  padding: 10px;
+  background: #f2f2f2;
+  border-radius: 6px;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+.step:hover {
+  background-color: #1215C5;
+  color: white;
+  transform: scale(1.03);
+}
+
+/* Navigation Buttons */
+.walkthrough-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.walkthrough-buttons button {
+  padding: 8px 16px;
+  background: #1215C5; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.walkthrough-buttons button:hover {
+  background-color: #0e109f; /* Darker blue */
+}
+
+/* Close button (X) */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+}
