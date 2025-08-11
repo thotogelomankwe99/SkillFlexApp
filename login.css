@@ -200,7 +200,8 @@ align-items: center;
 #googleBtn{
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 17px;
     padding: 12px 20px;
     border-radius: 20px;
     font-size:18px;
@@ -211,6 +212,10 @@ align-items: center;
     cursor: pointer;
 }
 
+#googleBtn:hover{
+    background-color: #f2f2f2;
+    font-size: 19px;
+}
 .back-btn {
   margin-bottom: 20px;
 }
@@ -337,7 +342,7 @@ align-items: center;
 
 #container .card-right .form fieldset form .option{
     display: flex;
-    flex-direction: column !important;
+    flex-direction: row !important;
     align-items: flex-start !important;
     margin: 5px !important;
 }

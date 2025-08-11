@@ -82,6 +82,17 @@ html, body {
   font-size: 16px;
 }
 
+.header-navigation a:hover{
+  text-decoration: underline;
+  font-weight: 17px;
+  color: #021231;
+}
+.header-navigation .active{
+  cursor: pointer; 
+  color: #021231;
+  border-bottom: 2px solid #121212;
+}
+
 /* Right logo image */
 .header-image {
   display: block;
@@ -201,7 +212,7 @@ html, body {
 }
 
 .feature-card.feature-special {
-  border: 2px solid #000;
+  /*border: 2px solid #000;*/
   position: relative;
   padding: 20px;
   background: #d3e9f3;
@@ -267,8 +278,33 @@ html, body {
 
 .feature-cta-button a {
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-weight: bold;
+}
+
+/* ===== Custom Scrollbar Styling ===== */
+.feature-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.feature-grid::-webkit-scrollbar-track {
+  background: #1251c5;
+  border-radius: 10px;
+}
+
+.feature-grid::-webkit-scrollbar-thumb {
+  background: #0e3fa2;
+  border-radius: 10px;
+}
+
+.feature-grid::-webkit-scrollbar-thumb:hover {
+  background: #0b2d79;
+}
+
+/* Firefox support */
+.feature-grid {
+  scrollbar-width: thin;
+  scrollbar-color: #1251c5 #E0EBFF;
 }
 
 /* ========== FOOTER ========== */
@@ -298,6 +334,7 @@ html, body {
 .footer-copy {
   font-weight: 500;
 }
+
 
 /* ========== RESPONSIVENESS ========== */
 @media (max-width: 1024px) {
