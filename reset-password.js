@@ -1,37 +1,41 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
+// Your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
-  authDomain: "skillflexapp.firebaseapp.com",
-  projectId: "skillflexapp",
-  storageBucket: "skillflexapp.firebasestorage.app",
-  messagingSenderId: "827795374450",
-  appId: "1:827795374450:web:4f64fa1bb85c158badddeb",
-  measurementId: "G-PJ701TTVZJ"
+  apiKey: "AIzaSyDfRwl1po6DHQv1JZsdIH-o3YN9r6Vw1so",
+  authDomain: "skillflex-1700b.firebaseapp.com",
+  projectId: "skillflex-1700b",
+  storageBucket: "skillflex-1700b.firebasestorage.app",
+  messagingSenderId: "1062926529269",
+  appId: "1:1062926529269:web:bb5a515fb9eddda1190bbc",
+  measurementId: "G-879ZDDBYRY"
 };
 
-//Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.getElementById("resetForm").addEventListener("submit", async (e) => {
+const form = document.getElementById('resetForm');
+const messageDiv = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message");
+  const email = document.getElementById('email').value.trim();
+
+  if (!email) {
+    messageDiv.textContent = "Please enter your email.";
+    messageDiv.style.color = "red";
+    return;
+  }
 
   try {
-    await sendPasswordResetEmail(window.auth, email);
-    message.style.color = "green";
-    message.textContent = "Password reset email sent. Check your inbox.";
+    await sendPasswordResetEmail(auth, email);
+    messageDiv.textContent = "Password reset email sent! Check your inbox (or spam).";
+    messageDiv.style.color = "green";
+    form.reset();
   } catch (error) {
-    message.style.color = "red";
-    if (error.code === "auth/user-not-found") {
-      message.textContent = "No user found with that email.";
-    } else if (error.code === "auth/invalid-email") {
-      message.textContent = "Invalid email address.";
-    } else {
-      message.textContent = "Error: " + error.message;
-    }
+    messageDiv.textContent = `Error: ${error.message}`;
+    messageDiv.style.color = "red";
   }
 });
