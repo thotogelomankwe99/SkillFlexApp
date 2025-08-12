@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat;
 }
 
 .main-container {
@@ -155,8 +155,7 @@ input[type="password"] {
   background: transparent;
   font-size: 17px;
   outline: none;
-  font-style: italic;
-  font-weight: 50;
+  font-weight: 400;
 }
 
 .form-group {
