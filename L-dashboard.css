@@ -403,6 +403,12 @@ p{
   text-decoration: none;
   font-weight: bold;
 }
+
+.quick-practice:hover, .take-quiz:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.1);
+    color: #DFF9F9;
+}
 .n-icons{
     display: flex;
   align-items: center;
@@ -431,6 +437,10 @@ p{
   margin: 0 auto;
 }
 
+.footer-navlink:hover{
+    text-decoration: underline;
+    color: #333;
+}
 .footer-navlink {
   color: #000;
   text-decoration: none;
@@ -439,4 +449,435 @@ p{
 
 .footer-copy {
   font-weight: 500;
+}
+
+/* Responsiveness for devices*/
+/*Tablet max-width 1024px*/
+@media(max-width:1024px){
+    .header{
+    background-color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 1024px;
+}
+.header img{
+    height: 40px;
+    width: 40px;
+}
+
+.header-itext{
+    display:flex;
+}
+.header-itext h1{
+    margin: 10px;
+    font-size: 16px;
+    /*left: 10px;*/
+}
+.header span{
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+    font-size: 16px;
+}
+.header .h-icons{
+    transform: scale(1.1);
+    margin: 10px;
+    padding: 0px;
+    margin-right: 50px;
+}
+.h-icons a{
+    color: #000;
+    /*padding:10px;*/
+}
+.h-icons a:hover{
+    color: #1215C5;
+}
+
+/*Walkthrough button*/
+#viewWalkthroughBtn{
+    border: 1px solid #000;
+    margin: 20px 280px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    width: 200px;
+    text-align: center;
+    background-color: #1215C5;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#viewWalkthroughBtn:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    font-weight: bold
+
+}
+/*learner overview*/
+.cards{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5px;
+    max-width: max-content;
+}
+
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card1, .card2, .card3{
+    /*border: 1px solid #000;*/
+    background-color: white;
+    height:90px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 0px 10px;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card1:hover, .card2:hover, .card3:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.card1 h3, .card2 h3{
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    margin: 8px;
+    /*border: 1px solid #000;*/
+}
+
+.card3 h3{
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    margin:8px;
+    margin-left: 50px;
+}
+
+.card1 img{
+    margin-left: 15px;
+    width: 35px;
+    height: 35px;
+   margin-top: 10px;
+}
+.card2 img{
+    width: 35px;
+    height: 35px;
+    margin-left:15px;
+}
+
+.card3 img{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.progress-text{
+    color: #1215C5;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin-top: -10px;
+}
+
+/*Softskill category text styling*/
+.s-category{
+    display: flex;
+    width: 100%;
+}
+.s-category a{
+    margin: 25px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    margin-left: 300px;
+}
+.s-category a:hover{
+    text-decoration: underline;
+}
+h2{
+    margin: 20px 15px;
+    font-size: 18px;
+    max-width: max-content;
+}
+
+/*Progress check*/
+#card{
+    /*border: 1px solid #000;*/
+    display: flex;
+    flex-wrap: wrap;
+    max-width: fit-content;
+}
+#card-1, #card-2{
+   /*border: 1px solid #000;*/
+    background-color: white;
+    width: 300px;
+    height: 85px;
+    text-align: left;
+    border-radius: 10px;
+    margin: 5px 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+}
+
+#card-1 h4, #card-2 h4{
+    /*border: 1px solid #000;*/
+    margin: 15px;
+    font-size: 15px;
+}
+
+/* progress bar*/
+
+/* Progress bar container */
+.progress-container {
+  margin-top: 10px;
+}
+
+/* Outer progress bar */
+.progress-bar {
+  position: absolute;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 10px;
+  width: 140px;
+  margin-left: 15px;
+  /*margin: 20px;*/
+}
+
+/* Inner fill */
+.progress-fill {
+  height: 100%;
+  background-color: #27c32c;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* Text showing the percentage */
+.progress-percentage {
+  font-size: 15px;
+  color: #000;
+  margin-left: 165px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Continue button */
+.continue-btn {
+    margin-left: 200px;
+    text-decoration: none;
+    color: #1215C5;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0px 0px 10px 10px;
+  display: inline-block;
+}
+
+.continue-btn:hover {
+  text-decoration: underline;
+}
+
+/*styling category boxes*/
+.category{
+    display: flex;
+    width: 100%;
+}
+
+.box1, .box2, .box3{
+    /*border: 1px solid #000;*/
+    background-color: white;
+    margin: 5px 15px;
+    border-radius: 10px;
+    width: 200px;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.box1:hover, .box2:hover, .box3:hover{
+    transform: translateX(4px);
+    background-color: #e9ecef;
+}
+
+h3{
+font-size: 16px;
+padding: 5px;
+}
+
+p{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.box1 a, .box2 a, .box3 a{
+    padding: 10px;
+    margin-left: 65px;
+    text-decoration: none;
+    color: #1215C5;
+    font-weight: bold;    
+}
+
+.box1 a:hover, .box2 a:hover, .box3 a:hover{
+    text-decoration: underline;
+}
+
+/*Notfication panel
+.dashboard-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-content {
+  flex: 1;
+}*/
+
+.notification-panel {
+    display: none;
+    background-color: white;
+    width: 300px;
+    border-left: 4px solid #1215C5;
+    padding: 20px;
+    border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/*.notification-panel h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #333;
+}
+
+.notification-panel .notification1,
+.notification-panel .notification2 {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #DFF9F9;
+  border-radius: 8px;
+}
+.notification1:hover, .notification2:hover{
+     transform: translateX(4px);
+    background-color: #e9ecef;
+}
+
+.notification1 p, .notification2 p{
+    border-left: 5px solid #67a005;
+    padding: 5px;
+}
+.notification1 a, .btn-download{
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.notification1 a:hover, .btn-download:hover{
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+}
+
+/*Chatbot and cta quiz containers*/
+.bottom-container{
+    display: flex;
+    flex-wrap: wrap;
+    /*flex-direction: row;*/
+}
+.container1, .container2{
+    border: 1px solid #000;
+    background-color: white;
+    width: 260px;
+    height: 125px;
+    margin: 15px 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container1 img{
+    position: absolute;
+    width:110px;
+    height: 120px;
+    margin-left: -20px;
+}
+
+.container1 h3{
+    text-align: center;
+    font-size: 25px;
+    margin-left: 30px;
+}
+
+.container1 a{
+    font-size: 16px;
+    text-align: center;
+    margin-left:85px;
+    margin-top: 40px;
+}
+
+.container2 a{
+    font-weight: 16px;
+    margin-left: 50px;
+}
+.quick-practice, .take-quiz{
+    display: inline-block;
+    margin-top: 10px;
+    background-color:#1215C5 ;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.n-icons{
+    display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.n-icons img{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+/* ========== FOOTER ========== */
+.footer-section {
+  background-color: #FAFAFA;
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-wrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-navlink:hover{
+    text-decoration: underline;
+    color: #333;
+}
+.footer-navlink {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-copy {
+  font-weight: 500;
+}
 }
