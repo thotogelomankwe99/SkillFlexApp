@@ -7,6 +7,7 @@
 body{
     background-color: #f5f7fa;
 }
+
 .header{
     background-color: white;
     padding: 5px;
@@ -14,7 +15,9 @@ body{
     justify-content: space-between;
     width: 100%;
     height: 70px;
-     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 .header img{
     height: 60px;
@@ -51,7 +54,7 @@ body{
 /*Walkthrough button*/
 #viewWalkthroughBtn{
     border: 1px solid #000;
-    margin: 20px 380px;
+    margin: 20px 450px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
@@ -70,13 +73,13 @@ body{
     font-weight: bold
 
 }
+
 /*learner overview*/
 .cards{
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
     max-width: max-content;
-
 }
 
 
@@ -89,11 +92,11 @@ body{
 .card1, .card2, .card3{
     /*border: 1px solid #000;*/
     background-color: white;
-    height:150px;
-    width: 270px;
+    height:120px;
+    width: 320px;
     border-radius: 10px;
     margin: 10px 20px;
-     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
@@ -114,36 +117,40 @@ body{
     font-size: 24px;
     text-align: left;
     margin:15px;
-    margin-left: 70px;
-
+    /*margin-left: 70px;*/
 }
 
 .card1 img{
-    margin-left: 30px;
-    width: 50px;
+    margin-left: 240px;
     height: 50px;
-   
+    width: 55px;
+    margin-top: 30px;
+    position: absolute; 
 }
+
 .card2 img{
     width: 50px;
     height: 50px;
-    margin-left: 30px;
+    margin-left: 250px;
+    margin-top: 30px;
+    position: absolute;
 }
 
 .card3 img{
     width: 50px;
     height: 50px;
     position: absolute;
-    margin-left: 10px;
-    margin-top: 20px;
+    margin-top: -40px;
+    margin-left: 240px;
 }
 
 .progress-text{
     color: #1215C5;
     font-weight: bold;
     font-size: 24px;
-    text-align: center;
-
+    text-align: left;
+    margin-left: 20px;
+    margin-top: -10px;
 }
 
 /*Softskill category text styling*/
@@ -176,8 +183,8 @@ h2{
 #card-1, #card-2{
    /* border: 1px solid #000;*/
     background-color: white;
-    width: 420px;
-    height: 94px;
+    width: 490px;
+    height: 100px;
     text-align: left;
     border-radius: 10px;
     margin: 5px 30px;
@@ -185,12 +192,6 @@ h2{
     padding-bottom: 10px;
 }
 
-
-#card-1 img{
-    /*border:1px solid #000;*/
-    width:50px;
-    height: 50px;
-}
 
 #card-1 h4, #card-2 h4{
     /*border: 1px solid #000;*/
@@ -214,7 +215,7 @@ h2{
   border-radius: 8px;
   overflow: hidden;
   height: 15px;
-  width: 210px;
+  width: 300px;
   margin-left: 15px;
   /*margin: 20px;*/
 }
@@ -231,7 +232,7 @@ h2{
 .progress-percentage {
   font-size: 18px;
   color: #000;
-  margin-left: 235px;
+  margin-left: 330px;
   /*margin-bottom:30px;*/
   font-weight: bold;
   display: inline-block;
@@ -239,7 +240,7 @@ h2{
 
 /* Continue button */
 .continue-btn {
-    margin-left: 300px;
+    margin-left: 370px;
     margin-bottom: 30px;
     /*padding:20px;*/
     text-decoration: none;
@@ -247,7 +248,7 @@ h2{
     font-size: 18px;
     font-weight: bold;
     padding: 0px 0px 10px 10px;
-  display: inline-block;
+    display: inline-block;
 }
 
 .continue-btn:hover {
@@ -262,14 +263,14 @@ h2{
 }
 
 .box1, .box2, .box3{
-    /*border: 1px solid #000;*/
+   /* border: 1px solid #000;*/
     background-color: white;
     margin: 5px 30px;
     border-radius: 10px;
-    width: 275.13px;
+    width: 285px;
     height: 150px;
     padding: 10px;
-     border: 1px solid #f0f0f0;
+    border: 1px solid #f0f0f0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
@@ -316,10 +317,8 @@ p{
     border-left: 4px solid #1215C5;
     padding: 20px;
     border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
-
 
 .notification-panel h3 {
   font-size: 1.2rem;
@@ -364,17 +363,18 @@ p{
 /*Chatbot and cta quiz containers*/
 .container1, .container2{
     background-color: white;
-    width: 450px;
-    height: 145px;
+    width: 470px;
+    height: 140px;
     margin: 15px 30px;
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .container1 img{
     position: absolute;
-    width:161.94px;
-    height: 161.94px;
+    width:160px;
+    height: 160px;
 }
 
 .container1 h3{
@@ -383,15 +383,16 @@ p{
 }
 
 .container1 a{
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     margin-left:150px;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .container2 a{
-    font-weight: 20px;
+    font-weight: 22px;
     margin-left: 150px;
+    margin-top: 20px;
 }
 .quick-practice, .take-quiz{
       display: inline-block;
@@ -409,6 +410,8 @@ p{
     box-shadow: 0 6px 8px rgba(0,0,0,0.1);
     color: #DFF9F9;
 }
+
+/*header icons*/
 .n-icons{
     display: flex;
   align-items: center;
