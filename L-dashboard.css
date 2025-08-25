@@ -8,6 +8,7 @@ body{
     background-color: #f5f7fa;
 }
 
+
 .header{
     background-color: white;
     padding: 5px;
@@ -26,6 +27,7 @@ body{
 
 .header-itext{
     display:flex;
+    margin-left: 40px;
 }
 .header-itext h1{
     margin: 16px;
@@ -33,7 +35,7 @@ body{
     /*left: 10px;*/
 }
 .header span{
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     margin: auto;
     font-size: 28px;
@@ -51,9 +53,99 @@ body{
     color: #1215C5;
 }
 
+.h-icons a:active{
+    color:#1215C5;
+}
+
+/* Drawer styles */
+.drawer {
+  height:90%;
+  width: 0;
+  position: fixed;
+  top: 15;
+  right: 0; /* Slides in from the right */
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 10px;
+  z-index: 2000;
+  border-radius: 10px;
+  
+}
+
+.drawer.open {
+  width: 250px;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #ddd;
+  margin: 20px;
+}
+
+.drawer-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.drawer-header h3 a{
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    transition: background 0.2s;
+}
+
+ .drawer-header h3 a:hover{
+    text-decoration: underline;
+
+ }
+.drawer-header .close-drawer {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.drawer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+.drawer-menu li {
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background-color: #cfd8e6;
+  margin: 5px;
+}
+
+.drawer-menu li a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  transition: background 0.2s;
+}
+ .drawer-menu li a i{
+    padding: 3px;
+}
+
+.drawer-menu li a:hover {
+  background-color: #ebebf9;
+  color: #000;
+  transform: translateY(-4px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+
+}
+
 /*Walkthrough button*/
 #viewWalkthroughBtn{
-    border: 1px solid #000;
+    border: 1px solid #1215C5;
     margin: 20px 450px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -738,17 +830,6 @@ p{
     text-decoration: underline;
 }
 
-/*Notfication panel
-.dashboard-layout {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-}
-
-.main-content {
-  flex: 1;
-}*/
-
 .notification-panel {
     display: none;
     background-color: white;
@@ -756,7 +837,7 @@ p{
     border-left: 4px solid #1215C5;
     padding: 20px;
     border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 /*.notification-panel h3 {
   font-size: 1.2rem;

@@ -16,21 +16,39 @@
     <div class="header">
         <div class="header-itext">
             <img src="LOGO-removebg-preview 1.png">
-            <h1>SKILLFLEX</h1>
+            <h1>SkillFlex</h1>
         </div>
     <span>Welcome, Learner!</span>
     <div class="h-icons">
-        <a href="#"><i class="fa-solid fa-bell"></i></a>
+        <a href="notifications.html"><i class="fa-solid fa-bell"></i></a>
         <a href="#"><i class="fa-solid fa-circle-user" aria-hidden="true"></i></a>
     </div>
  </div>
 
+ <!-- Navigation Drawer -->
+<div id="profileDrawer" class="drawer">
+  <div class="drawer-header">
+    <h3><a href="Uprofile.html">Learner name</a></h3>
+    <span class="close-drawer">&times;</span>
+  </div>
+  <ul class="drawer-menu">
+    <li><a href="learning.html">My Learning</a></li>
+    <li><a href="#">Achievements</a></li>
+    <hr>
+    <li><a href="#">AI Chatbot</a></li>
+    <li><a href="skills-catalog.html">Available courses</a></li>
+    <li><a href="#">Settings</a></li>
+    <hr>
+    <li><a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
+  </ul>
+</div>
  <!--Left &Right wrap-->
 
  <!--Pop-up walkthrough-->
     <button id="viewWalkthroughBtn">View Walkthrough</button>
 <div class="dashboard-layout">
-    <!--Left main content-->
+
+<!--Left main content-->
     <div class="main-content">
     <div class="cards">
         <div class="card1">
@@ -86,25 +104,27 @@
             </div>
         </div>
     </div>    
+    <!--Skills Category-->
     <div class="s-category">
         <h2>Soft Skill Category</h2>
-        <a href="#">See More<i class="fa-solid fa-arrow-right"></i></a>
+        <a href="skills-catalog.html">See More<i class="fa-solid fa-arrow-right"></i></a>
     </div>
+    
     <div class="category">
         <div class="box1">
             <h3>Communication Skills</h3>
             <p>Master the act of effective communication through active listening...</p>
-            <a href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a>
+            <a href="comm.html">Learn More<i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="box2">
             <h3>Leadership Skills</h3>
             <p>Develop essential leadership skills to inspire teams, make decisions...</p>
-            <a href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a>
+            <a href="lead.html">Learn More<i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="box3">
             <h3> Emotional Intelligence</h3>
             <p>Learn to recognize, understand, and manage emotions to improve your overall...</p>
-            <a href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a>
+            <a href="emm.html">Learn More<i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="box4"></div>
     </div>  
@@ -142,6 +162,7 @@
             <a href="#" class="btn-download">Download Now</a>
         </div>
     </aside>
+    
 </div>
 </div>
  <!--  FOOTER -->
@@ -180,7 +201,7 @@
 
     <!-- Slide 3 -->
     <div class="walkthrough-slide">
-      <h2>You’re All Set 🚀</h2>
+      <h2>You are All Set 🚀</h2>
       <p>Explore your dashboard and start your learning journey!</p>
     </div>
 
@@ -192,5 +213,26 @@
   </div>
 </div>
 <script src="pop-up.js" defer></script>
+<script>
+  const profileIcon = document.querySelector(".fa-circle-user");
+  const drawer = document.getElementById("profileDrawer");
+  const closeDrawerBtn = document.querySelector(".close-drawer");
+
+  profileIcon.addEventListener("click", () => {
+    drawer.classList.toggle("open");
+  });
+
+  closeDrawerBtn.addEventListener("click", () => {
+    drawer.classList.remove("open");
+  });
+
+  // Close drawer if clicked outside
+  window.addEventListener("click", (e) => {
+    if (drawer.classList.contains("open") && !drawer.contains(e.target) && !profileIcon.contains(e.target)) {
+      drawer.classList.remove("open");
+    }
+  });
+</script>
+
 </body>
 </html>
