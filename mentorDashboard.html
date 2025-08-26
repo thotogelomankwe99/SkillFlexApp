@@ -4,9 +4,977 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skillflex - Mentor Dashboard</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="mentorDashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #E8E6F5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #fAfAfA;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .icon-logo{
+            border-radius: 20px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 70px;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .welcome-message {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .notification-bell:hover {
+            background-color: rgba(55, 65, 81, 0.1);
+        }
+
+        .notification-bell i {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-section {
+            position: relative;
+        }
+
+        .profile-icon {
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .profile-icon i {
+            font-size: 2rem;
+            color: #374151;
+            transition: color 0.3s ease;
+        }
+
+        .profile-icon:hover i {
+            color: #1f2937;
+        }
+
+        .profile-tooltip {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .profile-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #333;
+        }
+
+        .profile-icon:hover .profile-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .profile-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-item.logout {
+            color: #dc3545;
+        }
+
+        .dropdown-item hr {
+            margin: 0.5rem 0;
+            border: none;
+            border-top: 1px solid #e9ecef;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card:nth-child(1) .stat-icon { background-color: rgba(55, 65, 81, 0.1); color: #374151; }
+        .stat-card:nth-child(2) .stat-icon { background-color: rgba(55, 65, 81, 0.1); color: #374151; }
+        .stat-card:nth-child(3) .stat-icon { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .stat-card:nth-child(4) .stat-icon { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+
+        .stat-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .stat-content p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+
+        /* Mentor Sessions Section */
+        .mentor-sessions-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .mentor-sessions-section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sessions-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .sessions-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+        }
+
+        .session-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .session-item:last-child {
+            border-bottom: none;
+        }
+
+        .session-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .mentee-info {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .mentee-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mentee-avatar i {
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        .mentee-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .focus-area {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .contact-action {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .message-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .message-btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* Analytics Section */
+        .analytics-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .analytics-section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .chart-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .chart-period {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-content.large {
+            max-width: 900px;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .close {
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .btn-cancel,
+        .btn-send {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background-color: #f8f9fa;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e9ecef;
+        }
+
+        .btn-send {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-send:hover {
+            background-color: #2563eb;
+        }
+
+        /* Detail List Styles */
+        .detail-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.3s ease;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .detail-info strong {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .detail-meta {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-upcoming {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-pending {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .footer-section {
+          background-color: #FAFAFA;
+          border-top: 1px solid #ccc;
+          padding: 1rem 0;
+          max-width: 100%;
+          margin: 0 auto;
+        }
+
+        .footer-wrap {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          max-width: 1440px;
+          margin: 0 auto;
+          text-align: center;
+          padding: 0 20px;
+        }
+
+        .footer-navlink {
+          color: #000;
+          text-decoration: none;
+        }
+
+        .footer-copy {
+          font-weight: 500;
+        }
+
+        /* Profile Content Styles */
+        .profile-content {
+            padding: 1rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #666;
+        }
+
+        .profile-details h2 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-details p {
+            color: #666;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-stat {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .profile-stat h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-stat p {
+            color: #666;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+
+        /* Mobile devices (320px and up) */
+        @media (max-width: 767px) {
+            .header {
+                padding: 0.75rem 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+
+            .welcome-message {
+                font-size: 1.3rem;
+            }
+
+            .header-actions {
+                gap: 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .mentor-sessions-section,
+            .analytics-section {
+                padding: 1rem;
+            }
+
+            .sessions-header {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                text-align: left;
+            }
+
+            .sessions-header .header-focus,
+            .sessions-header .header-contact {
+                display: none;
+            }
+
+            .session-item {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                padding: 0.75rem;
+                text-align: left;
+            }
+
+            .focus-area {
+                font-size: 0.85rem;
+                margin-left: 2.5rem;
+            }
+
+            .contact-action {
+                justify-content: flex-start;
+                margin-left: 2.5rem;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .detail-info {
+                width: 100%;
+            }
+
+            .detail-meta {
+                font-size: 0.8rem;
+            }
+
+            .message-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .modal-content {
+                margin: 5% auto;
+                width: 95%;
+            }
+
+            .chart-container {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .footer {
+                padding: 1.5rem 0;
+            }
+            
+            .footer-content {
+                padding: 0 1rem;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .footer-description {
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .footer-column {
+                margin-bottom: 1rem;
+            }
+            
+            .footer-bottom {
+                padding-top: 1rem;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Tablet devices (768px and up) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .header {
+                padding: 1rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 0 1.5rem;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .sessions-header {
+                grid-template-columns: 2fr 1.5fr 1fr;
+            }
+
+            .session-item {
+                grid-template-columns: 2fr 1.5fr 1fr;
+            }
+
+            .analytics-section {
+                margin-top: 1rem;
+            }
+
+            .chart-container {
+                height: 280px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-logo {
+                grid-column: span 2;
+            }
+            
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                grid-column: span 2;
+            }
+        }
+
+        /* Desktop devices (1024px and up) */
+        @media (min-width: 1024px) {
+            .header {
+                padding: 1rem 2rem;
+            }
+
+            .main-content {
+                padding: 0 2rem;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr 400px;
+                gap: 2rem;
+            }
+
+            .sessions-header {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+
+            .session-item {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 2fr;
+            }
+            
+            .footer-links {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-bottom {
+                grid-column: span 3;
+            }
+        }
+    </style>
+>>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 </head>
 <body>
     <!-- Header -->
@@ -23,7 +991,13 @@
             
             <div class="header-actions">
                 <div class="notification-bell">
+<<<<<<< HEAD
                     <i class="fas fa-bell"></i>
+=======
+                    <a href="mentor-notifications.html">
+                    <i class="fas fa-bell"></i>
+                    </a>
+>>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
                     <span class="notification-badge">3</span>
                 </div>
                 
@@ -32,6 +1006,7 @@
                         <i class="fas fa-user-circle"></i>
                         <div class="profile-tooltip" id="profileTooltip">Dr. Sarah Johnson</div>
                         <div class="profile-dropdown" id="profileDropdown">
+<<<<<<< HEAD
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-user"></i> Profile Settings
                             </a>
@@ -46,6 +1021,22 @@
                             </a>
                             <hr>
                             <a href="#" class="dropdown-item logout">
+=======
+                            <a href="#" class="dropdown-item" data-action="profile">
+                                <i class="fas fa-user"></i> Profile Settings
+                            </a>
+                            <a href="#" class="dropdown-item" data-action="schedule">
+                                <i class="fas fa-calendar"></i> My Schedule
+                            </a>
+                            <a href="#" class="dropdown-item" data-action="performance">
+                                <i class="fas fa-chart-bar"></i> Performance
+                            </a>
+                            <a href="#" class="dropdown-item" data-action="settings">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <hr>
+                            <a href="#" class="dropdown-item logout" data-action="logout">
+>>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -225,6 +1216,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
       <!--  FOOTER -->
   <footer class="footer-section">
     <div class="footer-wrap">
@@ -235,6 +1227,630 @@
   </footer>
 
     <script src="mentorDashboard.js"></script>
+=======
+    <!-- Modal for Profile Content -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="profileModalTitle">Profile Settings</h2>
+                <span class="close" id="closeProfileModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="profile-content">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-details">
+                            <h2>Dr. Sarah Johnson</h2>
+                            <p>Leadership & Communication Mentor</p>
+                            <p>Member since: January 2024</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <h3>4.8/5.0</h3>
+                            <p>Average Rating</p>
+                        </div>
+                        <div class="profile-stat">
+                            <h3>98%</h3>
+                            <p>Completion Rate</p>
+                        </div>
+                        <div class="profile-stat">
+                            <h3>14</h3>
+                            <p>Mentees Helped</p>
+                        </div>
+                        <div class="profile-stat">
+                            <h3>42</h3>
+                            <p>Total Sessions</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Specializations</h3>
+                    <ul>
+                        <li>Leadership Development</li>
+                        <li>Effective Communication</li>
+                        <li>Team Management</li>
+                        <li>Conflict Resolution</li>
+                    </ul>
+                    
+                    <div class="profile-actions">
+                        <button class="btn-send">Edit Profile</button>
+                        <button class="btn-cancel">Change Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-wrap">
+            <a href="terms-privacy.html" class="footer-navlink">Terms of Service</a>
+            <span class="footer-copy">©2025 SkillFlex</span>
+            <a href="help&support.html" class="footer-navlink">Help & Support</a>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let currentModal = null;
+        let chart = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+            initializeChart();
+            setupProfileDropdown();
+        });
+
+        // Initialize all event listeners
+        function initializeEventListeners() {
+            // Profile dropdown toggle
+            const profileIcon = document.getElementById('profileIcon');
+            profileIcon.addEventListener('click', toggleProfileDropdown);
+
+            // Statistics cards click events
+            document.getElementById('mentorSessionsCard').addEventListener('click', () => showMentorSessions());
+            document.getElementById('upcomingSessionsCard').addEventListener('click', () => showUpcomingSessions());
+            document.getElementById('completedSessionsCard').addEventListener('click', () => showCompletedSessions());
+            document.getElementById('pendingFeedbackCard').addEventListener('click', () => showPendingFeedback());
+
+            // Message buttons
+            const messageButtons = document.querySelectorAll('.message-btn');
+            messageButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const mentee = e.target.getAttribute('data-mentee');
+                    const focus = e.target.getAttribute('data-focus');
+                    showContactModal(mentee, focus);
+                });
+            });
+
+            // Modal close events
+            document.getElementById('closeContactModal').addEventListener('click', closeContactModal);
+            document.getElementById('closeDetailModal').addEventListener('click', closeDetailModal);
+            document.getElementById('closeProfileModal').addEventListener('click', closeProfileModal);
+            document.getElementById('cancelMessage').addEventListener('click', closeContactModal);
+
+            // Contact form submission
+            document.getElementById('contactForm').addEventListener('submit', handleContactSubmission);
+
+            // Click outside modal to close
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
+                    closeAllModals();
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                const profileSection = document.querySelector('.profile-section');
+                if (!profileSection.contains(e.target)) {
+                    closeProfileDropdown();
+                }
+            });
+        }
+
+        // Profile dropdown functionality
+        function setupProfileDropdown() {
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const action = e.target.getAttribute('data-action') || 
+                                  e.target.parentElement.getAttribute('data-action');
+                    
+                    if (action === 'logout') {
+                        handleLogout();
+                    } else if (action === 'profile') {
+                        showProfileModal();
+                    } else {
+                        // For other menu items, show appropriate content
+                        showDropdownContent(action);
+                    }
+                    closeProfileDropdown();
+                });
+            });
+        }
+
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function closeProfileDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.remove('show');
+        }
+
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // In a real application, this would clear session and redirect
+                window.location.href = 'login.html';
+            }
+        }
+
+        function showProfileModal() {
+            const modal = document.getElementById('profileModal');
+            modal.style.display = 'block';
+            currentModal = modal;
+        }
+
+        function closeProfileModal() {
+            const modal = document.getElementById('profileModal');
+            modal.style.display = 'none';
+            currentModal = null;
+        }
+
+        function showDropdownContent(action) {
+            // Show appropriate content based on the action
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalContent = document.getElementById('detailModalContent');
+            
+            switch(action) {
+                case 'schedule':
+                    modalTitle.textContent = 'My Schedule';
+                    modalContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Your Weekly Schedule</h3>
+                            <div class="detail-list">
+                                <div class="detail-item">
+                                    <div class="detail-info">
+                                        <strong>Monday, August 5</strong>
+                                        <span class="detail-meta">2:00 PM - 3:30 PM: Letago Ramautla (Communication)</span>
+                                    </div>
+                                    <span class="status-badge status-upcoming">Scheduled</span>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-info">
+                                        <strong>Wednesday, August 7</strong>
+                                        <span class="detail-meta">10:00 AM - 11:30 AM: Praise Rynn (Leadership)</span>
+                                    </div>
+                                    <span class="status-badge status-upcoming">Scheduled</span>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-info">
+                                        <strong>Friday, August 9</strong>
+                                        <span class="detail-meta">Available for new sessions</span>
+                                    </div>
+                                    <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Set Availability</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'performance':
+                    modalTitle.textContent = 'Performance Analytics';
+                    modalContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Your Mentor Performance</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div style="background-color: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                                    <h4>Session Completion Rate</h4>
+                                    <div style="font-size: 2rem; font-weight: bold; color: #10b981;">98%</div>
+                                </div>
+                                <div style="background-color: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                                    <h4>Average Rating</h4>
+                                    <div style="font-size: 2rem; font-weight: bold; color: #f59e0b;">4.8/5</div>
+                                </div>
+                            </div>
+                            <h4>Mentee Feedback Summary</h4>
+                            <ul>
+                                <li>95% of mentees reported significant improvement in their skills</li>
+                                <li>92% would recommend you to other mentees</li>
+                                <li>Your communication skills received a 4.9/5 rating</li>
+                                <li>Your expertise was rated 4.8/5</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                case 'settings':
+                    modalTitle.textContent = 'Account Settings';
+                    modalContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Manage Your Account Settings</h3>
+                            <div class="form-group">
+                                <label>Notification Preferences</label>
+                                <div>
+                                    <input type="checkbox" id="emailNotif" checked>
+                                    <label for="emailNotif">Email notifications</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="smsNotif" checked>
+                                    <label for="smsNotif">SMS notifications</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Availability Settings</label>
+                                <div>
+                                    <input type="checkbox" id="autoAccept" checked>
+                                    <label for="autoAccept">Auto-accept session requests</label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn-cancel">Cancel</button>
+                                <button class="btn-send">Save Changes</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            document.getElementById('detailModal').style.display = 'block';
+            currentModal = document.getElementById('detailModal');
+        }
+
+        // Chart initialization
+        function initializeChart() {
+            const ctx = document.getElementById('bookingChart').getContext('2d');
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'February', 'Mar', 'April', 'Jun'],
+                    datasets: [{
+                        label: 'Bookings',
+                        data: [5, 12, 15, 10, 8],
+                        borderColor: '#374151',
+                        backgroundColor: 'rgba(55, 65, 81, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#374151',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#666'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#666'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Modal functions
+        function showContactModal(mentee, focus) {
+            const modal = document.getElementById('contactModal');
+            document.getElementById('menteeName').value = mentee;
+            document.getElementById('focusArea').value = focus;
+            document.getElementById('messageSubject').value = '';
+            document.getElementById('messageContent').value = '';
+            
+            modal.style.display = 'block';
+            currentModal = modal;
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.style.display = 'none';
+            currentModal = null;
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detailModal');
+            modal.style.display = 'none';
+            currentModal = null;
+        }
+
+        function closeAllModals() {
+            closeContactModal();
+            closeDetailModal();
+            closeProfileModal();
+        }
+
+        // Contact form submission
+        function handleContactSubmission(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const messageData = {
+                mentee: formData.get('menteeName'),
+                focusArea: formData.get('focusArea'),
+                subject: formData.get('messageSubject'),
+                content: formData.get('messageContent')
+            };
+            
+            // Simulate sending message
+            console.log('Message sent:', messageData);
+            alert(`Message sent to ${messageData.mentee} successfully!`);
+            closeContactModal();
+        }
+
+        // Detail view functions
+        function showMentorSessions() {
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalContent = document.getElementById('detailModalContent');
+            
+            modalTitle.textContent = 'Mentor Sessions Details';
+            modalContent.innerHTML = `
+                <div class="detail-section">
+                    <h3>All Scheduled Sessions</h3>
+                    <div class="detail-list">
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Letago Ramautla</strong>
+                                <span class="detail-meta">Communication • Aug 5, 2025 - 2:00 PM • Google Meet</span>
+                            </div>
+                            <span class="status-badge status-upcoming">Upcoming</span>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Praise Rynn</strong>
+                                <span class="detail-meta">Leadership • Aug 7, 2025 - 10:00 AM • Zoom</span>
+                            </div>
+                            <span class="status-badge status-upcoming">Upcoming</span>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Ayanda Mbili</strong>
+                                <span class="detail-meta">Emotional Intelligence • Aug 10, 2025 - 3:00 PM • Microsoft Teams</span>
+                            </div>
+                            <span class="status-badge status-upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+            currentModal = document.getElementById('detailModal');
+        }
+
+        function showUpcomingSessions() {
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalContent = document.getElementById('detailModalContent');
+            
+            modalTitle.textContent = 'Upcoming Sessions';
+            modalContent.innerHTML = `
+                <div class="detail-section">
+                    <h3>Sessions Scheduled for the Next 7 Days</h3>
+                    <div class="detail-list">
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Letago Ramautla</strong>
+                                <span class="detail-meta">Communication • Aug 5, 2025 - 2:00 PM • Google Meet</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Join Meeting</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Praise Rynn</strong>
+                                <span class="detail-meta">Leadership • Aug 7, 2025 - 10:00 AM • Zoom</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Join Meeting</button>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 1rem; background-color: #f8f9fa; border-radius: 6px;">
+                        <h4>Quick Actions:</h4>
+                        <button class="btn-send" style="margin: 0.5rem 0.5rem 0 0;">Send Reminder</button>
+                        <button class="btn-cancel" style="margin: 0.5rem 0.5rem 0 0;">Reschedule</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+            currentModal = document.getElementById('detailModal');
+        }
+
+        function showCompletedSessions() {
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalContent = document.getElementById('detailModalContent');
+            
+            modalTitle.textContent = 'Completed Sessions';
+            modalContent.innerHTML = `
+                <div class="detail-section">
+                    <h3>Successfully Completed Mentorship Sessions</h3>
+                    <div class="detail-list">
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>John Smith</strong>
+                                <span class="detail-meta">Leadership • Jul 28, 2025 • 8 weeks</span>
+                                <span class="status-badge status-completed">Eligible</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Issue Certificate</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Sarah Johnson</strong>
+                                <span class="detail-meta">Communication • Jul 25, 2025 • 6 weeks</span>
+                                <span class="status-badge status-completed">Eligible</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Issue Certificate</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Mike Davis</strong>
+                                <span class="detail-meta">Problem Solving • Jul 20, 2025 • 10 weeks</span>
+                                <span class="status-badge status-completed">Eligible</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Issue Certificate</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Emma Wilson</strong>
+                                <span class="detail-meta">Emotional Intelligence • Jul 15, 2025 • 4 weeks</span>
+                                <span class="status-badge status-pending">Under Review</span>
+                            </div>
+                            <button class="btn-cancel" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Review Required</button>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 1rem; background-color: #d4edda; border-radius: 6px;">
+                        <h4 style="color: #155724;">Certificate Eligibility Criteria:</h4>
+                        <ul style="color: #155724; margin-top: 0.5rem;">
+                            <li>Completed minimum 80% of scheduled sessions</li>
+                            <li>Demonstrated improvement in focus area</li>
+                            <li>Submitted all required assignments</li>
+                            <li>Received positive mentor evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+            currentModal = document.getElementById('detailModal');
+        }
+
+        function showPendingFeedback() {
+            const modalTitle = document.getElementById('detailModalTitle');
+            const modalContent = document.getElementById('detailModalContent');
+            
+            modalTitle.textContent = 'Pending Feedback';
+            modalContent.innerHTML = `
+                <div class="detail-section">
+                    <h3>Mentees Requiring Session Feedback</h3>
+                    <div class="detail-list">
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Alex Thompson</strong>
+                                <span class="detail-meta">Time Management • Jul 30, 2025 • 4 days pending</span>
+                                <span class="status-badge status-pending">High Priority</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Alex Thompson')">Provide Feedback</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Lisa Chen</strong>
+                                <span class="detail-meta">Public Speaking • Aug 1, 2025 • 2 days pending</span>
+                                <span class="status-badge status-upcoming">Medium Priority</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Lisa Chen')">Provide Feedback</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Robert Brown</strong>
+                                <span class="detail-meta">Conflict Resolution • Aug 2, 2025 • 1 day pending</span>
+                                <span class="status-badge status-upcoming">Low Priority</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Robert Brown')">Provide Feedback</button>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-info">
+                                <strong>Jessica Lee</strong>
+                                <span class="detail-meta">Team Collaboration • Jul 28, 2025 • 6 days pending</span>
+                                <span class="status-badge status-pending">High Priority</span>
+                            </div>
+                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Jessica Lee')">Provide Feedback</button>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 1rem; background-color: #fff3cd; border-radius: 6px;">
+                        <h4 style="color: #856404;">Feedback Guidelines:</h4>
+                        <ul style="color: #856404; margin-top: 0.5rem;">
+                            <li>Provide specific examples of progress made</li>
+                            <li>Highlight areas for continued improvement</li>
+                            <li>Include actionable recommendations</li>
+                            <li>Rate overall session effectiveness (1-5 scale)</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('detailModal').style.display = 'block';
+            currentModal = document.getElementById('detailModal');
+        }
+
+        // Feedback form function
+        function showFeedbackForm(menteeName) {
+            const modalContent = document.getElementById('detailModalContent');
+            modalContent.innerHTML = `
+                <div class="detail-section">
+                    <h3>Provide Feedback for ${menteeName}</h3>
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <label for="sessionRating">Session Effectiveness (1-5):</label>
+                            <select id="sessionRating" name="sessionRating" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;">
+                                <option value="">Select Rating</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Very Good</option>
+                                <option value="3">3 - Good</option>
+                                <option value="2">2 - Fair</option>
+                                <option value="1">1 - Needs Improvement</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="progressMade">Progress Made:</label>
+                            <textarea id="progressMade" name="progressMade" rows="3" placeholder="Describe specific progress the mentee has made..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="areasImprovement">Areas for Improvement:</label>
+                            <textarea id="areasImprovement" name="areasImprovement" rows="3" placeholder="Identify areas where the mentee can continue to grow..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="recommendations">Recommendations:</label>
+                            <textarea id="recommendations" name="recommendations" rows="3" placeholder="Provide actionable recommendations for future development..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalComments">Additional Comments:</label>
+                            <textarea id="additionalComments" name="additionalComments" rows="2" placeholder="Any additional feedback or observations..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-cancel" onclick="showPendingFeedback()">Back</button>
+                            <button type="submit" class="btn-send">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            
+            // Add form submission handler
+            document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(`Feedback submitted for ${menteeName} successfully!`);
+                showPendingFeedback();
+            });
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentModal) {
+                closeAllModals();
+            }
+        });
+    </script>
+>>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 </body>
 </html>
 

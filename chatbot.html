@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillFlex - AI Coach Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 SkillFlex AI Coach</h1>
+            <div class="status">
+                <div class="status-dot"></div>
+                <span>AI Powered</span>
+            </div>
+            <div class="tech-stack">
+                <span class="tech-badge">OpenAI</span>
+                <span class="tech-badge">Dialogflow</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">PostgreSQL</span>
+            </div>
+        </div>
+
+        <div class="progress-indicator">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <!-- AI will initiate conversation -->
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <div class="input-container">
+                <textarea class="message-input" id="messageInput" placeholder="Type your response..." rows="1"></textarea>
+                <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                    ➤
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mentor Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>🎯 Ready for Real-World Practice?</h2>
+            <p>You've made excellent progress in our conversation! Your insights show real growth in soft skills awareness.</p>
+            <p><strong>Take it to the next level:</strong> Schedule a session with our expert mentors for personalized, hands-on practice in real workplace scenarios.</p>
+            <div class="popup-buttons">
+                <button class="popup-btn primary" onclick="scheduleMentor()">📅 Schedule Mentor Session</button>
+                <button class="popup-btn secondary" onclick="closePopup()">Continue Our Conversation</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974cc980e57bdf1a',t:'MTc1NjE0MjcxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

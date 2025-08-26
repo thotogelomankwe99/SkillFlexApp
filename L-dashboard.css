@@ -552,7 +552,6 @@ transform: translateY(-1px);
     color: #DFF9F9;
 }
 
-
 /* ========== FOOTER ========== */
 .footer-section {
   background-color: #FAFAFA;
@@ -584,7 +583,6 @@ transform: translateY(-1px);
 .footer-copy {
   font-weight: 500;
 }
-
 
 /* Responsiveness for devices*/
 /*Tablet max-width 1024px*/

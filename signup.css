@@ -131,7 +131,12 @@ label {
 }
 
 .input-container {
+<<<<<<< HEAD
   background-color: #F2F2F2;
+=======
+  border: 2px solid #000;
+  background-color: #f2f2f2;
+>>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -139,6 +144,10 @@ label {
   height: 45px;
   width: 100%;
   padding: 6px 10px;
+<<<<<<< HEAD
+=======
+  border: 1px solid #f2f2f2;
+>>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 }
 
 .input-container i {
