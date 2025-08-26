@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "Communication Skills",
+    "icon": "communication-icon.png",
+    "description": "Communication is one of the most essential soft skills you can develop, as it forms the foundation of how we connect and collaborate with others. By mastering the art of effective communication, you’ll learn to actively listen, express your ideas clearly, and understand the power of non-verbal cues. This skill also helps you build confidence in professional interactions, making it easier to share your thoughts, resolve misunderstandings, and strengthen relationships both in personal and workplace settings.",
+    "highlights": [
+      "Improve active listening skills",
+      "Express ideas clearly and confidently",
+      "Understand body language and tone",
+      "Communicate better in professional settings"
+    ],
+    "lessonsPage": "communication-lessons.html"
+  },
+  {
+    "id": 2,
+    "title": "Leadership Skills",
+    "icon": "leadership-icon.png",
+    "description": "Leadership is about inspiring others, making effective decisions, and guiding teams toward common goals. Developing this skill helps you build confidence, motivate others, and solve problems strategically in any professional setting.",
+    "highlights": [
+      "Learn to motivate and guide teams",
+      "Make confident and strategic decisions",
+      "Handle conflicts effectively",
+      "Develop problem-solving and delegation skills"
+    ],
+    "lessonsPage": "leadership-lessons.html"
+  },
+  {
+    "id": 3,
+    "title": "Emotional Intelligence",
+    "icon": "emotional-icon.png",
+    "description": "Emotional intelligence is the ability to recognize, understand, and manage your own emotions, as well as the emotions of others. Improving this skill helps you communicate better, handle stress, and maintain stronger relationships.",
+    "highlights": [
+      "Understand and manage your emotions",
+      "Recognize emotions in others",
+      "Improve communication and relationships",
+      "Handle stress and conflict effectively"
+    ],
+    "lessonsPage": "emotional-lessons.html"
+  }
+]

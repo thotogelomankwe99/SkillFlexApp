@@ -1,0 +1,247 @@
+/* Global Reset */
+* {
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:Montserrat;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #000;
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.main-header {
+  background-color: white;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 10px;
+  padding: 15px;
+}
+
+.header-itext img{
+    height: 60px;
+    width: 60px;
+}
+
+.header-itext{
+    display:flex;
+}
+.header-itext h1{
+    margin: 16px;
+    font-size: 24px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding: 2px;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  color: #1215C5;
+  border-bottom: 2px solid #1215C5;
+}
+
+/* ===== PROFILE PAGE ===== */
+.profile-page {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.profile-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.username {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-email {
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.edit-btn {
+  display: inline-block;
+  background: #1215C5;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: #357ab7;
+}
+
+.progress-overview h2 {
+  margin-bottom: 1rem;
+}
+
+.progress-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  flex: 1;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  color: #1215C5;
+}
+
+/* ===== MY SKILLS PAGE ===== */
+.my-skills-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.my-skills-page h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.skill-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.skill-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.skill-card p {
+  color: #000;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 15px;
+  margin-bottom: 1rem;
+}
+
+.progress {
+  height: 100%;
+  background: #27c32c;
+  transition: width 0.4s ease;
+}
+
+.start-btn {
+  display: inline-block;
+  background: #1215C5;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.start-btn:hover {
+  background: #357ab7;
+}
+
+/* ========== FOOTER ========== */
+.footer-section {
+  background-color: #FAFAFA;
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  margin-top: 150px;
+}
+
+.footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-navlink:hover{
+    text-decoration: underline;
+    color: #333;
+}
+.footer-navlink {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-copy {
+  font-weight: 500;
+}
