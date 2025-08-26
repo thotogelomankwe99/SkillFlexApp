@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillFlex - Soft Skills Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SkillFlex</h1>
+            <p>Enhance Your Soft Skills Through Interactive Learning</p>
+        </div>
+
+        <div class="content">
+            <!-- Category Selection -->
+            <div id="categorySelection" class="category-selection">
+                <h2 style="margin-bottom: 20px; color: #333;">Choose a Soft Skill to Practice</h2>
+                <div class="category-grid">
+                    <button class="category-card communication" onclick="startQuiz('communication')">
+                        <h3>💬 Communication</h3>
+                        <p>Master verbal and non-verbal communication skills</p>
+                    </button>
+                    <button class="category-card leadership" onclick="startQuiz('leadership')">
+                        <h3>👑 Leadership</h3>
+                        <p>Develop your leadership and management abilities</p>
+                    </button>
+                    <button class="category-card emotional-intelligence" onclick="startQuiz('emotionalIntelligence')">
+                        <h3>🧠 Emotional Intelligence</h3>
+                        <p>Enhance self-awareness and empathy skills</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div id="quizContainer" class="quiz-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                
+                <div id="questionCard" class="question-card">
+                    <div id="questionNumber" class="question-number"></div>
+                    <div id="questionText" class="question-text"></div>
+                    <div id="optionsContainer" class="options"></div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button id="prevBtn" class="btn btn-secondary" onclick="previousQuestion()" disabled>Previous</button>
+                    <div id="questionCounter" style="color: #666; font-weight: 600;"></div>
+                    <button id="nextBtn" class="btn" onclick="nextQuestion()" disabled>Next</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="results" class="results">
+                <div id="scoreCircle" class="score-circle"></div>
+                <h2 id="resultTitle"></h2>
+                <p id="resultMessage"></p>
+                <button class="btn" onclick="restartQuiz()">Take Another Quiz</button>
+                <button class="btn btn-chatbot" onclick="engageChatbot()">💬 Chat with AI Coach</button>
+                <button class="btn btn-back" onclick="backToCategories()">← Back to Categories</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
