@@ -404,14 +404,51 @@ p{
 }
 
 .notification-panel {
-    background-color: white;
-    width: 300px;
-    border-left: 4px solid #1215C5;
-    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/*quick actions*/
+.notification-panel .right-nav-panel{
+    padding: 20px 10px;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+.notification-panel .right-nav-panel .panel-title{
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+.right-nav-panel ul li{
+    border: 1px solid rgb(69, 72, 251);
+    list-style-type: none;
+    margin:5px 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e0e0ff;
+}
+
+.right-nav-panel ul li a{
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+    color:#000;
+}
+
+.right-nav-panel ul li:hover{
+background-color: #a9a9d6;
+transform: translateY(-1px);
+}
+
+/*Notification box*/
+.notification{
+    margin-top: 30px;
+    padding: 20px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+}
 .notification-panel h3 {
   font-size: 1.2rem;
   margin-bottom: 15px;
@@ -426,13 +463,25 @@ p{
   border-radius: 8px;
 }
 .notification1:hover, .notification2:hover{
-     transform: translateX(4px);
-    background-color: #e9ecef;
+     transform: translateY(-2px);
+    background-color: #b6f6a2;
+}
+
+.n-icons{
+    display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.n-icons img{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
 }
 
 .notification1 p, .notification2 p{
     border-left: 5px solid #67a005;
     padding: 5px;
+    padding-top: 5px;
 }
 .notification1 a, .btn-download{
     margin: 10px;
@@ -503,17 +552,7 @@ p{
     color: #DFF9F9;
 }
 
-/*header icons*/
-.n-icons{
-    display: flex;
-  align-items: center;
-  gap: 3px;
-}
-.n-icons img{
-    width: 30px;
-    height: 30px;
-    margin: 5px;
-}
+
 /* ========== FOOTER ========== */
 .footer-section {
   background-color: #FAFAFA;
@@ -545,6 +584,7 @@ p{
 .footer-copy {
   font-weight: 500;
 }
+
 
 /* Responsiveness for devices*/
 /*Tablet max-width 1024px*/
