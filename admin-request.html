@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SkillFlex Admin Request</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Button */
+    #showFormBtn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 20px;
+    }
+
+    #showFormBtn:hover {
+      background: #0056b3;
+    }
+
+    /* Form styling */
+    #adminForm {
+      display: none; /* hidden by default */
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button[type="submit"] {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background: #218838;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>SkillFlex Admin Access</h1>
+
+  <!-- Button to show form -->
+  <button id="showFormBtn">Request Admin Access</button>
+
+  <!-- Form (hidden initially) -->
+  <form id="adminForm">
+    <label>Full Name:</label>
+    <input type="text" id="fullName" required>
+
+    <label>Email:</label>
+    <input type="email" id="email" required>
+
+    <label>Reason:</label>
+    <textarea id="reason" required></textarea>
+
+    <button type="submit">Submit Request</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    // Show/Hide form on button click
+    document.getElementById("showFormBtn").addEventListener("click", () => {
+      const form = document.getElementById("adminForm");
+      form.style.display = form.style.display === "none" ? "block" : "none";
+    });
+
+    // Handle form submission
+    document.getElementById('adminForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const data = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        reason: document.getElementById('reason').value
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/api/admin-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        document.getElementById('result').textContent = "✅ Request submitted: " + JSON.stringify(result);
+      } catch (err) {
+        document.getElementById('result').textContent = '❌ Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
