@@ -7,8 +7,6 @@
 body{
     background-color: #f5f7fa;
 }
-
-
 .header{
     background-color: white;
     padding: 5px;
@@ -16,9 +14,7 @@ body{
     justify-content: space-between;
     width: 100%;
     height: 70px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .header img{
     height: 60px;
@@ -27,7 +23,6 @@ body{
 
 .header-itext{
     display:flex;
-    margin-left: 40px;
 }
 .header-itext h1{
     margin: 16px;
@@ -35,7 +30,7 @@ body{
     /*left: 10px;*/
 }
 .header span{
-    font-weight: 600;
+    font-weight: bold;
     text-align: center;
     margin: auto;
     font-size: 28px;
@@ -53,100 +48,10 @@ body{
     color: #1215C5;
 }
 
-.h-icons a:active{
-    color:#1215C5;
-}
-
-/* Drawer styles */
-.drawer {
-  height:90%;
-  width: 0;
-  position: fixed;
-  top: 15;
-  right: 0; /* Slides in from the right */
-  background-color: #fff;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-  overflow-x: hidden;
-  transition: 0.3s;
-  padding-top: 10px;
-  z-index: 2000;
-  border-radius: 10px;
-  
-}
-
-.drawer.open {
-  width: 250px;
-}
-
-.drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  border-bottom: 1px solid #ddd;
-  margin: 20px;
-}
-
-.drawer-header h3 {
-  margin: 0;
-  font-size: 18px;
-}
-.drawer-header h3 a{
-    display: block;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
-    transition: background 0.2s;
-}
-
- .drawer-header h3 a:hover{
-    text-decoration: underline;
-
- }
-.drawer-header .close-drawer {
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.drawer-menu {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0 0;
-}
-
-.drawer-menu li {
-  border-radius: 10px;
-  border: 1px solid #fff;
-  background-color: #cfd8e6;
-  margin: 5px;
-}
-
-.drawer-menu li a {
-  display: block;
-  padding: 12px 16px;
-  text-decoration: none;
-  color: #000;
-  font-size: 16px;
-  font-weight: 400;
-  transition: background 0.2s;
-}
- .drawer-menu li a i{
-    padding: 3px;
-}
-
-.drawer-menu li a:hover {
-  background-color: #ebebf9;
-  color: #000;
-  transform: translateY(-4px);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  border-radius: 10px;
-
-}
-
 /*Walkthrough button*/
 #viewWalkthroughBtn{
-    border: 1px solid #1215C5;
-    margin: 20px 450px;
+    border: 1px solid #000;
+    margin: 20px 380px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
@@ -165,7 +70,6 @@ body{
     font-weight: bold
 
 }
-
 /*learner overview*/
 .cards{
     display: flex;
@@ -184,11 +88,11 @@ body{
 .card1, .card2, .card3{
     /*border: 1px solid #000;*/
     background-color: white;
-    height:120px;
-    width: 320px;
+    height:150px;
+    width: 270px;
     border-radius: 10px;
     margin: 10px 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
@@ -209,40 +113,36 @@ body{
     font-size: 24px;
     text-align: left;
     margin:15px;
-    /*margin-left: 70px;*/
+    margin-left: 70px;
+
 }
 
 .card1 img{
-    margin-left: 240px;
+    margin-left: 30px;
+    width: 50px;
     height: 50px;
-    width: 55px;
-    margin-top: 30px;
-    position: absolute; 
+   
 }
-
 .card2 img{
     width: 50px;
     height: 50px;
-    margin-left: 250px;
-    margin-top: 30px;
-    position: absolute;
+    margin-left: 30px;
 }
 
 .card3 img{
     width: 50px;
     height: 50px;
     position: absolute;
-    margin-top: -40px;
-    margin-left: 240px;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
 .progress-text{
     color: #1215C5;
     font-weight: bold;
     font-size: 24px;
-    text-align: left;
-    margin-left: 20px;
-    margin-top: -10px;
+    text-align: center;
+
 }
 
 /*Softskill category text styling*/
@@ -275,8 +175,8 @@ h2{
 #card-1, #card-2{
    /* border: 1px solid #000;*/
     background-color: white;
-    width: 490px;
-    height: 100px;
+    width: 420px;
+    height: 94px;
     text-align: left;
     border-radius: 10px;
     margin: 5px 30px;
@@ -284,6 +184,12 @@ h2{
     padding-bottom: 10px;
 }
 
+
+#card-1 img{
+    /*border:1px solid #000;*/
+    width:50px;
+    height: 50px;
+}
 
 #card-1 h4, #card-2 h4{
     /*border: 1px solid #000;*/
@@ -307,7 +213,7 @@ h2{
   border-radius: 8px;
   overflow: hidden;
   height: 15px;
-  width: 300px;
+  width: 210px;
   margin-left: 15px;
   /*margin: 20px;*/
 }
@@ -324,7 +230,7 @@ h2{
 .progress-percentage {
   font-size: 18px;
   color: #000;
-  margin-left: 330px;
+  margin-left: 235px;
   /*margin-bottom:30px;*/
   font-weight: bold;
   display: inline-block;
@@ -332,7 +238,7 @@ h2{
 
 /* Continue button */
 .continue-btn {
-    margin-left: 370px;
+    margin-left: 300px;
     margin-bottom: 30px;
     /*padding:20px;*/
     text-decoration: none;
@@ -340,7 +246,7 @@ h2{
     font-size: 18px;
     font-weight: bold;
     padding: 0px 0px 10px 10px;
-    display: inline-block;
+  display: inline-block;
 }
 
 .continue-btn:hover {
@@ -355,14 +261,14 @@ h2{
 }
 
 .box1, .box2, .box3{
-   /* border: 1px solid #000;*/
+    /*border: 1px solid #000;*/
     background-color: white;
     margin: 5px 30px;
     border-radius: 10px;
-    width: 285px;
+    width: 275.13px;
     height: 150px;
     padding: 10px;
-    border: 1px solid #f0f0f0;
+     border: 1px solid #f0f0f0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
@@ -409,8 +315,10 @@ p{
     border-left: 4px solid #1215C5;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+
 
 .notification-panel h3 {
   font-size: 1.2rem;
@@ -455,18 +363,17 @@ p{
 /*Chatbot and cta quiz containers*/
 .container1, .container2{
     background-color: white;
-    width: 470px;
-    height: 140px;
+    width: 450px;
+    height: 145px;
     margin: 15px 30px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .container1 img{
     position: absolute;
-    width:160px;
-    height: 160px;
+    width:161.94px;
+    height: 161.94px;
 }
 
 .container1 h3{
@@ -475,16 +382,15 @@ p{
 }
 
 .container1 a{
-    font-size: 22px;
+    font-size: 24px;
     text-align: center;
     margin-left:150px;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .container2 a{
-    font-weight: 22px;
+    font-weight: 20px;
     margin-left: 150px;
-    margin-top: 20px;
 }
 .quick-practice, .take-quiz{
       display: inline-block;
@@ -502,8 +408,6 @@ p{
     box-shadow: 0 6px 8px rgba(0,0,0,0.1);
     color: #DFF9F9;
 }
-
-/*header icons*/
 .n-icons{
     display: flex;
   align-items: center;
@@ -830,6 +734,17 @@ p{
     text-decoration: underline;
 }
 
+/*Notfication panel
+.dashboard-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-content {
+  flex: 1;
+}*/
+
 .notification-panel {
     display: none;
     background-color: white;
@@ -837,7 +752,7 @@ p{
     border-left: 4px solid #1215C5;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 /*.notification-panel h3 {
   font-size: 1.2rem;

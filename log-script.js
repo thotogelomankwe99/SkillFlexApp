@@ -1,12 +1,12 @@
 // For Firebase 
 const firebaseConfig = {
-  apiKey: "AIzaSyDfRwl1po6DHQv1JZsdIH-o3YN9r6Vw1so",
-  authDomain: "skillflex-1700b.firebaseapp.com",
-  projectId: "skillflex-1700b",
-  storageBucket: "skillflex-1700b.firebasestorage.app",
-  messagingSenderId: "1062926529269",
-  appId: "1:1062926529269:web:bb5a515fb9eddda1190bbc",
-  measurementId: "G-879ZDDBYRY"
+  apiKey: "AIzaSyBh4dUfZ8m61xsqa0qhG3aFguVZ4Gm2KCQ",
+  authDomain: "skillflexapp.firebaseapp.com",
+  projectId: "skillflexapp",
+  storageBucket: "skillflexapp.firebasestorage.app",
+  messagingSenderId: "827795374450",
+  appId: "1:827795374450:web:7a1aaa93bbda644dadddeb",
+  measurementId: "G-X9BKZGZX42"
 };
 
 //Initialize firebase
@@ -51,7 +51,7 @@ document.querySelector("#log-btn").addEventListener("click", function(e){
     })
     .catch((error)=>{
       console.error("google login error: "+ error);
-      alert("Login failed: " + error.message);
+      alert("Login failed: "+ error.message);
     });
 })
 
