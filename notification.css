@@ -1,0 +1,160 @@
+/* Notifications Page Styling */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+body{
+background-color: #f5f7fa;
+}
+
+/*Styling the header*/
+.main-header {
+  background-color: white;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 10px;
+  padding: 15px;
+}
+
+/*Styling the navigation*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  /*margin: 0 auto;*/
+}
+
+.header-itext img{
+  height: 60px;
+  width: 60px;
+}
+
+.header-itext{
+    display:flex;
+}
+.header-itext h1{
+    margin: 16px;
+    font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.nav-links a:hover {
+  color: #1215C5;
+  border-bottom: 2px solid #1215C5;
+}
+
+.nav-links a.active {
+  color: #1215C5;
+  border-bottom: 2px solid #1215C5;
+}
+
+
+/*Styling the notifications*/
+.notifications-list {
+  padding: 20px;
+  max-width: auto;
+  margin: 0 20px;
+}
+
+.notification-item {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.notification-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.notification-item h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+}
+
+.notification-item p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: #000;
+  line-height: 1.4;
+}
+
+.notification-item a {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1215C5;
+  text-decoration: none;
+  border: 1px solid #1215C5;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.notification-item a:hover {
+  background: #1215C5;
+  color: #fff;
+}
+
+/* FOOTER */
+.footer-section {
+  background-color: #FAFAFA;
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  margin-top: 220px;
+}
+
+.footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-navlink:hover{
+    text-decoration: underline;
+    color: #333;
+}
+.footer-navlink {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-copy {
+  font-weight: 500;
+}
