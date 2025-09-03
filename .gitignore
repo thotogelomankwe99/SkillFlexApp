@@ -65,10 +65,10 @@ build/Release
 # dataconnect generated files
 .dataconnect
 
-<<<<<<< HEAD
 
 # Firebase private keys and config
-firebase-service-account
+firebase-service-account.json
+
 .firebaserc
 
 # Node modules
@@ -80,5 +80,3 @@ node_modules - Copy/
 .DS_Store
 Thumbs.db
 
-=======
->>>>>>> origin/main
