@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Categories</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="L-dashboard.css">
+</head>
+<body>
+    <main>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <!-- Hamburger Menu -->
+                <div class="hamburger" onclick="toggleSidebar()">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <!-- Logo and Brand -->
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="LOGO-removebg-preview 1.png" alt="SkillFlex logo" class="logo-img">
+                    </div>
+                    <div class="logo-text">SkillFlex</div>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="header-icons">
+                    <!-- Notifications -->
+                    <button class="icon-button" onclick="showNotifications()">
+                        <i class="material-icons">notifications</i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    
+                    <!-- User Profile -->
+                    <div class="user-avatar" onclick="showUserProfileModal()">
+                        JD
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="sidebar-list">
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('overview')">
+                        <i class="material-icons">dashboard</i>
+                        Dashboard
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('skills')" id="active">
+                        <i class="material-icons">check_circle</i>Skills Categories
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('quiz')">
+                        <i class="material-icons">quiz</i>
+                        Quiz
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('ai-chatbot')">
+                        <i class="material-icons">chat</i>
+                        AI Chatbot
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('mentor-booking')">
+                        <i class="material-icons">person</i>
+                        Mentor Booking
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('progress')">
+                        <i class="material-icons">assessment</i>
+                        Progress Tracking
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('reflection')">
+                        <i class="material-icons">forum</i>
+                        Reflection
+                    </button>
+                </li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button" onclick="showPage('certificates')">
+                        <i class="material-icons">workspace_premium</i>
+                        Certificates
+                    </button>
+                </li>
+                <li class="sidebar-divider"></li>
+                <li class="sidebar-item">
+                    <button class="sidebar-button sidebar-help" onclick="showWalkthrough()">
+                        <i class="material-icons">help</i>
+                        How It Works
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Overlay for sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+    
+    <!-- Skills Page -->
+    <div id="skills-page" class="page">
+        <div class="skills-header">
+            <h2>Skills Categories</h2>
+            <p>Choose from our comprehensive collection of soft skills</p>
+            
+            <!-- Search Bar -->
+             <div class="search-container">
+                <div class="search-box">
+                    <i class="material-icons search-icon">search</i>
+                    <input type="text" id="skill-search" class="search-input" placeholder="Search for a skill...">
+                </div>
+            </div>
+        </div>
+        
+        <div class="skills-container">
+            <!-- Communication Skill -->
+             <div class="skill-card-large" onclick="showSkillDetail('communication')">
+                <div class="video-container">
+                    <i class="material-icons" onclick="event.stopPropagation(); playVideo('communication')">play_circle</i>
+                    <div class="video-badge">Popular</div>
+                </div>
+                <div class="skill-content-large">
+                    <h4>Communication Skills</h4>
+                    <p>Master verbal and non-verbal communication to build stronger relationships.</p>
+                    <button class="learn-more-button">Learn More</button>
+                </div>
+            </div>
+            
+            <!-- Leadership Skill -->
+             <div class="skill-card-large" onclick="showSkillDetail('leadership')">
+                <div class="video-container">
+                    <i class="material-icons" onclick="event.stopPropagation(); playVideo('leadership')">play_circle</i>
+                    <div class="video-badge">Trending</div>
+                </div>
+                
+                <div class="skill-content-large">
+                    <h4>Leadership Skills</h4>
+                    <p>Develop leadership qualities to inspire teams and drive positive change.</p>
+                    <button class="learn-more-button">Learn More</button>
+                </div>
+            </div>
+            
+            <!-- Teamwork Skill -->
+             <div class="skill-card-large" onclick="showSkillDetail('teamwork')">
+                <div class="video-container">
+                    <i class="material-icons" onclick="event.stopPropagation(); playVideo('teamwork')">play_circle</i>
+                    <div class="video-badge">New</div>
+                </div>
+                <div class="skill-content-large">
+                    <h4>Teamwork & Collaboration</h4>
+                    <p>Learn to collaborate effectively in diverse group settings.</p>
+                    <button class="learn-more-button">Learn More</button>
+                </div>
+            </div>
+            
+            <!-- Problem Solving Skill -->
+             <div class="skill-card-large" onclick="showSkillDetail('problem-solving')">
+                <div class="video-container">
+                    <i class="material-icons" onclick="event.stopPropagation(); playVideo('problem-solving')">play_circle</i>
+                </div>
+                <div class="skill-content-large">
+                    <h4>Problem Solving</h4>
+                    <p>Enhance analytical thinking and creative problem-solving abilities.</p>
+                    <button class="learn-more-button">Learn More</button>
+                </div>
+            </div>
+
+                <!-- Time Management Skill -->
+                <div class="skill-card-large" onclick="showSkillDetail('time-management')">
+                    <div class="video-container">
+                        <i class="material-icons" onclick="event.stopPropagation(); playVideo('time-management')">play_circle</i>
+                    </div>
+                    <div class="skill-content-large">
+                        <h4>Time Management</h4>
+                        <p>Master prioritization and productivity for better work-life balance.</p>
+                        <button class="learn-more-button">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- Emotional Intelligence Skill -->
+                <div class="skill-card-large" onclick="showSkillDetail('emotional-intelligence')">
+                    <div class="video-container">
+                        <i class="material-icons" onclick="event.stopPropagation(); playVideo('emotional-intelligence')">play_circle</i>
+                    </div>
+                    <div class="skill-content-large">
+                        <h4>Emotional Intelligence</h4>
+                        <p>Develop self-awareness and empathy for better relationships.</p>
+                        <button class="learn-more-button">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Skill Overview Modal -->
+        <div id="skill-overview-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button onclick="showPage('overview')">
+                        <i class="material-icons">arrow_back</i>
+                        <span>Back to Dashboard</span>
+                    </button>
+                    <button class="close-button" onclick="closeSkillOverview()">
+                        <i class="material-icons">close</i>
+                    </button>
+                </div>
+                
+                <!-- Video Section -->
+                <div class="skill-video">
+                    <div class="video-placeholder">
+                        <i class="material-icons" onclick="playOverviewVideo()">play_circle</i>
+                        <p id="overview-video-placeholder">Click to play introduction video</p>
+                    </div>
+                    <div id="overview-video-overlay" class="video-overlay">
+                        <div class="video-loading">
+                            <div class="spinner"></div>
+                            <p>Loading video...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-info">
+                    <!-- Skill Title and Description -->
+                    <div>
+                        <h2 class="skill-title" id="overview-skill-title"></h2>
+                        <p class="skill-description" id="overview-skill-description"></p>
+                    </div>
+
+                    <!-- What You'll Learn -->
+                    <div class="benefits-section">
+                        <h3>What You'll Learn</h3>
+                        <ul class="benefits-list" id="overview-skill-benefits"></ul>
+                    </div>
+
+                    <!-- Learning Path -->
+                    <div class="learning-path">
+                        <h3>Learning Path</h3>
+                        <div class="path-grid">
+                            <div class="path-item blue">
+                                <i class="material-icons">play_circle</i>
+                                <h4>1. Watch Video</h4>
+                                <p>Learn core concepts</p>
+                            </div>
+                            <div class="path-item purple">
+                                <i class="material-icons">quiz</i>
+                                <h4>2. Take Quiz</h4>
+                                <p>Test your knowledge</p>
+                            </div>
+                            <div class="path-item green">
+                                <i class="material-icons">chat</i>
+                                <h4>3. AI Practice</h4>
+                                <p>Scenario-based learning</p>
+                            </div>
+                            <div class="path-item orange">
+                                <i class="material-icons">person</i>
+                                <h4>4. Mentor Session</h4>
+                                <p>Expert guidance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Stats -->
+                    <div class="stats-grid-modal">
+                        <div class="stat-item">
+                            <i class="material-icons">schedule</i>
+                            <p>2-3 hours</p>
+                            <p>Estimated time</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="material-icons">people</i>
+                            <p>1,234+</p>
+                            <p>Learners enrolled</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="material-icons">star</i>
+                            <p>4.8/5</p>
+                            <p>Average rating</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="modal-action">
+                        <button class="modal-action-button" onclick="startOverviewQuiz()">Take Quiz Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill Detail Modal -->
+        <div id="skill-detail-modal" class="modal">
+            <div class="modal-content skill-detail-modal">
+                <div class="modal-header">
+                    <h2 id="modal-skill-title"></h2>
+                    <button class="close-button" onclick="closeSkillModal()">
+                        <i class="material-icons">close</i>
+                    </button>
+                </div>
+                
+                <!-- Video Section -->
+                <div class="skill-detail-video">
+                    <div class="video-placeholder">
+                        <i class="material-icons" onclick="playModalVideo()">play_circle</i>
+                        <p id="modal-video-placeholder">Click to play video</p>
+                    </div>
+                    <div id="modal-video-overlay" class="video-overlay">
+                        <div class="video-loading">
+                            <div class="spinner"></div>
+                            <p>Loading video...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-detail-info">
+                    <!-- Description Section -->
+                    <div>
+                        <h3>About This Skill</h3>
+                        <p id="modal-skill-description"></p>
+                    </div>
+
+                    <!-- Benefits Section -->
+                    <div>
+                        <h3>What You'll Gain</h3>
+                        <ul class="benefits-list" id="modal-skill-benefits"></ul>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="modal-action">
+                        <button class="modal-action-button" onclick="startSkillQuiz()">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-brand">
+                        <div class="footer-brand-icon">
+                            <img src="LOGO-removebg-preview 1.png" alt="SkillFlex logo" class="logo-img">
+                        </div>
+                        <div class="footer-brand-text">SkillFlex</div>
+                    </div>
+                    <p>SkillFlex helps you develop essential soft skills through personalized learning paths, practice scenarios, and mentor guidance.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><button onclick="showPage('overview')">Dashboard</button></li>
+                        <li><button onclick="showPage('skills')">Skills Categories</button></li>
+                        <li><button onclick="showPage('quiz')">Take Quiz</button></li>
+                        <li><button onclick="showPage('ai-chatbot')">SkillBot AI</button></li>
+                        <li><button onclick="showPage('mentor-booking')">Book Mentor</button></li>
+                        <li><button onclick="showPage('certificates')">Certificates</button></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-item">
+                        <i class="material-icons">email</i>
+                        <div class="contact-info">
+                            <p>Email:</p>
+                            <a href="mailto:support@skillflex.com">support@skillflex.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="material-icons">phone</i>
+                        <div class="contact-info">
+                            <p>Phone:</p>
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <button>Terms of Service</button>
+                <div class="copyright">© 2025 SkillFlex. All rights reserved.</div>
+                <button>Help & Support</button>
+            </div>
+        </div>
+    </footer>
+    <script src="LearnerDashboard.js"></script>
+</body>
+</html>
