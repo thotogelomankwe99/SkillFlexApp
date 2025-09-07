@@ -131,12 +131,13 @@ label {
 }
 
 .input-container {
-<<<<<<< HEAD
+
   background-color: #F2F2F2;
-=======
+
+  background-color: #F2F2F2;
+
   border: 2px solid #000;
   background-color: #f2f2f2;
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -144,10 +145,9 @@ label {
   height: 45px;
   width: 100%;
   padding: 6px 10px;
-<<<<<<< HEAD
-=======
+
   border: 1px solid #f2f2f2;
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
+
 }
 
 .input-container i {
@@ -192,6 +192,49 @@ input[type="radio"] {
   border: 1px solid #1F1F1F;
   cursor: pointer;
 }
+
+/* Admin Button Styles */
+    .admin-button-container {
+      margin-top: 10px;
+    }
+
+    .admin-button {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .admin-button:hover {
+      background-color: #f0f5ff;
+    }
+
+    .admin-button-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #999;
+      border-radius: 50px;
+      margin-right: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      transition: all 0.2s ease;
+    }
+
+    .admin-button:hover .admin-button-box {
+      border-color: #1251C5;
+      background-color: #ebf4ff;
+    }
+
+    .admin-button-text {
+      color: #000;
+      font-weight: 300;
+      font-size: 18px;
+    }
+
 
 .terms {
   display: flex;
