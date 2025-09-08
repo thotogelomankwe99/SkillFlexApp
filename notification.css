@@ -1,12 +1,14 @@
 /* Notifications Page Styling */
 *{
-    margin: 0;
-    padding: 0;
-    font-family: Montserrat;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
 }
 
 body{
 background-color: #f5f7fa;
+color: #000;
+line-height: 1.6;
 }
 
 /*Styling the header*/
@@ -47,10 +49,6 @@ background-color: #f5f7fa;
   list-style: none;
   display: flex;
   gap: 1.5rem;
-}
-
-.nav-links li {
-  display: inline-block;
 }
 
 .nav-links a {
