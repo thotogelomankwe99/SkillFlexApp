@@ -1,0 +1,3433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillFlex Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            width: 100%;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            padding: 8px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .hamburger:hover {
+            background-color: #f3f4f6;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background-color: #4b5563;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active .line1 {
+            transform: rotate(-45deg) translate(-6px, 7px);
+        }
+
+        .hamburger.active .line2 {
+            opacity: 0;
+        }
+
+        .hamburger.active .line3 {
+            transform: rotate(45deg) translate(-6px, -7px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+  width: 60px;   /* adjust as needed */
+  height: 60px;
+  object-fit: contain; /* keeps proportions */
+  margin-right: 8px;   /* spacing between logo and text */
+}
+
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-btn {
+            position: relative;
+            padding: 12px;
+            color: #6b7280;
+            background: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header-btn:hover {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 12px;
+            height: 12px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.05);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 64px;
+            width: 280px;
+            height: calc(100vh - 64px);
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-nav {
+            padding: 16px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            padding: 0 12px;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .sidebar-btn:hover {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        .sidebar-btn.active {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+
+        .sidebar-btn i {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 30;
+            display: none;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Main Content */
+        .main-content {
+            transition: all 0.3s ease;
+            width: 100%;
+            padding: 24px;
+        }
+
+        .page {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .page-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .card-link {
+            color: #dc2626;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .card-link:hover {
+            color: #b91c1c;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-info h3 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .stat-info p {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .stat-change {
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .stat-change.positive {
+            color: #059669;
+        }
+
+        .stat-change.negative {
+            color: #dc2626;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .stat-icon.red {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            color: #dc2626;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #2563eb;
+        }
+
+        .stat-icon.green {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #16a34a;
+        }
+
+        .stat-icon.purple {
+            background: linear-gradient(135deg, #e9d5ff, #ddd6fe);
+            color: #7c3aed;
+        }
+
+        .stat-icon.orange {
+            background: linear-gradient(135deg, #fed7aa, #fdba74);
+            color: #ea580c;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #047857, #065f46);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+        }
+
+        /* Tables */
+        .table-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .table td {
+            padding: 16px;
+            border-bottom: 1px solid #f3f4f6;
+            color: #1f2937;
+        }
+
+        .table tr:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .form-textarea {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        /* User Profile Modal */
+        .user-profile-modal {
+            position: fixed;
+            top: 64px;
+            right: 16px;
+            width: 320px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            z-index: 60;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .user-profile-modal.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .user-profile-header {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-profile-avatar {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .user-profile-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .user-profile-info p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .user-profile-actions {
+            padding: 16px;
+        }
+
+        .user-profile-btn {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+
+        .user-profile-btn:hover {
+            background-color: #f3f4f6;
+        }
+
+        .user-profile-btn i {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .user-profile-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .user-profile-close:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        /* Notifications Page */
+        .notifications-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-btn:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .notification-item {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .notification-item:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .notification-item.unread {
+            border-left: 4px solid #dc2626;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .notification-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .notification-body {
+            flex: 1;
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 16px;
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .notification-message {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Management Tables */
+        .management-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn.edit {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .action-btn.edit:hover {
+            background-color: #bfdbfe;
+        }
+
+        .action-btn.delete {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .action-btn.delete:hover {
+            background-color: #fecaca;
+        }
+
+        .action-btn.view {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .action-btn.view:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Status Badges */
+        .badge {
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.active {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .badge.inactive {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge.pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge.approved {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .badge.rejected {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Search and Filter Bar */
+        .search-filter-bar {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .filter-select {
+            min-width: 150px;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 70;
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            padding: 24px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 12px;
+            }
+
+            .main-content {
+                padding: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .search-filter-bar {
+                flex-direction: column;
+            }
+
+            .search-input,
+            .filter-select {
+                min-width: 100%;
+            }
+
+            .user-profile-modal {
+                right: 12px;
+                width: calc(100% - 24px);
+                max-width: 320px;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 16px;
+        }
+
+        .mb-6 {
+            margin-bottom: 24px;
+        }
+
+        .mt-4 {
+            margin-top: 16px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-4 {
+            gap: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Hamburger Menu -->
+            <div class="hamburger" onclick="toggleSidebar()">
+                <div class="hamburger-line line1"></div>
+                <div class="hamburger-line line2"></div>
+                <div class="hamburger-line line3"></div>
+            </div>
+
+           <!-- Logo and Brand -->
+<div class="brand">
+    <img src="LOGO-removebg-preview 1.png" alt="SkillFlex Logo" class="brand-logo">
+    <h1 class="brand-title">SkillFlex Admin</h1>
+</div>
+
+            <!-- Right Icons -->
+            <div class="header-actions">
+                <!-- Notifications -->
+                <button onclick="showNotifications()" class="header-btn">
+                    <i class="material-icons">notifications</i>
+                    <span class="notification-dot" id="notification-badge"></span>
+                </button>
+                
+                <!-- User Profile -->
+                <button onclick="toggleUserProfile()" class="user-avatar">
+                    AD
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <!-- Main Navigation -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Main</div>
+                <ul>
+                    <li>
+                        <button onclick="showPage('dashboard')" class="sidebar-btn active">
+                            <i class="material-icons">dashboard</i>
+                            Dashboard
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- User Management -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">User Management</div>
+                <ul>
+                    <li>
+                        <button onclick="showPage('learners')" class="sidebar-btn">
+                            <i class="material-icons">school</i>
+                            Learner Management
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('mentors')" class="sidebar-btn">
+                            <i class="material-icons">person</i>
+                            Mentor Management
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Content Management -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Content Management</div>
+                <ul>
+                    <li>
+                        <button onclick="showPage('skills')" class="sidebar-btn">
+                            <i class="material-icons">category</i>
+                            Skills Categories
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('quizzes')" class="sidebar-btn">
+                            <i class="material-icons">quiz</i>
+                            Quiz Management
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('chatbot')" class="sidebar-btn">
+                            <i class="material-icons">smart_toy</i>
+                            AI Chatbot
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('bookings')" class="sidebar-btn">
+                            <i class="material-icons">event</i>
+                            Mentor Bookings
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('reflections')" class="sidebar-btn">
+                            <i class="material-icons">psychology</i>
+                            Reflections
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('certifications')" class="sidebar-btn">
+                            <i class="material-icons">workspace_premium</i>
+                            Certifications
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Analytics & Reports -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Analytics & Reports</div>
+                <ul>
+                    <li>
+                        <button onclick="showPage('analytics')" class="sidebar-btn">
+                            <i class="material-icons">analytics</i>
+                            Sessions Analytics
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showPage('reports')" class="sidebar-btn">
+                            <i class="material-icons">assessment</i>
+                            Reports
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- System -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">System</div>
+                <ul>
+                    <li>
+                        <button onclick="showPage('settings')" class="sidebar-btn">
+                            <i class="material-icons">settings</i>
+                            System Settings
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Overlay for sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+    <!-- User Profile Modal -->
+    <div class="user-profile-modal" id="user-profile-modal">
+        <button class="user-profile-close" onclick="closeUserProfile()">
+            <i class="material-icons">close</i>
+        </button>
+        <div class="user-profile-header">
+            <div class="user-profile-avatar">AD</div>
+            <div class="user-profile-info">
+                <h3>Admin User</h3>
+                <p>System Administrator</p>
+            </div>
+        </div>
+        <div class="user-profile-actions">
+            <button class="user-profile-btn" onclick="showPage('profile')">
+                <i class="material-icons">person</i>
+                Profile Settings
+            </button>
+            <button class="user-profile-btn" onclick="showPage('security')">
+                <i class="material-icons">security</i>
+                Security Settings
+            </button>
+            <button class="user-profile-btn">
+                <i class="material-icons">help</i>
+                Help & Support
+            </button>
+            <hr style="margin: 12px 0;">
+            <button class="user-profile-btn" style="color: #ef4444;">
+                <i class="material-icons">logout</i>
+                Sign Out
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Admin Dashboard</h1>
+                <p class="page-subtitle">Monitor and manage your SkillFlex platform</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>2,847</h3>
+                            <p>Total Learners</p>
+                            <div class="stat-change positive">+12% this month</div>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i class="material-icons">school</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>156</h3>
+                            <p>Total Mentors</p>
+                            <div class="stat-change positive">+8% this month</div>
+                        </div>
+                        <div class="stat-icon green">
+                            <i class="material-icons">person</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>1,234</h3>
+                            <p>Sessions This Month</p>
+                            <div class="stat-change positive">+15% this month</div>
+                        </div>
+                        <div class="stat-icon purple">
+                            <i class="material-icons">event</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>94.2%</h3>
+                            <p>Platform Uptime</p>
+                            <div class="stat-change positive">+0.5% this month</div>
+                        </div>
+                        <div class="stat-icon orange">
+                            <i class="material-icons">trending_up</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity & Quick Actions -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Activity</h3>
+                        <a class="card-link">View All</a>
+                    </div>
+                    <div id="recent-activity">
+                        <!-- Activity items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Quick Actions</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <button onclick="showPage('learners')" class="btn btn-primary">
+                            <i class="material-icons">add</i>
+                            Add New Learner
+                        </button>
+                        <button onclick="showPage('mentors')" class="btn btn-secondary">
+                            <i class="material-icons">person_add</i>
+                            Add New Mentor
+                        </button>
+                        <button onclick="showPage('skills')" class="btn btn-secondary">
+                            <i class="material-icons">category</i>
+                            Manage Skills
+                        </button>
+                        <button onclick="showPage('reports')" class="btn btn-secondary">
+                            <i class="material-icons">assessment</i>
+                            Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Notifications Page -->
+        <div id="notifications-page" class="page hidden">
+            <div class="notifications-header">
+                <button class="back-btn" onclick="goBack()">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <div>
+                    <h1 class="page-title">Notifications</h1>
+                    <p class="page-subtitle">Stay updated with platform activities</p>
+                </div>
+            </div>
+
+            <div class="page-actions">
+                <button onclick="markAllAsRead()" class="btn btn-secondary">
+                    <i class="material-icons">done_all</i>
+                    Mark All as Read
+                </button>
+                <button onclick="clearNotifications()" class="btn btn-danger">
+                    <i class="material-icons">clear_all</i>
+                    Clear All
+                </button>
+            </div>
+
+            <div id="notifications-list">
+                <!-- Notifications will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Learner Management Page -->
+        <div id="learners-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Learner Management</h1>
+                        <p class="page-subtitle">Manage and monitor learner accounts</p>
+                    </div>
+                </div>
+                <div class="page-actions">
+                    <button onclick="addLearner()" class="btn btn-primary">
+                        <i class="material-icons">add</i>
+                        Add New Learner
+                    </button>
+                    <button onclick="exportLearners()" class="btn btn-secondary">
+                        <i class="material-icons">download</i>
+                        Export Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-filter-bar">
+                <input type="text" placeholder="Search learners..." class="form-input search-input" id="learner-search">
+                <select class="form-select filter-select" id="learner-status-filter">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+                <select class="form-select filter-select" id="learner-level-filter">
+                    <option value="">All Levels</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Learner</th>
+                            <th>Email</th>
+                            <th>Level</th>
+                            <th>Sessions</th>
+                            <th>Status</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="learners-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Mentor Management Page -->
+        <div id="mentors-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Mentor Management</h1>
+                        <p class="page-subtitle">Manage mentor accounts and applications</p>
+                    </div>
+                </div>
+                <div class="page-actions">
+                    <button onclick="addMentor()" class="btn btn-primary">
+                        <i class="material-icons">add</i>
+                        Add New Mentor
+                    </button>
+                    <button onclick="exportMentors()" class="btn btn-secondary">
+                        <i class="material-icons">download</i>
+                        Export Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-filter-bar">
+                <input type="text" placeholder="Search mentors..." class="form-input search-input" id="mentor-search">
+                <select class="form-select filter-select" id="mentor-status-filter">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="pending">Pending</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+                <select class="form-select filter-select" id="mentor-expertise-filter">
+                    <option value="">All Expertise</option>
+                    <option value="leadership">Leadership</option>
+                    <option value="communication">Communication</option>
+                    <option value="technical">Technical Skills</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mentor</th>
+                            <th>Email</th>
+                            <th>Expertise</th>
+                            <th>Rating</th>
+                            <th>Sessions</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mentors-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Skills Categories Page -->
+        <div id="skills-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Skills Categories Management</h1>
+                        <p class="page-subtitle">Organize and manage skill categories</p>
+                    </div>
+                </div>
+                <div class="page-actions">
+                    <button onclick="addSkillCategory()" class="btn btn-primary">
+                        <i class="material-icons">add</i>
+                        Add Category
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid-3" id="skills-grid">
+                <!-- Skills categories will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Quiz Management Page -->
+        <div id="quizzes-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Quiz Management</h1>
+                        <p class="page-subtitle">Create and manage assessment quizzes</p>
+                    </div>
+                </div>
+                <div class="page-actions">
+                    <button onclick="createQuiz()" class="btn btn-primary">
+                        <i class="material-icons">add</i>
+                        Create Quiz
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Quiz Title</th>
+                            <th>Category</th>
+                            <th>Questions</th>
+                            <th>Attempts</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quizzes-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- AI Chatbot Management Page -->
+        <div id="chatbot-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">AI Chatbot Management</h1>
+                        <p class="page-subtitle">Configure and monitor AI chatbot interactions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Chatbot Configuration</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Bot Name</label>
+                        <input type="text" value="SkillFlex Assistant" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Response Style</label>
+                        <select class="form-select">
+                            <option>Professional</option>
+                            <option>Friendly</option>
+                            <option>Casual</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Default Responses</label>
+                        <textarea class="form-textarea" placeholder="Configure default responses..."></textarea>
+                    </div>
+                    <button class="btn btn-primary">Save Configuration</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Chatbot Analytics</h3>
+                    </div>
+                    <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div style="text-align: center; padding: 16px;">
+                            <h4 style="font-size: 24px; font-weight: bold; color: #1f2937;">1,247</h4>
+                            <p style="color: #6b7280;">Total Conversations</p>
+                        </div>
+                        <div style="text-align: center; padding: 16px;">
+                            <h4 style="font-size: 24px; font-weight: bold; color: #1f2937;">89%</h4>
+                            <p style="color: #6b7280;">Resolution Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mentor Bookings Page -->
+        <div id="bookings-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Mentor Booking Management</h1>
+                        <p class="page-subtitle">Monitor and manage mentor session bookings</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Learner</th>
+                            <th>Mentor</th>
+                            <th>Session Date</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookings-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Reflections Management Page -->
+        <div id="reflections-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Reflections Management</h1>
+                        <p class="page-subtitle">Monitor learner reflection submissions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Learner</th>
+                            <th>Session</th>
+                            <th>Reflection Type</th>
+                            <th>Submitted</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reflections-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Certifications Management Page -->
+        <div id="certifications-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Certifications Management</h1>
+                        <p class="page-subtitle">Manage certificates and achievements</p>
+                    </div>
+                </div>
+                <div class="page-actions">
+                    <button onclick="createCertificate()" class="btn btn-primary">
+                        <i class="material-icons">add</i>
+                        Create Certificate
+                    </button>
+                    <button onclick="showCertificateTemplate()" class="btn btn-success">
+                        <i class="material-icons">description</i>
+                        Certificate Template
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Certificate Name</th>
+                            <th>Category</th>
+                            <th>Requirements</th>
+                            <th>Issued</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="certifications-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Certificate Template Page -->
+        <div id="certificate-template-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('certifications')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Certificate Template</h1>
+                        <p class="page-subtitle">Design and customize certificate templates for automatic generation</p>
+                    </div>
+                </div>
+                <div class="page-actions">
+                    <button onclick="previewCertificate()" class="btn btn-secondary">
+                        <i class="material-icons">preview</i>
+                        Preview with Sample Data
+                    </button>
+                    <button onclick="saveCertificateTemplate()" class="btn btn-primary">
+                        <i class="material-icons">save</i>
+                        Save Template
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Template Editor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Template Settings</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Certificate Title</label>
+                        <input type="text" id="cert-title" value="Certificate of Achievement" class="form-input" placeholder="Enter certificate title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Organization Name</label>
+                        <input type="text" id="cert-org" value="SkillFlex Learning Platform" class="form-input" placeholder="Enter organization name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Certificate Text</label>
+                        <textarea id="cert-text" class="form-textarea" placeholder="Enter certificate text with placeholders">This is to certify that {LEARNER_NAME} has successfully completed the {SKILL_CATEGORY} program and demonstrated proficiency in {SKILL_NAME}. This achievement reflects {LEARNER_NAME}'s dedication to professional development and mastery of essential skills.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Signature Title</label>
+                        <input type="text" id="cert-signature" value="Director of Learning" class="form-input" placeholder="Enter signature title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Available Placeholders</label>
+                        <div style="background: #f0f9ff; padding: 12px; border-radius: 8px; font-size: 14px; color: #1e40af;">
+                            <p><strong>Available placeholders:</strong></p>
+                            <p><code>{LEARNER_NAME}</code> - Learner's full name</p>
+                            <p><code>{SKILL_NAME}</code> - Name of completed skill</p>
+                            <p><code>{SKILL_CATEGORY}</code> - Skill category</p>
+                            <p><code>{COMPLETION_DATE}</code> - Date of completion</p>
+                            <p><code>{MENTOR_NAME}</code> - Assigned mentor name</p>
+                            <p><code>{SESSIONS_COMPLETED}</code> - Number of sessions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Preview -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Live Preview</h3>
+                    </div>
+                    <div id="certificate-preview" style="border: 2px solid #e5e7eb; border-radius: 12px; padding: 32px; background: white; min-height: 400px;">
+                        <!-- Certificate preview will be generated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Requests -->
+            <div class="card mt-6">
+                <div class="card-header">
+                    <h3 class="card-title">Certificate Requests</h3>
+                    <button onclick="refreshRequests()" class="btn btn-secondary">
+                        <i class="material-icons">refresh</i>
+                        Refresh
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Learner</th>
+                                <th>Skill Completed</th>
+                                <th>Completion Date</th>
+                                <th>Mentor</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="certificate-requests-body">
+                            <!-- Certificate requests will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sessions Analytics Page -->
+        <div id="analytics-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Sessions Analytics</h1>
+                        <p class="page-subtitle">Analyze session performance and trends</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>1,234</h3>
+                            <p>Total Sessions</p>
+                            <div class="stat-change positive">+15% this month</div>
+                        </div>
+                        <div class="stat-icon blue">
+                            <i class="material-icons">event</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>4.8</h3>
+                            <p>Average Rating</p>
+                            <div class="stat-change positive">+0.2 this month</div>
+                        </div>
+                        <div class="stat-icon orange">
+                            <i class="material-icons">star</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>92%</h3>
+                            <p>Completion Rate</p>
+                            <div class="stat-change positive">+3% this month</div>
+                        </div>
+                        <div class="stat-icon green">
+                            <i class="material-icons">check_circle</i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <h3>58min</h3>
+                            <p>Avg Duration</p>
+                            <div class="stat-change negative">-2min this month</div>
+                        </div>
+                        <div class="stat-icon purple">
+                            <i class="material-icons">schedule</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Session Trends</h3>
+                </div>
+                <div style="height: 300px; display: flex; align-items: center; justify-content: center; color: #6b7280;">
+                    <div style="text-align: center;">
+                        <i class="material-icons" style="font-size: 48px; margin-bottom: 16px;">analytics</i>
+                        <p>Analytics chart would be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="reports-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Reports</h1>
+                        <p class="page-subtitle">Generate and download platform reports</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">User Reports</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <button class="btn btn-secondary" onclick="generateReport('learner-activity')">Learner Activity Report</button>
+                        <button class="btn btn-secondary" onclick="generateReport('mentor-performance')">Mentor Performance Report</button>
+                        <button class="btn btn-secondary" onclick="generateReport('user-registration')">User Registration Report</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Session Reports</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <button class="btn btn-secondary" onclick="generateReport('session-analytics')">Session Analytics Report</button>
+                        <button class="btn btn-secondary" onclick="generateReport('booking-trends')">Booking Trends Report</button>
+                        <button class="btn btn-secondary" onclick="generateReport('completion-rate')">Completion Rate Report</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Platform Reports</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <button class="btn btn-secondary" onclick="generateReport('platform-usage')">Platform Usage Report</button>
+                        <button class="btn btn-secondary" onclick="generateReport('user-engagement')">User Engagement Report</button>
+                        <button class="btn btn-secondary" onclick="generateReport('skill-performance')">Skill Performance Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Settings Page -->
+        <div id="profile-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Profile Settings</h1>
+                        <p class="page-subtitle">Manage your personal information and preferences</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Personal Information</h3>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #2563eb, #1d4ed8); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: bold; margin: 0 auto 16px;">
+                            AD
+                        </div>
+                        <button class="btn btn-secondary">Change Photo</button>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" value="Admin User" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" value="admin@skillflex.com" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" value="+1 (555) 123-4567" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Job Title</label>
+                        <input type="text" value="System Administrator" class="form-input">
+                    </div>
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Preferences</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Language</label>
+                        <select class="form-select">
+                            <option>English</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Time Zone</label>
+                        <select class="form-select">
+                            <option>UTC</option>
+                            <option>EST</option>
+                            <option>PST</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Notifications</label>
+                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> New user registrations
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> System alerts
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox"> Weekly reports
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Settings Page -->
+        <div id="security-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">Security Settings</h1>
+                        <p class="page-subtitle">Manage your account security and authentication</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Password & Authentication</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Current Password</label>
+                        <input type="password" class="form-input" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">New Password</label>
+                        <input type="password" class="form-input" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-input" placeholder="Confirm new password">
+                    </div>
+                    <button class="btn btn-primary">Update Password</button>
+                    
+                    <hr style="margin: 24px 0;">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Two-Factor Authentication</label>
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f0f9ff; border-radius: 8px; margin-top: 8px;">
+                            <div>
+                                <p style="font-weight: 500; color: #1f2937;">2FA Status: <span style="color: #16a34a;">Enabled</span></p>
+                                <p style="font-size: 14px; color: #6b7280;">Extra security for your account</p>
+                            </div>
+                            <button class="btn btn-secondary">Configure</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Login Activity</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <p style="font-weight: 500;">Current Session</p>
+                                    <p style="font-size: 14px; color: #6b7280;">Chrome on Windows • New York, NY</p>
+                                </div>
+                                <span style="color: #16a34a; font-size: 12px;">Active</span>
+                            </div>
+                        </div>
+                        <div style="padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <p style="font-weight: 500;">Previous Session</p>
+                                    <p style="font-size: 14px; color: #6b7280;">Safari on MacOS • 2 hours ago</p>
+                                </div>
+                                <button class="btn btn-danger" style="font-size: 12px; padding: 4px 8px;">Revoke</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr style="margin: 24px 0;">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Session Timeout</label>
+                        <select class="form-select">
+                            <option>15 minutes</option>
+                            <option selected>30 minutes</option>
+                            <option>1 hour</option>
+                            <option>Never</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Save Security Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Settings Page -->
+        <div id="settings-page" class="page hidden">
+            <div class="page-header">
+                <div class="flex items-center gap-4">
+                    <button class="back-btn" onclick="showPage('dashboard')">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <div>
+                        <h1 class="page-title">System Settings</h1>
+                        <p class="page-subtitle">Configure platform settings and preferences</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">General Settings</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Platform Name</label>
+                        <input type="text" value="SkillFlex" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Support Email</label>
+                        <input type="email" value="support@skillflex.com" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Time Zone</label>
+                        <select class="form-select">
+                            <option>UTC</option>
+                            <option>EST</option>
+                            <option>PST</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Save Settings</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Platform Configuration</h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password Policy</label>
+                        <select class="form-select">
+                            <option>Standard</option>
+                            <option>Strong</option>
+                            <option>Very Strong</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Default Session Timeout (minutes)</label>
+                        <input type="number" value="30" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Two-Factor Authentication</label>
+                        <select class="form-select">
+                            <option>Optional</option>
+                            <option>Required</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Save Configuration</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Forms -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Modal Title</h2>
+                <button onclick="closeModal()" class="modal-close">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <!-- Modal footer will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentPage = 'dashboard';
+        let previousPage = 'dashboard';
+        let notifications = [];
+        let learners = [];
+        let mentors = [];
+        let skills = [];
+        let quizzes = [];
+        let bookings = [];
+        let reflections = [];
+        let certifications = [];
+        let certificateRequests = [];
+
+        // Sample data
+        const sampleCertificateRequests = [
+            {
+                id: 1,
+                learner: 'John Doe',
+                skill: 'Leadership Development',
+                category: 'Leadership',
+                completionDate: '2024-03-20',
+                mentor: 'Dr. Sarah Mitchell',
+                sessions: 12,
+                status: 'pending'
+            },
+            {
+                id: 2,
+                learner: 'Emily Chen',
+                skill: 'Communication Skills',
+                category: 'Communication',
+                completionDate: '2024-03-18',
+                mentor: 'Prof. David Kim',
+                sessions: 8,
+                status: 'approved'
+            },
+            {
+                id: 3,
+                learner: 'Michael Rodriguez',
+                skill: 'Technical Skills',
+                category: 'Technical',
+                completionDate: '2024-03-15',
+                mentor: 'Lisa Johnson',
+                sessions: 10,
+                status: 'generated'
+            }
+        ];
+
+        const sampleNotifications = [
+            {
+                id: 1,
+                type: 'user',
+                title: 'New Learner Registration',
+                message: 'John Doe has registered as a new learner',
+                time: '2 hours ago',
+                read: false,
+                icon: 'person_add',
+                iconClass: 'blue'
+            },
+            {
+                id: 2,
+                type: 'session',
+                title: 'Session Completed',
+                message: 'Leadership session between Sarah Mitchell and Emily Chen completed',
+                time: '4 hours ago',
+                read: false,
+                icon: 'check_circle',
+                iconClass: 'green'
+            },
+            {
+                id: 3,
+                type: 'system',
+                title: 'System Maintenance',
+                message: 'Scheduled maintenance completed successfully',
+                time: '1 day ago',
+                read: true,
+                icon: 'build',
+                iconClass: 'orange'
+            }
+        ];
+
+        const sampleLearners = [
+            {
+                id: 1,
+                name: 'John Doe',
+                email: 'john.doe@email.com',
+                level: 'Intermediate',
+                sessions: 12,
+                status: 'active',
+                joined: '2024-01-15'
+            },
+            {
+                id: 2,
+                name: 'Emily Chen',
+                email: 'emily.chen@email.com',
+                level: 'Advanced',
+                sessions: 25,
+                status: 'active',
+                joined: '2023-11-20'
+            },
+            {
+                id: 3,
+                name: 'Michael Rodriguez',
+                email: 'michael.r@email.com',
+                level: 'Beginner',
+                sessions: 5,
+                status: 'inactive',
+                joined: '2024-02-10'
+            }
+        ];
+
+        const sampleMentors = [
+            {
+                id: 1,
+                name: 'Dr. Sarah Mitchell',
+                email: 'sarah.mitchell@email.com',
+                expertise: 'Leadership',
+                rating: 4.9,
+                sessions: 156,
+                status: 'active'
+            },
+            {
+                id: 2,
+                name: 'Prof. David Kim',
+                email: 'david.kim@email.com',
+                expertise: 'Communication',
+                rating: 4.7,
+                sessions: 89,
+                status: 'active'
+            },
+            {
+                id: 3,
+                name: 'Lisa Johnson',
+                email: 'lisa.johnson@email.com',
+                expertise: 'Technical Skills',
+                rating: 4.8,
+                sessions: 67,
+                status: 'pending'
+            }
+        ];
+
+        const sampleSkills = [
+            {
+                id: 1,
+                name: 'Leadership Development',
+                description: 'Master the art of effective leadership through comprehensive training that covers strategic thinking, team management, and decision-making skills. This program is designed for aspiring and current leaders who want to enhance their ability to inspire, motivate, and guide teams toward success.',
+                courses: 15,
+                learningPath: 'Executive Track',
+                rating: '4.8★',
+                status: 'active',
+                learningOutcomes: [
+                    'Develop strategic thinking and vision-setting abilities',
+                    'Master effective communication and delegation techniques',
+                    'Learn conflict resolution and team building strategies',
+                    'Build emotional intelligence and self-awareness',
+                    'Create and implement leadership development plans'
+                ]
+            },
+            {
+                id: 2,
+                name: 'Communication Skills',
+                description: 'Enhance your verbal, written, and non-verbal communication abilities to become a more effective communicator in both professional and personal settings. Learn to present ideas clearly, listen actively, and build stronger relationships through improved communication.',
+                courses: 12,
+                learningPath: 'Professional Path',
+                rating: '4.7★',
+                status: 'active',
+                learningOutcomes: [
+                    'Master public speaking and presentation skills',
+                    'Improve written communication and business writing',
+                    'Develop active listening and empathy skills',
+                    'Learn cross-cultural communication techniques',
+                    'Build confidence in difficult conversations'
+                ]
+            },
+            {
+                id: 3,
+                name: 'Technical Skills',
+                description: 'Stay ahead in the digital age by developing essential technical competencies. This comprehensive program covers modern tools, technologies, and methodologies that are crucial for success in today\'s technology-driven workplace.',
+                courses: 8,
+                learningPath: 'Digital Mastery',
+                rating: '4.6★',
+                status: 'active',
+                learningOutcomes: [
+                    'Master essential software and digital tools',
+                    'Learn data analysis and visualization techniques',
+                    'Develop problem-solving and analytical thinking',
+                    'Understand emerging technologies and trends',
+                    'Build technical project management skills'
+                ]
+            }
+        ];
+
+        const sampleQuizzes = [
+            {
+                id: 1,
+                title: 'Leadership Assessment',
+                category: 'Leadership',
+                questions: 20,
+                attempts: 145,
+                status: 'active',
+                created: '2024-01-15'
+            },
+            {
+                id: 2,
+                title: 'Communication Skills Test',
+                category: 'Communication',
+                questions: 15,
+                attempts: 98,
+                status: 'active',
+                created: '2024-02-01'
+            }
+        ];
+
+        const sampleBookings = [
+            {
+                id: 1,
+                learner: 'John Doe',
+                mentor: 'Dr. Sarah Mitchell',
+                date: '2024-03-25',
+                duration: '60 min',
+                status: 'confirmed'
+            },
+            {
+                id: 2,
+                learner: 'Emily Chen',
+                mentor: 'Prof. David Kim',
+                date: '2024-03-26',
+                duration: '45 min',
+                status: 'pending'
+            }
+        ];
+
+        const sampleReflections = [
+            {
+                id: 1,
+                learner: 'John Doe',
+                session: 'Leadership Session #5',
+                type: 'Post-Session',
+                submitted: '2024-03-20',
+                status: 'reviewed'
+            },
+            {
+                id: 2,
+                learner: 'Emily Chen',
+                session: 'Communication Workshop',
+                type: 'Weekly Reflection',
+                submitted: '2024-03-21',
+                status: 'pending'
+            }
+        ];
+
+        const sampleCertifications = [
+            {
+                id: 1,
+                name: 'Leadership Excellence',
+                category: 'Leadership',
+                requirements: '10 sessions + assessment',
+                issued: 45,
+                status: 'active'
+            },
+            {
+                id: 2,
+                name: 'Communication Master',
+                category: 'Communication',
+                requirements: '8 sessions + project',
+                issued: 32,
+                status: 'active'
+            }
+        ];
+
+        // Initialize data
+        notifications = sampleNotifications;
+        learners = sampleLearners;
+        mentors = sampleMentors;
+        skills = sampleSkills;
+        quizzes = sampleQuizzes;
+        bookings = sampleBookings;
+        reflections = sampleReflections;
+        certifications = sampleCertifications;
+        certificateRequests = sampleCertificateRequests;
+
+        // Navigation functions
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        function showPage(pageName) {
+            // Store previous page
+            previousPage = currentPage;
+            
+            // Hide all pages
+            const pages = document.querySelectorAll('[id$="-page"]');
+            pages.forEach(page => page.classList.add('hidden'));
+            
+            // Show selected page
+            document.getElementById(pageName + '-page').classList.remove('hidden');
+            currentPage = pageName;
+            
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the correct sidebar button
+            const activeBtn = document.querySelector(`[onclick="showPage('${pageName}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            
+            // Close sidebar on mobile
+            if (window.innerWidth < 768) {
+                closeSidebar();
+            }
+
+            // Close user profile modal
+            closeUserProfile();
+
+            // Load page-specific content
+            loadPageContent(pageName);
+        }
+
+        function goBack() {
+            showPage(previousPage);
+        }
+
+        function showNotifications() {
+            showPage('notifications');
+        }
+
+        function toggleUserProfile() {
+            const modal = document.getElementById('user-profile-modal');
+            modal.classList.toggle('active');
+        }
+
+        function closeUserProfile() {
+            document.getElementById('user-profile-modal').classList.remove('active');
+        }
+
+        // Load page content
+        function loadPageContent(pageName) {
+            switch(pageName) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'notifications':
+                    loadNotifications();
+                    break;
+                case 'learners':
+                    loadLearners();
+                    break;
+                case 'mentors':
+                    loadMentors();
+                    break;
+                case 'skills':
+                    loadSkills();
+                    break;
+                case 'quizzes':
+                    loadQuizzes();
+                    break;
+                case 'bookings':
+                    loadBookings();
+                    break;
+                case 'reflections':
+                    loadReflections();
+                    break;
+                case 'certifications':
+                    loadCertifications();
+                    break;
+                case 'certificate-template':
+                    loadCertificateTemplate();
+                    break;
+            }
+        }
+
+        // Dashboard functions
+        function loadDashboard() {
+            loadRecentActivity();
+            updateNotificationBadge();
+        }
+
+        function loadRecentActivity() {
+            const container = document.getElementById('recent-activity');
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            const activities = [
+                { icon: 'person_add', color: 'blue', text: 'New learner John Doe registered', time: '2 hours ago' },
+                { icon: 'check_circle', color: 'green', text: 'Session completed successfully', time: '4 hours ago' },
+                { icon: 'star', color: 'orange', text: 'Mentor received 5-star rating', time: '6 hours ago' },
+                { icon: 'quiz', color: 'purple', text: 'New quiz created for Leadership', time: '1 day ago' }
+            ];
+
+            activities.forEach(activity => {
+                const activityElement = document.createElement('div');
+                activityElement.style.display = 'flex';
+                activityElement.style.alignItems = 'center';
+                activityElement.style.gap = '12px';
+                activityElement.style.marginBottom = '16px';
+                
+                const iconColors = {
+                    blue: 'linear-gradient(135deg, #dbeafe, #bfdbfe)',
+                    green: 'linear-gradient(135deg, #dcfce7, #bbf7d0)',
+                    orange: 'linear-gradient(135deg, #fed7aa, #fdba74)',
+                    purple: 'linear-gradient(135deg, #e9d5ff, #ddd6fe)'
+                };
+
+                const textColors = {
+                    blue: '#2563eb',
+                    green: '#16a34a',
+                    orange: '#ea580c',
+                    purple: '#7c3aed'
+                };
+
+                activityElement.innerHTML = `
+                    <div style="width: 32px; height: 32px; background: ${iconColors[activity.color]}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: ${textColors[activity.color]};">
+                        <i class="material-icons" style="font-size: 16px;">${activity.icon}</i>
+                    </div>
+                    <div>
+                        <p style="font-size: 14px; color: #1f2937;">${activity.text}</p>
+                        <p style="font-size: 12px; color: #6b7280;">${activity.time}</p>
+                    </div>
+                `;
+                
+                container.appendChild(activityElement);
+            });
+        }
+
+        // Notifications functions
+        function loadNotifications() {
+            const container = document.getElementById('notifications-list');
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            notifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `notification-item ${!notification.read ? 'unread' : ''}`;
+                notificationElement.onclick = () => handleNotificationClick(notification.id);
+                
+                notificationElement.innerHTML = `
+                    <div class="notification-content">
+                        <div class="notification-icon ${notification.iconClass}">
+                            <i class="material-icons">${notification.icon}</i>
+                        </div>
+                        <div class="notification-body">
+                            <div class="notification-header">
+                                <h4 class="notification-title">${notification.title}</h4>
+                                <span class="notification-time">${notification.time}</span>
+                            </div>
+                            <p class="notification-message">${notification.message}</p>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(notificationElement);
+            });
+        }
+
+        function handleNotificationClick(notificationId) {
+            const notification = notifications.find(n => n.id === notificationId);
+            if (!notification) return;
+
+            // Mark as read
+            notification.read = true;
+            loadNotifications();
+            updateNotificationBadge();
+        }
+
+        function markAllAsRead() {
+            notifications.forEach(n => n.read = true);
+            loadNotifications();
+            updateNotificationBadge();
+        }
+
+        function clearNotifications() {
+            if (confirm('Are you sure you want to clear all notifications?')) {
+                notifications = [];
+                loadNotifications();
+                updateNotificationBadge();
+            }
+        }
+
+        function updateNotificationBadge() {
+            const unreadCount = notifications.filter(n => !n.read).length;
+            const badge = document.getElementById('notification-badge');
+            if (badge) {
+                badge.style.display = unreadCount > 0 ? 'block' : 'none';
+            }
+        }
+
+        // Learners functions
+        function loadLearners() {
+            const tbody = document.getElementById('learners-table-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            learners.forEach(learner => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">
+                                ${learner.name.split(' ').map(n => n[0]).join('')}
+                            </div>
+                            <span style="font-weight: 500;">${learner.name}</span>
+                        </div>
+                    </td>
+                    <td>${learner.email}</td>
+                    <td>${learner.level}</td>
+                    <td>${learner.sessions}</td>
+                    <td><span class="badge ${learner.status}">${learner.status}</span></td>
+                    <td>${learner.joined}</td>
+                    <td>
+                        <div class="management-actions">
+                            <button class="action-btn view" onclick="viewLearner(${learner.id})">View</button>
+                            <button class="action-btn edit" onclick="editLearner(${learner.id})">Edit</button>
+                            <button class="action-btn delete" onclick="deleteLearner(${learner.id})">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Mentors functions
+        function loadMentors() {
+            const tbody = document.getElementById('mentors-table-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            mentors.forEach(mentor => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">
+                                ${mentor.name.split(' ').map(n => n[0]).join('')}
+                            </div>
+                            <span style="font-weight: 500;">${mentor.name}</span>
+                        </div>
+                    </td>
+                    <td>${mentor.email}</td>
+                    <td>${mentor.expertise}</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <i class="material-icons" style="color: #f59e0b; font-size: 16px;">star</i>
+                            <span>${mentor.rating}</span>
+                        </div>
+                    </td>
+                    <td>${mentor.sessions}</td>
+                    <td><span class="badge ${mentor.status}">${mentor.status}</span></td>
+                    <td>
+                        <div class="management-actions">
+                            <button class="action-btn view" onclick="viewMentor(${mentor.id})">View</button>
+                            <button class="action-btn edit" onclick="editMentor(${mentor.id})">Edit</button>
+                            <button class="action-btn delete" onclick="deleteMentor(${mentor.id})">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Skills functions
+        function loadSkills() {
+            const container = document.getElementById('skills-grid');
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            skills.forEach(skill => {
+                const skillElement = document.createElement('div');
+                skillElement.className = 'card';
+                skillElement.innerHTML = `
+                    <div class="card-header">
+                        <h3 class="card-title">${skill.name}</h3>
+                        <span class="badge ${skill.status}">${skill.status}</span>
+                    </div>
+                    
+                    <!-- What They Will Learn -->
+                    <div style="margin-bottom: 16px;">
+                        <h4 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 8px;">What You'll Learn</h4>
+                        <ul style="color: #6b7280; font-size: 14px; padding-left: 20px; line-height: 1.6;">
+                            ${skill.learningOutcomes.map(outcome => `<li>${outcome}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <!-- Video Section -->
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 12px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                        <div style="text-align: center;">
+                            <i class="material-icons" style="font-size: 48px; margin-bottom: 8px;">play_circle_outline</i>
+                            <p style="font-size: 14px;">Skill Introduction Video</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Broad Description -->
+                    <div style="margin-bottom: 16px;">
+                        <h4 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 8px;">About This Skill</h4>
+                        <p style="color: #6b7280; font-size: 14px; line-height: 1.5;">${skill.description}</p>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 16px; padding: 12px; background: #f0f9ff; border-radius: 8px;">
+                        <div style="text-align: center;">
+                            <p style="font-size: 18px; font-weight: bold; color: #1f2937;">${skill.learningPath}</p>
+                            <p style="font-size: 12px; color: #6b7280;">Learning Path</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="font-size: 18px; font-weight: bold; color: #1f2937;">${skill.courses}</p>
+                            <p style="font-size: 12px; color: #6b7280;">Courses</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="font-size: 18px; font-weight: bold; color: #1f2937;">${skill.rating}</p>
+                            <p style="font-size: 12px; color: #6b7280;">Rating</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary" onclick="editSkill(${skill.id})">Edit</button>
+                        <button class="btn btn-primary" onclick="viewSignups(${skill.id})">View Sign-ups</button>
+                        <button class="btn btn-danger" onclick="deleteSkill(${skill.id})">Delete</button>
+                    </div>
+                `;
+                container.appendChild(skillElement);
+            });
+        }
+
+        // Quizzes functions
+        function loadQuizzes() {
+            const tbody = document.getElementById('quizzes-table-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            quizzes.forEach(quiz => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="font-weight: 500;">${quiz.title}</td>
+                    <td>${quiz.category}</td>
+                    <td>${quiz.questions}</td>
+                    <td>${quiz.attempts}</td>
+                    <td><span class="badge ${quiz.status}">${quiz.status}</span></td>
+                    <td>${quiz.created}</td>
+                    <td>
+                        <div class="management-actions">
+                            <button class="action-btn view" onclick="viewQuiz(${quiz.id})">View</button>
+                            <button class="action-btn edit" onclick="editQuiz(${quiz.id})">Edit</button>
+                            <button class="action-btn delete" onclick="deleteQuiz(${quiz.id})">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Bookings functions
+        function loadBookings() {
+            const tbody = document.getElementById('bookings-table-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            bookings.forEach(booking => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${booking.learner}</td>
+                    <td>${booking.mentor}</td>
+                    <td>${booking.date}</td>
+                    <td>${booking.duration}</td>
+                    <td><span class="badge ${booking.status}">${booking.status}</span></td>
+                    <td>
+                        <div class="management-actions">
+                            <button class="action-btn view" onclick="viewBooking(${booking.id})">View</button>
+                            <button class="action-btn edit" onclick="editBooking(${booking.id})">Edit</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Reflections functions
+        function loadReflections() {
+            const tbody = document.getElementById('reflections-table-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            reflections.forEach(reflection => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${reflection.learner}</td>
+                    <td>${reflection.session}</td>
+                    <td>${reflection.type}</td>
+                    <td>${reflection.submitted}</td>
+                    <td><span class="badge ${reflection.status}">${reflection.status}</span></td>
+                    <td>
+                        <div class="management-actions">
+                            <button class="action-btn view" onclick="viewReflection(${reflection.id})">View</button>
+                            <button class="action-btn edit" onclick="reviewReflection(${reflection.id})">Review</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Certifications functions
+        function loadCertifications() {
+            const tbody = document.getElementById('certifications-table-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            certifications.forEach(cert => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="font-weight: 500;">${cert.name}</td>
+                    <td>${cert.category}</td>
+                    <td>${cert.requirements}</td>
+                    <td>${cert.issued}</td>
+                    <td><span class="badge ${cert.status}">${cert.status}</span></td>
+                    <td>
+                        <div class="management-actions">
+                            <button class="action-btn view" onclick="viewCertificate(${cert.id})">View</button>
+                            <button class="action-btn edit" onclick="editCertificate(${cert.id})">Edit</button>
+                            <button class="action-btn delete" onclick="deleteCertificate(${cert.id})">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Modal functions
+        function showModal(title, content, footer = '') {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('modal-footer').innerHTML = footer;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Action functions
+        function addLearner() {
+            const content = `
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Enter full name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="Enter email address">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Level</label>
+                    <select class="form-select">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+            `;
+            const footer = `
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveLearner()">Add Learner</button>
+            `;
+            showModal('Add New Learner', content, footer);
+        }
+
+        function addMentor() {
+            const content = `
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Enter full name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="Enter email address">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Expertise</label>
+                    <select class="form-select">
+                        <option>Leadership</option>
+                        <option>Communication</option>
+                        <option>Technical Skills</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Bio</label>
+                    <textarea class="form-textarea" placeholder="Enter mentor bio"></textarea>
+                </div>
+            `;
+            const footer = `
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveMentor()">Add Mentor</button>
+            `;
+            showModal('Add New Mentor', content, footer);
+        }
+
+        function addSkillCategory() {
+            const content = `
+                <div class="form-group">
+                    <label class="form-label">Category Name</label>
+                    <input type="text" class="form-input" placeholder="Enter category name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-textarea" placeholder="Enter category description"></textarea>
+                </div>
+            `;
+            const footer = `
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveSkillCategory()">Add Category</button>
+            `;
+            showModal('Add Skill Category', content, footer);
+        }
+
+        function createQuiz() {
+            const content = `
+                <div class="form-group">
+                    <label class="form-label">Quiz Title</label>
+                    <input type="text" class="form-input" placeholder="Enter quiz title">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-select">
+                        <option>Leadership</option>
+                        <option>Communication</option>
+                        <option>Technical Skills</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Number of Questions</label>
+                    <input type="number" class="form-input" placeholder="Enter number of questions">
+                </div>
+            `;
+            const footer = `
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveQuiz()">Create Quiz</button>
+            `;
+            showModal('Create New Quiz', content, footer);
+        }
+
+        function createCertificate() {
+            const content = `
+                <div class="form-group">
+                    <label class="form-label">Certificate Name</label>
+                    <input type="text" class="form-input" placeholder="Enter certificate name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-select">
+                        <option>Leadership</option>
+                        <option>Communication</option>
+                        <option>Technical Skills</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Requirements</label>
+                    <textarea class="form-textarea" placeholder="Enter certificate requirements"></textarea>
+                </div>
+            `;
+            const footer = `
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveCertificate()">Create Certificate</button>
+            `;
+            showModal('Create New Certificate', content, footer);
+        }
+
+        // Save functions (placeholder implementations)
+        function saveLearner() {
+            alert('Learner added successfully!');
+            closeModal();
+        }
+
+        function saveMentor() {
+            alert('Mentor added successfully!');
+            closeModal();
+        }
+
+        function saveSkillCategory() {
+            alert('Skill category added successfully!');
+            closeModal();
+        }
+
+        function saveQuiz() {
+            alert('Quiz created successfully!');
+            closeModal();
+        }
+
+        function saveCertificate() {
+            alert('Certificate created successfully!');
+            closeModal();
+        }
+
+        // View/Edit/Delete functions (placeholder implementations)
+        function viewLearner(id) { alert(`Viewing learner ${id}`); }
+        function editLearner(id) { alert(`Editing learner ${id}`); }
+        function deleteLearner(id) { if(confirm('Delete learner?')) alert(`Deleted learner ${id}`); }
+
+        function viewMentor(id) { alert(`Viewing mentor ${id}`); }
+        function editMentor(id) { alert(`Editing mentor ${id}`); }
+        function deleteMentor(id) { if(confirm('Delete mentor?')) alert(`Deleted mentor ${id}`); }
+
+        function editSkill(id) { alert(`Editing skill ${id}`); }
+        function deleteSkill(id) { if(confirm('Delete skill?')) alert(`Deleted skill ${id}`); }
+        function viewSignups(id) { alert(`Viewing sign-ups for skill ${id}`); }
+
+        function viewQuiz(id) { alert(`Viewing quiz ${id}`); }
+        function editQuiz(id) { alert(`Editing quiz ${id}`); }
+        function deleteQuiz(id) { if(confirm('Delete quiz?')) alert(`Deleted quiz ${id}`); }
+
+        function viewBooking(id) { alert(`Viewing booking ${id}`); }
+        function editBooking(id) { alert(`Editing booking ${id}`); }
+
+        function viewReflection(id) { alert(`Viewing reflection ${id}`); }
+        function reviewReflection(id) { alert(`Reviewing reflection ${id}`); }
+
+        function viewCertificate(id) { alert(`Viewing certificate ${id}`); }
+        function editCertificate(id) { alert(`Editing certificate ${id}`); }
+        function deleteCertificate(id) { if(confirm('Delete certificate?')) alert(`Deleted certificate ${id}`); }
+
+        // Certificate Template Functions
+        function showCertificateTemplate() {
+            showPage('certificate-template');
+        }
+
+        function loadCertificateTemplate() {
+            loadCertificateRequests();
+            generateCertificatePreview();
+            
+            // Add event listeners for real-time preview updates
+            const inputs = ['cert-title', 'cert-org', 'cert-text', 'cert-signature'];
+            inputs.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('input', generateCertificatePreview);
+                }
+            });
+        }
+
+        function generateCertificatePreview() {
+            // Sample data for preview
+            const sampleData = {
+                LEARNER_NAME: 'John Doe',
+                SKILL_NAME: 'Leadership Development',
+                COMPLETION_DATE: new Date().toLocaleDateString()
+            };
+            
+            const preview = document.getElementById('certificate-preview');
+            if (preview) {
+                preview.innerHTML = `
+       <div style="border-radius: 8px; padding: 50px 40px; background: white; font-family: 'Arial', sans-serif; text-align: center; position: relative; max-width: 600px; margin: 0 auto;">
+    <!-- Logo Image -->
+    <div style="margin-bottom: 20px;">
+        <img src="LOGO-removebg-preview 1.png" alt="Certificate Logo" style="width: 90px; height: 90px; display: block; margin: 0 auto; object-fit: contain;">
+    </div>
+    <!-- other certificate content -->
+</div>
+
+                        
+                        <!-- Certificate Title -->
+                        <h1 style="color: #1f2937; font-size: 32px; margin-bottom: 8px; font-weight: bold;">Certificate of Completion</h1>
+                        <h2 style="color: #2563eb; font-size: 18px; margin-bottom: 30px; font-weight: 600;">Soft Skills Learning Platform</h2>
+                        
+                        <!-- Certificate Text -->
+                        <div style="margin-bottom: 30px; line-height: 1.8; font-size: 16px; color: #374151;">
+                            <p style="margin-bottom: 20px;">This is to certify that</p>
+                            
+                            <h3 style="color: #1f2937; font-size: 28px; margin: 20px 0; font-weight: bold; text-decoration: underline; text-decoration-color: #2563eb;">${sampleData.LEARNER_NAME}</h3>
+                            
+                            <p style="margin-bottom: 8px;">has successfully completed the</p>
+                            
+                            <h4 style="color: #2563eb; font-size: 22px; margin: 15px 0; font-weight: bold;">${sampleData.SKILL_NAME} Soft Skills Program</h4>
+                            
+                            <p style="font-size: 14px; color: #6b7280; margin-top: 15px;">including video lessons, assessments, practical scenarios, and mentoring sessions</p>
+                        </div>
+                        
+                        <!-- Bottom Section -->
+                        <div style="display: flex; justify-content: space-between; align-items: end; margin-top: 40px; padding-top: 20px;">
+                            <div style="text-align: left;">
+                                <p style="font-size: 14px; color: #6b7280; margin-bottom: 5px;">Date</p>
+                                <p style="font-size: 16px; color: #1f2937; font-weight: 600;">${sampleData.COMPLETION_DATE}</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <p style="font-size: 14px; color: #6b7280; margin-bottom: 5px;">Verified</p>
+                                <div style="width: 80px; height: 2px; background: #2563eb; margin: 0 auto;"></div>
+                            </div>
+                            
+                            <div style="text-align: right;">
+                                <p style="font-size: 14px; color: #6b7280; margin-bottom: 5px;">Authorized by</p>
+                                <p style="font-size: 16px; color: #1f2937; font-weight: 600;">Soft Skills Learning</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function loadCertificateRequests() {
+            const tbody = document.getElementById('certificate-requests-body');
+            if (!tbody) return;
+            
+            tbody.innerHTML = '';
+
+            certificateRequests.forEach(request => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #2563eb, #1d4ed8); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">
+                                ${request.learner.split(' ').map(n => n[0]).join('')}
+                            </div>
+                            <span style="font-weight: 500;">${request.learner}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <p style="font-weight: 500;">${request.skill}</p>
+                            <p style="font-size: 12px; color: #6b7280;">${request.category}</p>
+                        </div>
+                    </td>
+                    <td>${request.completionDate}</td>
+                    <td>${request.mentor}</td>
+                    <td><span class="badge ${request.status}">${request.status}</span></td>
+                    <td>
+                        <div class="management-actions">
+                            ${request.status === 'pending' ? `
+                                <button class="action-btn edit" onclick="approveCertificateRequest(${request.id})">Approve</button>
+                                <button class="action-btn delete" onclick="rejectCertificateRequest(${request.id})">Reject</button>
+                            ` : request.status === 'approved' ? `
+                                <button class="action-btn view" onclick="generateCertificate(${request.id})">Generate</button>
+                                <button class="action-btn edit" onclick="previewPersonalizedCertificate(${request.id})">Preview</button>
+                            ` : `
+                                <button class="action-btn view" onclick="downloadCertificate(${request.id})">Download</button>
+                                <button class="action-btn edit" onclick="previewPersonalizedCertificate(${request.id})">View</button>
+                            `}
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function previewCertificate() {
+            generateCertificatePreview();
+            alert('Preview updated with sample data!');
+        }
+
+        function saveCertificateTemplate() {
+            alert('Certificate template saved successfully! This template will be used for all future certificate generations.');
+        }
+
+        function refreshRequests() {
+            loadCertificateRequests();
+            alert('Certificate requests refreshed!');
+        }
+
+        function approveCertificateRequest(id) {
+            const request = certificateRequests.find(r => r.id === id);
+            if (request) {
+                request.status = 'approved';
+                loadCertificateRequests();
+                alert(`Certificate request for ${request.learner} has been approved!`);
+            }
+        }
+
+        function rejectCertificateRequest(id) {
+            if (confirm('Are you sure you want to reject this certificate request?')) {
+                const request = certificateRequests.find(r => r.id === id);
+                if (request) {
+                    request.status = 'rejected';
+                    loadCertificateRequests();
+                    alert(`Certificate request for ${request.learner} has been rejected.`);
+                }
+            }
+        }
+
+        function generateCertificate(id) {
+            const request = certificateRequests.find(r => r.id === id);
+            if (request) {
+                request.status = 'generated';
+                loadCertificateRequests();
+                alert(`Certificate generated successfully for ${request.learner}! They will receive an email notification.`);
+            }
+        }
+
+        function previewPersonalizedCertificate(id) {
+            const request = certificateRequests.find(r => r.id === id);
+            if (!request) return;
+
+            const title = document.getElementById('cert-title')?.value || 'Certificate of Achievement';
+            const org = document.getElementById('cert-org')?.value || 'SkillFlex Learning Platform';
+            const text = document.getElementById('cert-text')?.value || 'This is to certify that {LEARNER_NAME} has successfully completed the {SKILL_CATEGORY} program.';
+            const signature = document.getElementById('cert-signature')?.value || 'Director of Learning';
+            
+            // Real data for this specific request
+            const personalData = {
+                LEARNER_NAME: request.learner,
+                SKILL_NAME: request.skill,
+                SKILL_CATEGORY: request.category,
+                COMPLETION_DATE: request.completionDate,
+                MENTOR_NAME: request.mentor,
+                SESSIONS_COMPLETED: request.sessions.toString()
+            };
+            
+            // Replace placeholders with real data
+            let personalizedText = text;
+            Object.keys(personalData).forEach(key => {
+                personalizedText = personalizedText.replace(new RegExp(`{${key}}`, 'g'), personalData[key]);
+            });
+            
+            const modalContent = `
+                <div style="border: 2px solid #2563eb; border-radius: 8px; padding: 50px 40px; background: white; font-family: 'Arial', sans-serif; text-align: center; position: relative; max-width: 600px; margin: 0 auto;">
+                    <!-- SL Logo -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2563eb, #1d4ed8); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; font-weight: bold; margin: 0 auto;">
+                            SL
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate Title -->
+                    <h1 style="color: #1f2937; font-size: 32px; margin-bottom: 8px; font-weight: bold;">Certificate of Completion</h1>
+                    <h2 style="color: #2563eb; font-size: 18px; margin-bottom: 30px; font-weight: 600;">Soft Skills Learning Platform</h2>
+                    
+                    <!-- Certificate Text -->
+                    <div style="margin-bottom: 30px; line-height: 1.8; font-size: 16px; color: #374151;">
+                        <p style="margin-bottom: 20px;">This is to certify that</p>
+                        
+                        <h3 style="color: #1f2937; font-size: 28px; margin: 20px 0; font-weight: bold; text-decoration: underline; text-decoration-color: #2563eb;">${personalData.LEARNER_NAME}</h3>
+                        
+                        <p style="margin-bottom: 8px;">has successfully completed the</p>
+                        
+                        <h4 style="color: #2563eb; font-size: 22px; margin: 15px 0; font-weight: bold;">${personalData.SKILL_NAME} Soft Skills Program</h4>
+                        
+                        <p style="font-size: 14px; color: #6b7280; margin-top: 15px;">including video lessons, assessments, practical scenarios, and mentoring sessions</p>
+                    </div>
+                    
+                    <!-- Bottom Section -->
+                    <div style="display: flex; justify-content: space-between; align-items: end; margin-top: 40px; padding-top: 20px;">
+                        <div style="text-align: left;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 5px;">Date</p>
+                            <p style="font-size: 16px; color: #1f2937; font-weight: 600;">${personalData.COMPLETION_DATE}</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 5px;">Verified</p>
+                            <div style="width: 80px; height: 2px; background: #2563eb; margin: 0 auto;"></div>
+                        </div>
+                        
+                        <div style="text-align: right;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 5px;">Authorized by</p>
+                            <p style="font-size: 16px; color: #1f2937; font-weight: 600;">Soft Skills Learning</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const footer = `
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="downloadCertificate(${id})">Download PDF</button>
+            `;
+            
+            showModal(`Certificate Preview - ${request.learner}`, modalContent, footer);
+        }
+
+        function downloadCertificate(id) {
+            const request = certificateRequests.find(r => r.id === id);
+            if (request) {
+                alert(`Certificate for ${request.learner} would be downloaded as PDF. In a real implementation, this would generate and download the actual certificate file.`);
+            }
+        }
+
+        // Report Generation Functions
+        function generateReport(reportType) {
+            const reportNames = {
+                'learner-activity': 'Learner Activity Report',
+                'mentor-performance': 'Mentor Performance Report',
+                'user-registration': 'User Registration Report',
+                'session-analytics': 'Session Analytics Report',
+                'booking-trends': 'Booking Trends Report',
+                'completion-rate': 'Completion Rate Report',
+                'platform-usage': 'Platform Usage Report',
+                'user-engagement': 'User Engagement Report',
+                'skill-performance': 'Skill Performance Report'
+            };
+            
+            const reportName = reportNames[reportType] || 'Report';
+            alert(`Generating ${reportName}... This would create a downloadable PDF/Excel file with detailed analytics and insights.`);
+        }
+
+        // Export functions
+        function exportLearners() { alert('Exporting learners data...'); }
+        function exportMentors() { alert('Exporting mentors data...'); }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboard();
+            updateNotificationBadge();
+            
+            // Close modals when clicking outside
+            document.getElementById('modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Close user profile when clicking outside
+            document.addEventListener('click', function(e) {
+                const userProfile = document.getElementById('user-profile-modal');
+                const userAvatar = document.querySelector('.user-avatar');
+                
+                if (!userProfile.contains(e.target) && !userAvatar.contains(e.target)) {
+                    closeUserProfile();
+                }
+            });
+        });
+
+        // Connecting to backend
+
+        function loadLearners() {
+  fetch("http://localhost:5000/api/learners")
+    .then(res => res.json())
+    .then(data => {
+      learners = data;
+      renderLearnersTable(); // already exists in your file
+    });
+}
+
+function addLearner() {
+  const newLearner = {
+    name: "Jane Smith",
+    email: "jane@example.com",
+    level: "Beginner",
+    sessions: 0,
+    status: "active"
+  };
+
+  fetch("http://localhost:5000/api/learners", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newLearner)
+  })
+    .then(res => res.json())
+    .then(msg => {
+      alert(msg.message);
+      loadLearners();
+    });
+}
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97aef13b40be73e6',t:'MTc1NzE3MTk0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
