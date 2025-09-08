@@ -111,14 +111,30 @@
 
   <p id="result"></p>
 
-  <script>
-    // Show/Hide form on button click
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPtm24veNlKOKHgdwSERv2yL8JttZ3bcw",
+      authDomain: "skillflex-admin.firebaseapp.com",
+      projectId: "skillflex-admin",
+      storageBucket: "skillflex-admin.firebasestorage.app",
+      messagingSenderId: "912388334445",
+      appId: "1:912388334445:web:4fdbdf469508706b263064",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Show/Hide Form
     document.getElementById("showFormBtn").addEventListener("click", () => {
       const form = document.getElementById("adminForm");
       form.style.display = form.style.display === "none" ? "block" : "none";
     });
 
-    // Handle form submission
+    // Handle Form Submission
     document.getElementById('adminForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -129,16 +145,23 @@
       };
 
       try {
-        const response = await fetch('http://localhost:3000/api/admin-request', {
+        const response = await fetch('http://localhost:4000/api/admin-request', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
 
         const result = await response.json();
-        document.getElementById('result').textContent = "✅ Request submitted: " + JSON.stringify(result);
+        document.getElementById('result').textContent = "✅ Request submitted successfully";
+
+        // Clear form fields
+        document.getElementById('fullName').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('reason').value = '';
+
       } catch (err) {
-        document.getElementById('result').textContent = '❌ Error: ' + err.message;
+        console.error(err);
+        document.getElementById('result').textContent = '❌ Error submitting request';
       }
     });
   </script>

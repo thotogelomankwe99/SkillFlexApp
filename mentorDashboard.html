@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skillflex - Mentor Dashboard</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="mentorDashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-=======
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>SkillFlex Mentor Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -19,505 +14,654 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #E8E6F5;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f9fafb;
+            min-height: 100vh;
             line-height: 1.6;
         }
 
-        /* Header Styles */
-        .header {
-            background-color: #fAfAfA;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
+        /* Utility classes */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Header styles */
+        header {
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            width: 100%;
+            padding: 0 8px;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            height: 56px;
         }
 
-        .logo-section {
+        /* Hamburger menu */
+        .hamburger {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 4px;
+        }
+
+        .hamburger-line {
+            width: 20px;
+            height: 2px;
+            background-color: #4b5563;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active .line2 {
+            opacity: 0;
+        }
+
+        .hamburger.active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Logo and brand */
+        .brand-container {
             display: flex;
             align-items: center;
+            gap: 8px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .icon-logo{
-            border-radius: 20px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 70px;
-            background-color: #3b82f6;
-            color: white;
-            border-radius: 20px;
+        .logo-container {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            font-size: 18px;
             font-weight: bold;
+            color: #2563eb;
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #3b82f6;
-        }
-
-        .welcome-message {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .header-actions {
+        /* Header icons */
+        .header-icons {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 8px;
         }
 
-        .notification-bell {
+        .icon-button {
             position: relative;
+            padding: 6px;
+            color: #4b5563;
+            background: none;
+            border: none;
             cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-        }
-
-        .notification-bell:hover {
-            background-color: rgba(55, 65, 81, 0.1);
-        }
-
-        .notification-bell i {
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: #ff4757;
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-section {
-            position: relative;
-        }
-
-        .profile-icon {
-            cursor: pointer;
-            position: relative;
-            padding: 0.5rem;
-        }
-
-        .profile-icon i {
-            font-size: 2rem;
-            color: #374151;
             transition: color 0.3s ease;
         }
 
-        .profile-icon:hover i {
-            color: #1f2937;
+        .icon-button:hover {
+            color: #2563eb;
         }
 
-        .profile-tooltip {
+        .notification-dot {
             position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: white;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
+            top: -2px;
+            right: -2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        .profile-tooltip::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-bottom: 5px solid #333;
+        .notification-dot.red {
+            background-color: #ef4444;
         }
 
-        .profile-icon:hover .profile-tooltip {
-            opacity: 1;
-            visibility: visible;
+        .notification-dot.blue {
+            background-color: #3b82f6;
         }
 
-        .profile-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            padding: 0.5rem 0;
-            min-width: 180px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        .profile-dropdown.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
+        .profile-button {
+            width: 28px;
+            height: 28px;
+            background: #3b82f6;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1rem;
-            color: #333;
-            text-decoration: none;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
+        .profile-button:hover {
+            background: #2563eb;
         }
 
-        .dropdown-item.logout {
-            color: #dc3545;
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 56px;
+            width: 256px;
+            height: calc(100vh - 56px);
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
         }
 
-        .dropdown-item hr {
-            margin: 0.5rem 0;
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar nav {
+            padding: 12px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-button {
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px;
+            border-radius: 6px;
+            background: none;
             border: none;
-            border-top: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-size: 14px;
         }
 
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+        .nav-button:hover {
+            background: #eff6ff;
+            color: #2563eb;
         }
 
-        /* Statistics Section */
-        .stats-section {
+        .nav-button i {
+            font-size: 18px;
+        }
+
+        /* Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 30;
+        }
+
+        /* Main content */
+        main {
+            transition: all 0.3s ease;
+            width: 100%;
+            padding: 0 8px;
+        }
+
+        /* Page content */
+        .page-content {
+            padding: 12px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome section */
+        .welcome-section {
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            border-radius: 12px;
+            color: white;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .welcome-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .welcome-text h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text p {
+            color: #dbeafe;
+            font-size: 16px;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #60a5fa;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+        }
+
+        .btn-secondary:hover {
+            background: #eff6ff;
+        }
+
+        /* Stats grid */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
         }
 
         .stat-card {
             background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 16px;
         }
 
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        .stat-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .stat-icon {
-            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            margin-bottom: 1rem;
         }
 
-        .stat-card:nth-child(1) .stat-icon { background-color: rgba(55, 65, 81, 0.1); color: #374151; }
-        .stat-card:nth-child(2) .stat-icon { background-color: rgba(55, 65, 81, 0.1); color: #374151; }
-        .stat-card:nth-child(3) .stat-icon { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
-        .stat-card:nth-child(4) .stat-icon { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
-
-        .stat-content h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #333;
+        .stat-icon.blue {
+            background: #dbeafe;
+            color: #2563eb;
         }
 
-        .stat-content p {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 1rem;
+        .stat-icon.green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .stat-icon.orange {
+            background: #fed7aa;
+            color: #ea580c;
+        }
+
+        .stat-text {
+            flex: 1;
         }
 
         .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1f2937;
         }
 
-        /* Dashboard Content */
-        .dashboard-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 2rem;
+        .stat-label {
+            font-size: 12px;
+            color: #6b7280;
         }
 
-        /* Mentor Sessions Section */
-        .mentor-sessions-section {
+        /* Cards */
+        .card {
             background: white;
             border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            margin-bottom: 24px;
         }
 
-        .mentor-sessions-section h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #333;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .card-link {
+            color: #2563eb;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .card-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* Session cards */
+        .session-card {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .sessions-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 1rem;
-            padding: 1rem;
-            background-color: #f8f9fa;
+            justify-content: space-between;
+            padding: 16px;
+            background: #f9fafb;
             border-radius: 8px;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
         }
 
-        .sessions-list {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
+        .session-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            background: #f3f4f6;
         }
 
-        .session-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 1rem;
-            padding: 1rem;
-            border-bottom: 1px solid #e9ecef;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .session-item:last-child {
-            border-bottom: none;
-        }
-
-        .session-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        .mentee-info {
+        .session-info {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 16px;
         }
 
-        .mentee-avatar {
-            width: 35px;
-            height: 35px;
+        .session-avatar {
+            width: 48px;
+            height: 48px;
+            background: #3b82f6;
             border-radius: 50%;
-            background-color: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .mentee-avatar i {
-            font-size: 1.5rem;
-            color: #666;
-        }
-
-        .mentee-name {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .focus-area {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .contact-action {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .message-btn {
-            background-color: #3b82f6;
             color: white;
+            font-weight: 600;
+        }
+
+        .session-details h4 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .session-details p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 2px;
+        }
+
+        .session-details .time {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .session-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-start {
+            background: #16a34a;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s ease;
         }
 
-        .message-btn:hover {
-            background-color: #2563eb;
+        .btn-start:hover {
+            background: #15803d;
         }
 
-        /* Analytics Section */
-        .analytics-section {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        .btn-more {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px;
         }
 
-        .analytics-section h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #333;
+        .btn-more:hover {
+            color: #1f2937;
+        }
+
+        /* Grid layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Notification items */
+        .notification-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 8px;
+        }
+
+        .notification-item:hover {
+            background: #f9fafb;
+        }
+
+        .notification-item.unread {
+            background: #eff6ff;
+        }
+
+        .notification-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f3f4f6;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
         }
 
-        .chart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
+        .notification-content {
+            flex: 1;
+            min-width: 0;
         }
 
-        .chart-header h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #333;
+        .notification-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 2px;
         }
 
-        .chart-period {
-            font-size: 0.85rem;
-            color: #666;
+        .notification-message {
+            font-size: 12px;
+            color: #6b7280;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
         }
 
-        .chart-container {
-            height: 250px;
-            position: relative;
+        .notification-time {
+            font-size: 12px;
+            color: #9ca3af;
         }
 
-        /* Modal Styles */
+        .unread-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            margin-top: 6px;
+        }
+
+        /* Profile modal */
         .modal {
-            display: none;
             position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
         }
 
         .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 0;
+            background: white;
             border-radius: 12px;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease;
-        }
-
-        .modal-content.large {
-            max-width: 900px;
+            padding: 24px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e9ecef;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
         }
 
-        .modal-header h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .close {
-            font-size: 1.5rem;
+        .modal-title {
+            font-size: 20px;
             font-weight: bold;
+            color: #1f2937;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            color: #6b7280;
             cursor: pointer;
-            color: #666;
-            transition: color 0.3s ease;
+            padding: 4px;
         }
 
-        .close:hover {
-            color: #333;
+        .close-button:hover {
+            color: #1f2937;
         }
 
-        .modal-body {
-            padding: 1.5rem;
+        /* Profile settings form */
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
         }
 
-        /* Form Styles */
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 16px;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-input {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 14px;
             transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-textarea:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -525,1332 +669,1313 @@
 
         .form-actions {
             display: flex;
-            gap: 1rem;
             justify-content: flex-end;
-            margin-top: 2rem;
-        }
-
-        .btn-cancel,
-        .btn-send {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .btn-cancel {
-            background-color: #f8f9fa;
-            color: #666;
-            border: 1px solid #ddd;
-        }
-
-        .btn-cancel:hover {
-            background-color: #e9ecef;
-        }
-
-        .btn-send {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .btn-send:hover {
-            background-color: #2563eb;
-        }
-
-        /* Detail List Styles */
-        .detail-list {
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            margin-top: 1rem;
-        }
-
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            border-bottom: 1px solid #e9ecef;
-            transition: background-color 0.3s ease;
-        }
-
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .detail-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        .detail-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .detail-info strong {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .detail-meta {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .status-badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
             font-weight: 500;
         }
 
-        .status-completed {
-            background-color: #d4edda;
-            color: #155724;
+        .btn-cancel:hover {
+            background: #e5e7eb;
         }
 
-        .status-upcoming {
-            background-color: #fff3cd;
-            color: #856404;
+        .btn-save {
+            background: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        .status-pending {
-            background-color: #f8d7da;
-            color: #721c24;
+        .btn-save:hover {
+            background: #2563eb;
         }
 
-        .footer-section {
-          background-color: #FAFAFA;
-          border-top: 1px solid #ccc;
-          padding: 1rem 0;
-          max-width: 100%;
-          margin: 0 auto;
-        }
-
-        .footer-wrap {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          max-width: 1440px;
-          margin: 0 auto;
-          text-align: center;
-          padding: 0 20px;
-        }
-
-        .footer-navlink {
-          color: #000;
-          text-decoration: none;
-        }
-
-        .footer-copy {
-          font-weight: 500;
-        }
-
-        /* Profile Content Styles */
-        .profile-content {
-            padding: 1rem;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #666;
-        }
-
-        .profile-details h2 {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .profile-details p {
-            color: #666;
-        }
-
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile-stat {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
+        /* Empty state */
+        .empty-state {
             text-align: center;
+            padding: 32px;
+            color: #6b7280;
         }
 
-        .profile-stat h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 8px;
+            color: #d1d5db;
         }
 
-        .profile-stat p {
-            color: #666;
-        }
-
-        .profile-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-
-        /* Mobile devices (320px and up) */
-        @media (max-width: 767px) {
-            .header {
-                padding: 0.75rem 1rem;
-            }
-
+        /* Responsive design */
+        @media (min-width: 640px) {
             .header-content {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
+                height: 64px;
             }
 
-            .welcome-message {
-                font-size: 1.3rem;
+            .header-container {
+                padding: 0 16px;
             }
 
-            .header-actions {
-                gap: 1rem;
+            .brand-title {
+                font-size: 20px;
             }
 
-            .main-content {
-                padding: 0 1rem;
-                margin: 1rem auto;
+            .logo-container {
+                width: 32px;
+                height: 32px;
             }
 
-            .stats-section {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .sidebar {
+                top: 64px;
+                height: calc(100vh - 64px);
+                width: 288px;
             }
 
-            .stat-card {
-                padding: 1rem;
+            .main {
+                padding: 0 16px;
             }
 
-            .dashboard-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .page-content {
+                padding: 16px;
             }
 
-            .mentor-sessions-section,
-            .analytics-section {
-                padding: 1rem;
-            }
-
-            .sessions-header {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-                text-align: left;
-            }
-
-            .sessions-header .header-focus,
-            .sessions-header .header-contact {
-                display: none;
-            }
-
-            .session-item {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-                padding: 0.75rem;
-                text-align: left;
-            }
-
-            .focus-area {
-                font-size: 0.85rem;
-                margin-left: 2.5rem;
-            }
-
-            .contact-action {
-                justify-content: flex-start;
-                margin-left: 2.5rem;
-            }
-
-            .detail-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-
-            .detail-info {
-                width: 100%;
-            }
-
-            .detail-meta {
-                font-size: 0.8rem;
-            }
-
-            .message-btn {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.85rem;
-            }
-
-            .modal-content {
-                margin: 5% auto;
-                width: 95%;
-            }
-
-            .chart-container {
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .footer {
-                padding: 1.5rem 0;
-            }
-            
-            .footer-content {
-                padding: 0 1rem;
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .footer-logo {
-                justify-content: center;
-                text-align: center;
-            }
-            
-            .footer-description {
-                text-align: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
-            }
-            
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            
-            .footer-column {
-                margin-bottom: 1rem;
-            }
-            
-            .footer-bottom {
-                padding-top: 1rem;
-                margin-top: 1rem;
-            }
-        }
-
-        /* Tablet devices (768px and up) */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .header {
-                padding: 1rem 1.5rem;
-            }
-
-            .main-content {
-                padding: 0 1.5rem;
-            }
-
-            .stats-section {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-
-            .dashboard-content {
-                grid-template-columns: 1fr;
-                gap: 1.75rem;
-            }
-
-            .sessions-header {
-                grid-template-columns: 2fr 1.5fr 1fr;
-            }
-
-            .session-item {
-                grid-template-columns: 2fr 1.5fr 1fr;
-            }
-
-            .analytics-section {
-                margin-top: 1rem;
-            }
-
-            .chart-container {
-                height: 280px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-logo {
-                grid-column: span 2;
-            }
-            
-            .footer-links {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            
-            .footer-bottom {
-                grid-column: span 2;
-            }
-        }
-
-        /* Desktop devices (1024px and up) */
-        @media (min-width: 1024px) {
-            .header {
-                padding: 1rem 2rem;
-            }
-
-            .main-content {
-                padding: 0 2rem;
-            }
-
-            .stats-section {
+            .stats-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
+                gap: 16px;
             }
 
-            .dashboard-content {
-                grid-template-columns: 1fr 400px;
-                gap: 2rem;
+            .stat-icon {
+                width: 40px;
+                height: 40px;
             }
 
-            .sessions-header {
-                grid-template-columns: 2fr 1fr 1fr;
+            .stat-number {
+                font-size: 24px;
             }
 
-            .session-item {
-                grid-template-columns: 2fr 1fr 1fr;
+            .welcome-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
             }
 
-            .chart-container {
-                height: 300px;
+            .welcome-text h2 {
+                font-size: 28px;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr 2fr;
+            .welcome-text p {
+                font-size: 18px;
             }
-            
-            .footer-links {
-                grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+            .header-container {
+                padding: 0 24px;
             }
-            
-            .footer-bottom {
-                grid-column: span 3;
+
+            .main {
+                padding: 0 24px;
+            }
+
+            .page-content {
+                padding: 24px;
+            }
+
+            .brand-title {
+                font-size: 24px;
+            }
+
+            .welcome-text h2 {
+                font-size: 32px;
+            }
+
+            .stat-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .stat-number {
+                font-size: 28px;
             }
         }
     </style>
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">
-                    <div class="logo-icon"><a href="mentorDash.html"><img src="LOGO.png" alt="App-logo" height="80" width="80" class="icon-logo"></a></div>
-                    <span class="logo-text">Skillflex</span>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <!-- Hamburger Menu -->
+                <div class="hamburger" onclick="toggleSidebar()">
+                    <div class="hamburger-line line1"></div>
+                    <div class="hamburger-line line2"></div>
+                    <div class="hamburger-line line3"></div>
                 </div>
-            </div>
-            
-            <h1 class="welcome-message">Welcome, Mentor!</h1>
-            
-            <div class="header-actions">
-                <div class="notification-bell">
-<<<<<<< HEAD
-                    <i class="fas fa-bell"></i>
-=======
-                    <a href="mentor-notifications.html">
-                    <i class="fas fa-bell"></i>
-                    </a>
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
-                    <span class="notification-badge">3</span>
-                </div>
-                
-                <div class="profile-section">
-                    <div class="profile-icon" id="profileIcon">
-                        <i class="fas fa-user-circle"></i>
-                        <div class="profile-tooltip" id="profileTooltip">Dr. Sarah Johnson</div>
-                        <div class="profile-dropdown" id="profileDropdown">
-<<<<<<< HEAD
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user"></i> Profile Settings
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-calendar"></i> My Schedule
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-chart-bar"></i> Performance
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                            <hr>
-                            <a href="#" class="dropdown-item logout">
-=======
-                            <a href="#" class="dropdown-item" data-action="profile">
-                                <i class="fas fa-user"></i> Profile Settings
-                            </a>
-                            <a href="#" class="dropdown-item" data-action="schedule">
-                                <i class="fas fa-calendar"></i> My Schedule
-                            </a>
-                            <a href="#" class="dropdown-item" data-action="performance">
-                                <i class="fas fa-chart-bar"></i> Performance
-                            </a>
-                            <a href="#" class="dropdown-item" data-action="settings">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                            <hr>
-                            <a href="#" class="dropdown-item logout" data-action="logout">
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </div>
+
+                <!-- Logo and Brand - Centered -->
+                <div class="brand-container">
+                    <div class="logo-container">
+                        <img src="LOGO.png" alt="skillflex-logo">
                     </div>
+                    <h1 class="brand-title">SkillFlex Mentor</h1>
+                </div>
+
+                <!-- Right Icons -->
+                <div class="header-icons">
+                    <!-- Notifications -->
+                    <button onclick="showNotifications()" class="icon-button">
+                        <i class="material-icons">notifications</i>
+                        <span class="notification-dot red" id="notification-badge"></span>
+                    </button>
+                    
+                    <!-- Messages -->
+                    <button onclick="showMessages()" class="icon-button">
+                        <i class="material-icons">message</i>
+                        <span class="notification-dot blue" id="message-badge"></span>
+                    </button>
+                    
+                    <!-- User Profile -->
+                    <button onclick="showUserProfileModal()" class="profile-button">
+                        MS
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav>
+            <ul class="nav-list">
+                <li>
+                    <button onclick="showPage('dashboard')" class="nav-button">
+                        <i class="material-icons">dashboard</i>
+                        Dashboard
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showPage('sessions')" class="nav-button">
+                        <i class="material-icons">event</i>
+                        Sessions
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showPage('learners')" class="nav-button">
+                        <i class="material-icons">people</i>
+                        My Learners
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showPage('messages')" class="nav-button">
+                        <i class="material-icons">chat</i>
+                        Messages
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showPage('notifications')" class="nav-button">
+                        <i class="material-icons">notifications</i>
+                        Notifications
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showPage('analytics')" class="nav-button">
+                        <i class="material-icons">analytics</i>
+                        Analytics
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showPage('profile')" class="nav-button">
+                        <i class="material-icons">person</i>
+                        Profile Settings
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Overlay for sidebar -->
+    <div class="sidebar-overlay hidden" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
     <!-- Main Content -->
-    <main class="main-content">
-        <!-- Statistics Cards -->
-        <section class="stats-section">
-            <div class="stat-card" id="mentorSessionsCard">
-                <div class="stat-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <div class="stat-content">
-                    <h3>Mentor sessions</h3>
-                    <p>Total number of sessions scheduled with mentees</p>
-                    <span class="stat-number">3</span>
-                </div>
-            </div>
-            
-            <div class="stat-card" id="upcomingSessionsCard">
-                <div class="stat-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="stat-content">
-                    <h3>Upcoming sessions</h3>
-                    <p>Total number of sessions scheduled in the near future</p>
-                    <span class="stat-number">2</span>
+    <main id="main-content">
+        
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page-content fade-in">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <div class="welcome-text">
+                        <h2>Welcome back, Dr. Sarah!</h2>
+                        <p>Ready to inspire and guide your learners today</p>
+                    </div>
+                    <div class="welcome-buttons">
+                        <button onclick="showPage('sessions')" class="btn btn-primary">
+                            View Sessions
+                        </button>
+                    </div>
                 </div>
             </div>
-            
-            <div class="stat-card" id="completedSessionsCard">
-                <div class="stat-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="stat-content">
-                    <h3>Completed sessions</h3>
-                    <p>Number of sessions completed successfully</p>
-                    <span class="stat-number">14</span>
-                </div>
-            </div>
-            
-            <div class="stat-card" id="pendingFeedbackCard">
-                <div class="stat-icon">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="stat-content">
-                    <h3>Pending feedback</h3>
-                    <p>Number of sessions that still require feedback</p>
-                    <span class="stat-number">4</span>
-                </div>
-            </div>
-        </section>
 
-        <!-- Dashboard Content -->
-        <div class="dashboard-content">
-            <!-- Mentor Sessions List -->
-            <section class="mentor-sessions-section">
-                <h2><i class="fas fa-calendar-alt"></i> Mentor sessions</h2>
-                <div class="sessions-header">
-                    <span class="header-names">Names</span>
-                    <span class="header-focus">Focus Area</span>
-                    <span class="header-contact">Contact</span>
-                </div>
-                <div class="sessions-list">
-                    <div class="session-item">
-                        <div class="mentee-info">
-                            <div class="mentee-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <span class="mentee-name">Letago Ramautla</span>
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon blue">
+                            <i class="material-icons">event</i>
                         </div>
-                        <div class="focus-area">Communication</div>
-                        <div class="contact-action">
-                            <button class="message-btn" data-mentee="Letago Ramautla" data-focus="Communication">
-                                Message
-                            </button>
-                        </div>
-                    </div>
-                    <div class="session-item">
-                        <div class="mentee-info">
-                            <div class="mentee-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <span class="mentee-name">Praise Rynn</span>
-                        </div>
-                        <div class="focus-area">Leadership</div>
-                        <div class="contact-action">
-                            <button class="message-btn" data-mentee="Praise Rynn" data-focus="Leadership">
-                                Message
-                            </button>
-                        </div>
-                    </div>
-                    <div class="session-item">
-                        <div class="mentee-info">
-                            <div class="mentee-avatar">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <span class="mentee-name">Ayanda Mbili</span>
-                        </div>
-                        <div class="focus-area">Emotional Intelligence</div>
-                        <div class="contact-action">
-                            <button class="message-btn" data-mentee="Ayanda Mbili" data-focus="Emotional Intelligence">
-                                Message
-                            </button>
+                        <div class="stat-text">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Today's Sessions</div>
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon green">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <div class="stat-text">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Active Learners</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon orange">
+                            <i class="material-icons">notifications</i>
+                        </div>
+                        <div class="stat-text">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">New Requests</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon blue">
+                            <i class="material-icons">star</i>
+                        </div>
+                        <div class="stat-text">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">Avg Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Analytics Section -->
-            <section class="analytics-section">
-                <h2><i class="fas fa-chart-line"></i> Analytics</h2>
-                <div class="analytics-content">
-                    <div class="chart-header">
-                        <h3>Booking Overview</h3>
-                        <span class="chart-period">...past 6 months</span>
+            <!-- Today's Schedule -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Today's Schedule</h3>
+                    <a onclick="showPage('sessions')" class="card-link">
+                        View All Sessions
+                    </a>
+                </div>
+                <div id="today-sessions">
+                    <!-- Sessions will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Recent Notifications & Pending Requests -->
+            <div class="grid-2">
+                <!-- Recent Notifications -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Notifications</h3>
+                        <a onclick="showPage('notifications')" class="card-link">
+                            View All
+                        </a>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="bookingChart"></canvas>
+                    <div id="recent-notifications">
+                        <!-- Notifications will be populated by JavaScript -->
                     </div>
                 </div>
-            </section>
+
+                <!-- Pending Session Requests -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pending Requests</h3>
+                        <span style="background: #fed7aa; color: #9a3412; font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 12px;">5 New</span>
+                    </div>
+                    <div id="pending-requests">
+                        <!-- Requests will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
 
-    <!-- Modal for Contact Form -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Contact Mentee</h2>
-                <span class="close" id="closeContactModal">&times;</span>
+        <!-- Sessions Page -->
+        <div id="sessions-page" class="page-content fade-in hidden">
+            <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 12px;">Session Management</h2>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <p style="color: #6b7280; font-size: 16px;">Manage your upcoming and past sessions</p>
+                    <div style="display: flex; gap: 8px;">
+                        <select id="session-filter" style="border: 1px solid #d1d5db; border-radius: 6px; padding: 8px 12px; font-size: 14px;">
+                            <option value="all">All Sessions</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <button onclick="exportSessions()" class="btn btn-primary">
+                            Export
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="menteeName">Mentee Name:</label>
-                        <input type="text" id="menteeName" name="menteeName" readonly>
+
+            <!-- Sessions List -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Sessions</h3>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="filterSessions('today')" style="padding: 4px 12px; font-size: 12px; background: #dbeafe; color: #1d4ed8; border: none; border-radius: 6px; cursor: pointer;">
+                            Today
+                        </button>
+                        <button onclick="filterSessions('week')" style="padding: 4px 12px; font-size: 12px; background: #f3f4f6; color: #374151; border: none; border-radius: 6px; cursor: pointer;">
+                            This Week
+                        </button>
+                        <button onclick="filterSessions('month')" style="padding: 4px 12px; font-size: 12px; background: #f3f4f6; color: #374151; border: none; border-radius: 6px; cursor: pointer;">
+                            This Month
+                        </button>
                     </div>
+                </div>
+                <div id="sessions-list">
+                    <!-- Sessions will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Learners Page -->
+        <div id="learners-page" class="page-content fade-in hidden">
+            <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 12px;">My Learners</h2>
+                <p style="color: #6b7280; font-size: 16px;">Manage your learner relationships and track their progress</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Learners</h3>
+                    <button class="btn btn-primary">Add Learner</button>
+                </div>
+                <div id="learners-list">
+                    <!-- Learners will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Page -->
+        <div id="messages-page" class="page-content fade-in hidden">
+            <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 12px;">Messages</h2>
+                <p style="color: #6b7280; font-size: 16px;">Communicate with your learners</p>
+            </div>
+
+            <div class="card">
+                <div id="conversations-list">
+                    <!-- Conversations will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Page -->
+        <div id="notifications-page" class="page-content fade-in hidden">
+            <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 12px;">Notifications</h2>
+                <p style="color: #6b7280; font-size: 16px;">Stay updated with your mentoring activities</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Notifications</h3>
+                    <button onclick="markAllAsRead()" class="card-link">Mark All as Read</button>
+                </div>
+                <div id="notifications-list">
+                    <!-- Notifications will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics-page" class="page-content fade-in hidden">
+            <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 12px;">Analytics</h2>
+                <p style="color: #6b7280; font-size: 16px;">Track your mentoring performance and impact</p>
+            </div>
+
+            <div class="empty-state">
+                <i class="material-icons">analytics</i>
+                <p>Analytics dashboard coming soon</p>
+            </div>
+        </div>
+
+        <!-- Profile Settings Page -->
+        <div id="profile-page" class="page-content fade-in hidden">
+            <div style="margin-bottom: 24px;">
+                <h2 style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 12px;">Profile Settings</h2>
+                <p style="color: #6b7280; font-size: 16px;">Manage your mentor profile and preferences</p>
+            </div>
+
+            <div class="card">
+                <div class="profile-avatar">
+                    MS
+                </div>
+                
+                <form id="profile-form">
                     <div class="form-group">
-                        <label for="focusArea">Focus Area:</label>
-                        <input type="text" id="focusArea" name="focusArea" readonly>
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" value="Dr. Sarah Martinez" id="fullName">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="messageSubject">Subject:</label>
-                        <input type="text" id="messageSubject" name="messageSubject" required>
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" value="sarah.martinez@skillflex.com" id="email">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="messageContent">Message:</label>
-                        <textarea id="messageContent" name="messageContent" rows="5" required></textarea>
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" value="+1 (555) 123-4567" id="phone">
                     </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Professional Title</label>
+                        <input type="text" class="form-input" value="Senior Leadership Development Mentor" id="title">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Years of Experience</label>
+                        <input type="number" class="form-input" value="15" id="experience">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Specializations</label>
+                        <input type="text" class="form-input" value="Leadership Development, Communication Skills, Team Building" id="specializations">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Bio</label>
+                        <textarea class="form-textarea" id="bio" placeholder="Tell learners about your background and expertise...">Dr. Sarah Martinez is a seasoned leadership development mentor with over 15 years of experience in executive coaching and organizational development. She specializes in helping professionals enhance their leadership capabilities, improve communication skills, and build high-performing teams. Sarah holds a Ph.D. in Organizational Psychology and has worked with Fortune 500 companies to develop their leadership pipelines.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">LinkedIn Profile</label>
+                        <input type="url" class="form-input" value="https://linkedin.com/in/sarahmartinez" id="linkedin">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Hourly Rate (USD)</label>
+                        <input type="number" class="form-input" value="150" id="hourlyRate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Time Zone</label>
+                        <select class="form-input" id="timezone">
+                            <option value="EST">Eastern Standard Time (EST)</option>
+                            <option value="CST">Central Standard Time (CST)</option>
+                            <option value="MST">Mountain Standard Time (MST)</option>
+                            <option value="PST">Pacific Standard Time (PST)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Languages Spoken</label>
+                        <input type="text" class="form-input" value="English, Spanish, French" id="languages">
+                    </div>
+                    
                     <div class="form-actions">
-                        <button type="button" class="btn-cancel" id="cancelMessage">Cancel</button>
-                        <button type="submit" class="btn-send">Send Message</button>
+                        <button type="button" class="btn-cancel" onclick="resetProfileForm()">Cancel</button>
+                        <button type="submit" class="btn-save">Save Changes</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Modal for Detailed Views -->
-    <div id="detailModal" class="modal">
-        <div class="modal-content large">
+    <!-- User Profile Modal -->
+    <div id="user-profile-modal" class="modal hidden">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2 id="detailModalTitle">Details</h2>
-                <span class="close" id="closeDetailModal">&times;</span>
+                <h3 class="modal-title">Profile</h3>
+                <button onclick="closeUserProfile()" class="close-button">
+                    <i class="material-icons">close</i>
+                </button>
             </div>
-            <div class="modal-body">
-                <div id="detailModalContent">
-                    <!-- Dynamic content will be loaded here -->
-                </div>
+            <div style="text-align: center;">
+                <div class="profile-avatar">MS</div>
+                <h4 style="font-size: 18px; font-weight: 600; color: #1f2937; margin-bottom: 4px;">Dr. Sarah Martinez</h4>
+                <p style="color: #6b7280; margin-bottom: 16px;">Senior Leadership Development Mentor</p>
+                <button onclick="showPage('profile'); closeUserProfile();" class="btn btn-primary" style="margin-bottom: 12px;">Edit Profile</button>
+                <button onclick="logout()" class="btn btn-cancel">Logout</button>
             </div>
         </div>
     </div>
 
-<<<<<<< HEAD
-      <!--  FOOTER -->
-  <footer class="footer-section">
-    <div class="footer-wrap">
-      <a href="terms-privacy.html" class="footer-navlink">Terms of Service</a>
-      <span class="footer-copy">©2025 SkillFlex</span>
-      <a href="help&support.html" class="footer-navlink">Help & Support</a>
-    </div>
-  </footer>
-
-    <script src="mentorDashboard.js"></script>
-=======
-    <!-- Modal for Profile Content -->
-    <div id="profileModal" class="modal">
-        <div class="modal-content large">
+    <!-- Session Details Modal -->
+    <div id="session-details-modal" class="modal hidden">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2 id="profileModalTitle">Profile Settings</h2>
-                <span class="close" id="closeProfileModal">&times;</span>
+                <h3 class="modal-title">Session Details</h3>
+                <button onclick="closeSessionModal()" class="close-button">
+                    <i class="material-icons">close</i>
+                </button>
             </div>
-            <div class="modal-body">
-                <div class="profile-content">
-                    <div class="profile-header">
-                        <div class="profile-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="profile-details">
-                            <h2>Dr. Sarah Johnson</h2>
-                            <p>Leadership & Communication Mentor</p>
-                            <p>Member since: January 2024</p>
-                        </div>
-                    </div>
-                    
-                    <div class="profile-stats">
-                        <div class="profile-stat">
-                            <h3>4.8/5.0</h3>
-                            <p>Average Rating</p>
-                        </div>
-                        <div class="profile-stat">
-                            <h3>98%</h3>
-                            <p>Completion Rate</p>
-                        </div>
-                        <div class="profile-stat">
-                            <h3>14</h3>
-                            <p>Mentees Helped</p>
-                        </div>
-                        <div class="profile-stat">
-                            <h3>42</h3>
-                            <p>Total Sessions</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Specializations</h3>
-                    <ul>
-                        <li>Leadership Development</li>
-                        <li>Effective Communication</li>
-                        <li>Team Management</li>
-                        <li>Conflict Resolution</li>
-                    </ul>
-                    
-                    <div class="profile-actions">
-                        <button class="btn-send">Edit Profile</button>
-                        <button class="btn-cancel">Change Password</button>
-                    </div>
-                </div>
+            <div id="session-modal-content">
+                <!-- Session details will be populated by JavaScript -->
             </div>
         </div>
     </div>
-
-    <!--  FOOTER -->
-    <footer class="footer-section">
-        <div class="footer-wrap">
-            <a href="terms-privacy.html" class="footer-navlink">Terms of Service</a>
-            <span class="footer-copy">©2025 SkillFlex</span>
-            <a href="help&support.html" class="footer-navlink">Help & Support</a>
-        </div>
-    </footer>
 
     <script>
         // Global variables
-        let currentModal = null;
-        let chart = null;
+        let currentPage = 'dashboard';
+        let sessions = [];
+        let learners = [];
+        let notifications = [];
+        let conversations = [];
 
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeEventListeners();
-            initializeChart();
-            setupProfileDropdown();
+        // Sample data
+        const sampleSessions = [
+            {
+                id: 1,
+                learner: 'John Doe',
+                skill: 'Communication Skills',
+                date: '2024-03-20',
+                time: '10:00',
+                duration: 60,
+                status: 'upcoming',
+                type: 'video-call',
+                notes: 'Focus on presentation skills and public speaking confidence'
+            },
+            {
+                id: 2,
+                learner: 'Emily Chen',
+                skill: 'Leadership Development',
+                date: '2024-03-20',
+                time: '13:00',
+                duration: 60,
+                status: 'upcoming',
+                type: 'video-call',
+                notes: 'Team management and conflict resolution strategies'
+            },
+            {
+                id: 3,
+                learner: 'Michael Rodriguez',
+                skill: 'Communication Skills',
+                date: '2024-03-20',
+                time: '14:00',
+                duration: 60,
+                status: 'upcoming',
+                type: 'video-call',
+                notes: 'Improving written communication and email etiquette'
+            },
+            {
+                id: 4,
+                learner: 'Sarah Johnson',
+                skill: 'Problem Solving',
+                date: '2024-03-19',
+                time: '15:00',
+                duration: 60,
+                status: 'completed',
+                type: 'video-call',
+                notes: 'Analytical thinking and decision-making frameworks'
+            }
+        ];
+
+        const sampleLearners = [
+            {
+                id: 1,
+                name: 'John Doe',
+                email: 'john.doe@example.com',
+                skills: ['Communication Skills'],
+                progress: 75,
+                sessions: 8,
+                lastSession: '2024-03-15',
+                rating: 4.8
+            },
+            {
+                id: 2,
+                name: 'Emily Chen',
+                email: 'emily.chen@example.com',
+                skills: ['Leadership Development', 'Team Building'],
+                progress: 60,
+                sessions: 5,
+                lastSession: '2024-03-12',
+                rating: 4.9
+            },
+            {
+                id: 3,
+                name: 'Michael Rodriguez',
+                email: 'michael.r@example.com',
+                skills: ['Communication Skills', 'Problem Solving'],
+                progress: 40,
+                sessions: 3,
+                lastSession: '2024-03-10',
+                rating: 4.7
+            }
+        ];
+
+        const sampleNotifications = [
+            {
+                id: 1,
+                type: 'session-request',
+                title: 'New Session Request',
+                message: 'John Doe has requested a Communication Skills session for March 22nd at 2:00 PM',
+                time: '5 minutes ago',
+                read: false,
+                learner: 'John Doe'
+            },
+            {
+                id: 2,
+                type: 'cancellation',
+                title: 'Session Cancelled',
+                message: 'Emily Chen has cancelled the session scheduled for March 21st at 10:00 AM',
+                time: '1 hour ago',
+                read: false,
+                learner: 'Emily Chen'
+            },
+            {
+                id: 3,
+                type: 'message',
+                title: 'New Message',
+                message: 'Michael Rodriguez sent you a message about the upcoming session',
+                time: '2 hours ago',
+                read: true,
+                learner: 'Michael Rodriguez'
+            },
+            {
+                id: 4,
+                type: 'reminder',
+                title: 'Session Reminder',
+                message: 'You have a session with Sarah Johnson in 30 minutes',
+                time: '3 hours ago',
+                read: true,
+                learner: 'Sarah Johnson'
+            }
+        ];
+
+        const sampleConversations = [
+            {
+                id: 1,
+                learner: 'John Doe',
+                lastMessage: 'Thank you for the great session yesterday!',
+                time: '2 hours ago',
+                unread: 2,
+                messages: [
+                    { sender: 'learner', message: 'Hi Dr. Sarah, I wanted to thank you for yesterday\'s session on presentation skills.', time: '2 hours ago' },
+                    { sender: 'mentor', message: 'You\'re very welcome, John! I\'m glad you found it helpful. How did the practice go?', time: '2 hours ago' },
+                    { sender: 'learner', message: 'Thank you for the great session yesterday!', time: '2 hours ago' }
+                ]
+            },
+            {
+                id: 2,
+                learner: 'Emily Chen',
+                lastMessage: 'Looking forward to our session tomorrow',
+                time: '1 day ago',
+                unread: 0,
+                messages: [
+                    { sender: 'learner', message: 'Hi Dr. Sarah, I\'ve been working on the leadership exercises you gave me.', time: '1 day ago' },
+                    { sender: 'mentor', message: 'That\'s wonderful to hear, Emily! What insights have you gained so far?', time: '1 day ago' },
+                    { sender: 'learner', message: 'Looking forward to our session tomorrow', time: '1 day ago' }
+                ]
+            }
+        ];
+
+        // Initialize data
+        sessions = sampleSessions;
+        learners = sampleLearners;
+        notifications = sampleNotifications;
+        conversations = sampleConversations;
+
+        // Navigation functions
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('hidden');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            sidebar.classList.remove('active');
+            overlay.classList.add('hidden');
+            hamburger.classList.remove('active');
+        }
+
+        function showPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('[id$="-page"]');
+            pages.forEach(page => page.classList.add('hidden'));
+            
+            // Show selected page
+            document.getElementById(pageName + '-page').classList.remove('hidden');
+            currentPage = pageName;
+            
+            // Close sidebar on mobile
+            if (window.innerWidth < 768) {
+                closeSidebar();
+            }
+
+            // Load page-specific content
+            switch(pageName) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'sessions':
+                    loadSessions();
+                    break;
+                case 'learners':
+                    loadLearners();
+                    break;
+                case 'messages':
+                    loadMessages();
+                    break;
+                case 'notifications':
+                    loadNotifications();
+                    break;
+                case 'profile':
+                    loadProfile();
+                    break;
+            }
+        }
+
+        function showNotifications() {
+            showPage('notifications');
+        }
+
+        function showMessages() {
+            showPage('messages');
+        }
+
+        function showUserProfileModal() {
+            document.getElementById('user-profile-modal').classList.remove('hidden');
+        }
+
+        function closeUserProfile() {
+            document.getElementById('user-profile-modal').classList.add('hidden');
+        }
+
+        // Dashboard functions
+        function loadDashboard() {
+            loadTodaySessions();
+            loadRecentNotifications();
+            loadPendingRequests();
+        }
+
+        function loadTodaySessions() {
+            const todaySessions = sessions.filter(session => 
+                session.date === '2024-03-20' && session.status === 'upcoming'
+            );
+
+            const container = document.getElementById('today-sessions');
+            container.innerHTML = '';
+
+            if (todaySessions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="material-icons">event_available</i>
+                        <p>No sessions scheduled for today</p>
+                    </div>
+                `;
+                return;
+            }
+
+            todaySessions.forEach(session => {
+                const sessionElement = document.createElement('div');
+                sessionElement.className = 'session-card';
+                sessionElement.onclick = () => showSessionDetails(session.id);
+                
+                sessionElement.innerHTML = `
+                    <div class="session-info">
+                        <div class="session-avatar">
+                            ${session.learner.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div class="session-details">
+                            <h4>${session.learner}</h4>
+                            <p>${session.skill}</p>
+                            <p class="time">${session.time} - ${session.duration} minutes</p>
+                        </div>
+                    </div>
+                    <div class="session-actions">
+                        <button onclick="event.stopPropagation(); startSession(${session.id})" class="btn-start">
+                            Start
+                        </button>
+                        <button onclick="event.stopPropagation(); showSessionDetails(${session.id})" class="btn-more">
+                            <i class="material-icons">more_vert</i>
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(sessionElement);
+            });
+        }
+
+        function loadRecentNotifications() {
+            const recentNotifications = notifications.slice(0, 3);
+            const container = document.getElementById('recent-notifications');
+            container.innerHTML = '';
+
+            recentNotifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `notification-item ${!notification.read ? 'unread' : ''}`;
+                notificationElement.onclick = () => handleNotificationClick(notification.id);
+                
+                const iconColor = {
+                    'session-request': '#2563eb',
+                    'cancellation': '#dc2626',
+                    'message': '#16a34a',
+                    'reminder': '#ea580c'
+                }[notification.type];
+
+                const icon = {
+                    'session-request': 'event',
+                    'cancellation': 'cancel',
+                    'message': 'message',
+                    'reminder': 'schedule'
+                }[notification.type];
+
+                notificationElement.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="material-icons" style="color: ${iconColor}; font-size: 14px;">${icon}</i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">${notification.time}</div>
+                    </div>
+                    ${!notification.read ? '<div class="unread-dot"></div>' : ''}
+                `;
+                
+                container.appendChild(notificationElement);
+            });
+        }
+
+        function loadPendingRequests() {
+            const pendingRequests = notifications.filter(n => n.type === 'session-request' && !n.read);
+            const container = document.getElementById('pending-requests');
+            container.innerHTML = '';
+
+            if (pendingRequests.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="padding: 16px;">
+                        <i class="material-icons" style="font-size: 32px;">check_circle</i>
+                        <p style="font-size: 14px;">No pending requests</p>
+                    </div>
+                `;
+                return;
+            }
+
+            pendingRequests.forEach(request => {
+                const requestElement = document.createElement('div');
+                requestElement.className = 'notification-item';
+                requestElement.style.background = '#fef3c7';
+                
+                requestElement.innerHTML = `
+                    <div style="flex: 1;">
+                        <div style="font-size: 14px; font-weight: 500; color: #1f2937;">${request.learner}</div>
+                        <div style="font-size: 12px; color: #6b7280;">${request.message}</div>
+                        <div style="font-size: 12px; color: #9ca3af; margin-top: 4px;">${request.time}</div>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="approveRequest(${request.id})" style="background: #16a34a; color: white; padding: 4px 8px; border: none; border-radius: 4px; font-size: 12px; cursor: pointer;">
+                            Accept
+                        </button>
+                        <button onclick="declineRequest(${request.id})" style="background: #dc2626; color: white; padding: 4px 8px; border: none; border-radius: 4px; font-size: 12px; cursor: pointer;">
+                            Decline
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(requestElement);
+            });
+        }
+
+        // Session functions
+        function loadSessions() {
+            const container = document.getElementById('sessions-list');
+            container.innerHTML = '';
+
+            sessions.forEach(session => {
+                const sessionElement = document.createElement('div');
+                sessionElement.className = 'session-card';
+                sessionElement.style.marginBottom = '0';
+                sessionElement.style.borderBottom = '1px solid #e5e7eb';
+                sessionElement.style.borderRadius = '0';
+                
+                const statusColor = {
+                    'upcoming': '#dbeafe',
+                    'completed': '#dcfce7',
+                    'cancelled': '#fee2e2'
+                }[session.status];
+
+                const statusTextColor = {
+                    'upcoming': '#1d4ed8',
+                    'completed': '#166534',
+                    'cancelled': '#991b1b'
+                }[session.status];
+
+                sessionElement.innerHTML = `
+                    <div class="session-info">
+                        <div class="session-avatar">
+                            ${session.learner.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div class="session-details">
+                            <h4>${session.learner}</h4>
+                            <p>${session.skill}</p>
+                            <p class="time">${session.date} at ${session.time}</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="padding: 2px 8px; font-size: 12px; font-weight: 500; border-radius: 12px; background: ${statusColor}; color: ${statusTextColor};">
+                            ${session.status.charAt(0).toUpperCase() + session.status.slice(1)}
+                        </span>
+                        <button onclick="showSessionDetails(${session.id})" class="btn-more">
+                            <i class="material-icons">more_vert</i>
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(sessionElement);
+            });
+        }
+
+        function showSessionDetails(sessionId) {
+            const session = sessions.find(s => s.id === sessionId);
+            if (!session) return;
+
+            const modal = document.getElementById('session-details-modal');
+            const content = document.getElementById('session-modal-content');
+            
+            const statusColor = {
+                'upcoming': '#dbeafe',
+                'completed': '#dcfce7',
+                'cancelled': '#fee2e2'
+            }[session.status];
+
+            const statusTextColor = {
+                'upcoming': '#1d4ed8',
+                'completed': '#166534',
+                'cancelled': '#991b1b'
+            }[session.status];
+
+            content.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 64px; height: 64px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: bold;">
+                            ${session.learner.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div>
+                            <h3 style="font-size: 20px; font-weight: bold; color: #1f2937;">${session.learner}</h3>
+                            <p style="color: #6b7280;">${session.skill}</p>
+                            <span style="display: inline-block; padding: 2px 8px; font-size: 12px; font-weight: 500; border-radius: 12px; background: ${statusColor}; color: ${statusTextColor}; margin-top: 4px;">
+                                ${session.status.charAt(0).toUpperCase() + session.status.slice(1)}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div>
+                            <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Date</label>
+                            <p style="color: #1f2937;">${session.date}</p>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Time</label>
+                            <p style="color: #1f2937;">${session.time}</p>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Duration</label>
+                            <p style="color: #1f2937;">${session.duration} minutes</p>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 4px;">Type</label>
+                            <p style="color: #1f2937;">${session.type.replace('-', ' ')}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Session Notes</label>
+                        <p style="color: #1f2937; background: #f9fafb; padding: 12px; border-radius: 6px;">${session.notes}</p>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        ${session.status === 'upcoming' ? `
+                            <button onclick="startSession(${session.id})" class="btn-save">
+                                Start Session
+                            </button>
+                            <button onclick="rescheduleSession(${session.id})" class="btn-save">
+                                Reschedule
+                            </button>
+                            <button onclick="cancelSession(${session.id})" style="background: #dc2626;" class="btn-save">
+                                Cancel
+                            </button>
+                        ` : ''}
+                        <button onclick="messagelearner('${session.learner}')" class="btn-save">
+                            Message Learner
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeSessionModal() {
+            document.getElementById('session-details-modal').classList.add('hidden');
+        }
+
+        function startSession(sessionId) {
+            alert(`Starting session ${sessionId}. In a real app, this would launch the video call interface.`);
+            closeSessionModal();
+        }
+
+        function rescheduleSession(sessionId) {
+            alert(`Rescheduling session ${sessionId}. In a real app, this would open a rescheduling interface.`);
+            closeSessionModal();
+        }
+
+        function cancelSession(sessionId) {
+            if (confirm('Are you sure you want to cancel this session?')) {
+                const session = sessions.find(s => s.id === sessionId);
+                if (session) {
+                    session.status = 'cancelled';
+                    loadSessions();
+                    closeSessionModal();
+                    alert('Session cancelled successfully. The learner has been notified.');
+                }
+            }
+        }
+
+        // Learners functions
+        function loadLearners() {
+            const container = document.getElementById('learners-list');
+            container.innerHTML = '';
+
+            learners.forEach(learner => {
+                const learnerElement = document.createElement('div');
+                learnerElement.className = 'session-card';
+                learnerElement.style.marginBottom = '0';
+                learnerElement.style.borderBottom = '1px solid #e5e7eb';
+                learnerElement.style.borderRadius = '0';
+                
+                learnerElement.innerHTML = `
+                    <div class="session-info">
+                        <div class="session-avatar">
+                            ${learner.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div class="session-details">
+                            <h4>${learner.name}</h4>
+                            <p>${learner.email}</p>
+                            <p class="time">${learner.sessions} sessions • Last: ${learner.lastSession}</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="text-align: right;">
+                            <div style="font-size: 14px; font-weight: 600; color: #1f2937;">${learner.progress}% Progress</div>
+                            <div style="font-size: 12px; color: #6b7280;">★ ${learner.rating}</div>
+                        </div>
+                        <button onclick="viewLearnerProfile(${learner.id})" class="btn-more">
+                            <i class="material-icons">more_vert</i>
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(learnerElement);
+            });
+        }
+
+        // Messages functions
+        function loadMessages() {
+            const container = document.getElementById('conversations-list');
+            container.innerHTML = '';
+
+            conversations.forEach(conversation => {
+                const conversationElement = document.createElement('div');
+                conversationElement.className = 'session-card';
+                conversationElement.style.marginBottom = '0';
+                conversationElement.style.borderBottom = '1px solid #e5e7eb';
+                conversationElement.style.borderRadius = '0';
+                conversationElement.onclick = () => openConversation(conversation.id);
+                
+                conversationElement.innerHTML = `
+                    <div class="session-info">
+                        <div class="session-avatar">
+                            ${conversation.learner.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div class="session-details">
+                            <h4>${conversation.learner}</h4>
+                            <p>${conversation.lastMessage}</p>
+                            <p class="time">${conversation.time}</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        ${conversation.unread > 0 ? `
+                            <span style="background: #3b82f6; color: white; font-size: 12px; font-weight: 600; padding: 2px 6px; border-radius: 10px; min-width: 20px; text-align: center;">
+                                ${conversation.unread}
+                            </span>
+                        ` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(conversationElement);
+            });
+        }
+
+        // Notifications functions
+        function loadNotifications() {
+            const container = document.getElementById('notifications-list');
+            container.innerHTML = '';
+
+            notifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `notification-item ${!notification.read ? 'unread' : ''}`;
+                notificationElement.style.marginBottom = '0';
+                notificationElement.style.borderBottom = '1px solid #e5e7eb';
+                notificationElement.style.borderRadius = '0';
+                notificationElement.onclick = () => handleNotificationClick(notification.id);
+                
+                const iconColor = {
+                    'session-request': '#2563eb',
+                    'cancellation': '#dc2626',
+                    'message': '#16a34a',
+                    'reminder': '#ea580c'
+                }[notification.type];
+
+                const icon = {
+                    'session-request': 'event',
+                    'cancellation': 'cancel',
+                    'message': 'message',
+                    'reminder': 'schedule'
+                }[notification.type];
+
+                notificationElement.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="material-icons" style="color: ${iconColor}; font-size: 14px;">${icon}</i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message" style="white-space: normal;">${notification.message}</div>
+                        <div class="notification-time">${notification.time}</div>
+                    </div>
+                    ${!notification.read ? '<div class="unread-dot"></div>' : ''}
+                `;
+                
+                container.appendChild(notificationElement);
+            });
+        }
+
+        // Profile functions
+        function loadProfile() {
+            // Profile form is already populated with default values
+        }
+
+        function resetProfileForm() {
+            document.getElementById('profile-form').reset();
+            // Restore default values
+            document.getElementById('fullName').value = 'Dr. Sarah Martinez';
+            document.getElementById('email').value = 'sarah.martinez@skillflex.com';
+            document.getElementById('phone').value = '+1 (555) 123-4567';
+            document.getElementById('title').value = 'Senior Leadership Development Mentor';
+            document.getElementById('experience').value = '15';
+            document.getElementById('specializations').value = 'Leadership Development, Communication Skills, Team Building';
+            document.getElementById('bio').value = 'Dr. Sarah Martinez is a seasoned leadership development mentor with over 15 years of experience in executive coaching and organizational development. She specializes in helping professionals enhance their leadership capabilities, improve communication skills, and build high-performing teams. Sarah holds a Ph.D. in Organizational Psychology and has worked with Fortune 500 companies to develop their leadership pipelines.';
+            document.getElementById('linkedin').value = 'https://linkedin.com/in/sarahmartinez';
+            document.getElementById('hourlyRate').value = '150';
+            document.getElementById('languages').value = 'English, Spanish, French';
+        }
+
+        // Event handlers
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profile updated successfully!');
         });
 
-        // Initialize all event listeners
-        function initializeEventListeners() {
-            // Profile dropdown toggle
-            const profileIcon = document.getElementById('profileIcon');
-            profileIcon.addEventListener('click', toggleProfileDropdown);
-
-            // Statistics cards click events
-            document.getElementById('mentorSessionsCard').addEventListener('click', () => showMentorSessions());
-            document.getElementById('upcomingSessionsCard').addEventListener('click', () => showUpcomingSessions());
-            document.getElementById('completedSessionsCard').addEventListener('click', () => showCompletedSessions());
-            document.getElementById('pendingFeedbackCard').addEventListener('click', () => showPendingFeedback());
-
-            // Message buttons
-            const messageButtons = document.querySelectorAll('.message-btn');
-            messageButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const mentee = e.target.getAttribute('data-mentee');
-                    const focus = e.target.getAttribute('data-focus');
-                    showContactModal(mentee, focus);
-                });
-            });
-
-            // Modal close events
-            document.getElementById('closeContactModal').addEventListener('click', closeContactModal);
-            document.getElementById('closeDetailModal').addEventListener('click', closeDetailModal);
-            document.getElementById('closeProfileModal').addEventListener('click', closeProfileModal);
-            document.getElementById('cancelMessage').addEventListener('click', closeContactModal);
-
-            // Contact form submission
-            document.getElementById('contactForm').addEventListener('submit', handleContactSubmission);
-
-            // Click outside modal to close
-            window.addEventListener('click', (e) => {
-                if (e.target.classList.contains('modal')) {
-                    closeAllModals();
+        // Utility functions
+        function handleNotificationClick(notificationId) {
+            const notification = notifications.find(n => n.id === notificationId);
+            if (notification && !notification.read) {
+                notification.read = true;
+                if (currentPage === 'notifications') {
+                    loadNotifications();
                 }
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                const profileSection = document.querySelector('.profile-section');
-                if (!profileSection.contains(e.target)) {
-                    closeProfileDropdown();
+                if (currentPage === 'dashboard') {
+                    loadRecentNotifications();
                 }
-            });
+            }
         }
 
-        // Profile dropdown functionality
-        function setupProfileDropdown() {
-            const dropdownItems = document.querySelectorAll('.dropdown-item');
-            dropdownItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const action = e.target.getAttribute('data-action') || 
-                                  e.target.parentElement.getAttribute('data-action');
-                    
-                    if (action === 'logout') {
-                        handleLogout();
-                    } else if (action === 'profile') {
-                        showProfileModal();
-                    } else {
-                        // For other menu items, show appropriate content
-                        showDropdownContent(action);
-                    }
-                    closeProfileDropdown();
-                });
-            });
+        function approveRequest(requestId) {
+            const request = notifications.find(n => n.id === requestId);
+            if (request) {
+                request.read = true;
+                alert('Session request approved! The learner has been notified.');
+                loadPendingRequests();
+                loadRecentNotifications();
+            }
         }
 
-        function toggleProfileDropdown() {
-            const dropdown = document.getElementById('profileDropdown');
-            dropdown.classList.toggle('show');
+        function declineRequest(requestId) {
+            const request = notifications.find(n => n.id === requestId);
+            if (request) {
+                request.read = true;
+                alert('Session request declined. The learner has been notified.');
+                loadPendingRequests();
+                loadRecentNotifications();
+            }
         }
 
-        function closeProfileDropdown() {
-            const dropdown = document.getElementById('profileDropdown');
-            dropdown.classList.remove('show');
+        function markAllAsRead() {
+            notifications.forEach(n => n.read = true);
+            loadNotifications();
+            alert('All notifications marked as read.');
         }
 
-        function handleLogout() {
+        function exportSessions() {
+            alert('Exporting sessions... In a real app, this would download a CSV file.');
+        }
+
+        function filterSessions(period) {
+            alert(`Filtering sessions for: ${period}`);
+        }
+
+        function viewLearnerProfile(learnerId) {
+            alert(`Viewing profile for learner ID: ${learnerId}`);
+        }
+
+        function openConversation(conversationId) {
+            alert(`Opening conversation ID: ${conversationId}`);
+        }
+
+        function messagelearner(learnerName) {
+            alert(`Opening message interface for ${learnerName}`);
+        }
+
+        function logout() {
             if (confirm('Are you sure you want to logout?')) {
-                // In a real application, this would clear session and redirect
-                window.location.href = 'login.html';
+                alert('Logging out...');
             }
         }
 
-        function showProfileModal() {
-            const modal = document.getElementById('profileModal');
-            modal.style.display = 'block';
-            currentModal = modal;
-        }
-
-        function closeProfileModal() {
-            const modal = document.getElementById('profileModal');
-            modal.style.display = 'none';
-            currentModal = null;
-        }
-
-        function showDropdownContent(action) {
-            // Show appropriate content based on the action
-            const modalTitle = document.getElementById('detailModalTitle');
-            const modalContent = document.getElementById('detailModalContent');
-            
-            switch(action) {
-                case 'schedule':
-                    modalTitle.textContent = 'My Schedule';
-                    modalContent.innerHTML = `
-                        <div class="detail-section">
-                            <h3>Your Weekly Schedule</h3>
-                            <div class="detail-list">
-                                <div class="detail-item">
-                                    <div class="detail-info">
-                                        <strong>Monday, August 5</strong>
-                                        <span class="detail-meta">2:00 PM - 3:30 PM: Letago Ramautla (Communication)</span>
-                                    </div>
-                                    <span class="status-badge status-upcoming">Scheduled</span>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-info">
-                                        <strong>Wednesday, August 7</strong>
-                                        <span class="detail-meta">10:00 AM - 11:30 AM: Praise Rynn (Leadership)</span>
-                                    </div>
-                                    <span class="status-badge status-upcoming">Scheduled</span>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-info">
-                                        <strong>Friday, August 9</strong>
-                                        <span class="detail-meta">Available for new sessions</span>
-                                    </div>
-                                    <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Set Availability</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                case 'performance':
-                    modalTitle.textContent = 'Performance Analytics';
-                    modalContent.innerHTML = `
-                        <div class="detail-section">
-                            <h3>Your Mentor Performance</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div style="background-color: #f8f9fa; padding: 1rem; border-radius: 8px;">
-                                    <h4>Session Completion Rate</h4>
-                                    <div style="font-size: 2rem; font-weight: bold; color: #10b981;">98%</div>
-                                </div>
-                                <div style="background-color: #f8f9fa; padding: 1rem; border-radius: 8px;">
-                                    <h4>Average Rating</h4>
-                                    <div style="font-size: 2rem; font-weight: bold; color: #f59e0b;">4.8/5</div>
-                                </div>
-                            </div>
-                            <h4>Mentee Feedback Summary</h4>
-                            <ul>
-                                <li>95% of mentees reported significant improvement in their skills</li>
-                                <li>92% would recommend you to other mentees</li>
-                                <li>Your communication skills received a 4.9/5 rating</li>
-                                <li>Your expertise was rated 4.8/5</li>
-                            </ul>
-                        </div>
-                    `;
-                    break;
-                case 'settings':
-                    modalTitle.textContent = 'Account Settings';
-                    modalContent.innerHTML = `
-                        <div class="detail-section">
-                            <h3>Manage Your Account Settings</h3>
-                            <div class="form-group">
-                                <label>Notification Preferences</label>
-                                <div>
-                                    <input type="checkbox" id="emailNotif" checked>
-                                    <label for="emailNotif">Email notifications</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id="smsNotif" checked>
-                                    <label for="smsNotif">SMS notifications</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Availability Settings</label>
-                                <div>
-                                    <input type="checkbox" id="autoAccept" checked>
-                                    <label for="autoAccept">Auto-accept session requests</label>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button class="btn-cancel">Cancel</button>
-                                <button class="btn-send">Save Changes</button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-            }
-            
-            document.getElementById('detailModal').style.display = 'block';
-            currentModal = document.getElementById('detailModal');
-        }
-
-        // Chart initialization
-        function initializeChart() {
-            const ctx = document.getElementById('bookingChart').getContext('2d');
-            
-            chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'February', 'Mar', 'April', 'Jun'],
-                    datasets: [{
-                        label: 'Bookings',
-                        data: [5, 12, 15, 10, 8],
-                        borderColor: '#374151',
-                        backgroundColor: 'rgba(55, 65, 81, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#374151',
-                        pointBorderColor: '#fff',
-                        pointBorderWidth: 2,
-                        pointRadius: 5
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: '#666'
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#666'
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Modal functions
-        function showContactModal(mentee, focus) {
-            const modal = document.getElementById('contactModal');
-            document.getElementById('menteeName').value = mentee;
-            document.getElementById('focusArea').value = focus;
-            document.getElementById('messageSubject').value = '';
-            document.getElementById('messageContent').value = '';
-            
-            modal.style.display = 'block';
-            currentModal = modal;
-        }
-
-        function closeContactModal() {
-            const modal = document.getElementById('contactModal');
-            modal.style.display = 'none';
-            currentModal = null;
-        }
-
-        function closeDetailModal() {
-            const modal = document.getElementById('detailModal');
-            modal.style.display = 'none';
-            currentModal = null;
-        }
-
-        function closeAllModals() {
-            closeContactModal();
-            closeDetailModal();
-            closeProfileModal();
-        }
-
-        // Contact form submission
-        function handleContactSubmission(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(e.target);
-            const messageData = {
-                mentee: formData.get('menteeName'),
-                focusArea: formData.get('focusArea'),
-                subject: formData.get('messageSubject'),
-                content: formData.get('messageContent')
-            };
-            
-            // Simulate sending message
-            console.log('Message sent:', messageData);
-            alert(`Message sent to ${messageData.mentee} successfully!`);
-            closeContactModal();
-        }
-
-        // Detail view functions
-        function showMentorSessions() {
-            const modalTitle = document.getElementById('detailModalTitle');
-            const modalContent = document.getElementById('detailModalContent');
-            
-            modalTitle.textContent = 'Mentor Sessions Details';
-            modalContent.innerHTML = `
-                <div class="detail-section">
-                    <h3>All Scheduled Sessions</h3>
-                    <div class="detail-list">
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Letago Ramautla</strong>
-                                <span class="detail-meta">Communication • Aug 5, 2025 - 2:00 PM • Google Meet</span>
-                            </div>
-                            <span class="status-badge status-upcoming">Upcoming</span>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Praise Rynn</strong>
-                                <span class="detail-meta">Leadership • Aug 7, 2025 - 10:00 AM • Zoom</span>
-                            </div>
-                            <span class="status-badge status-upcoming">Upcoming</span>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Ayanda Mbili</strong>
-                                <span class="detail-meta">Emotional Intelligence • Aug 10, 2025 - 3:00 PM • Microsoft Teams</span>
-                            </div>
-                            <span class="status-badge status-upcoming">Upcoming</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('detailModal').style.display = 'block';
-            currentModal = document.getElementById('detailModal');
-        }
-
-        function showUpcomingSessions() {
-            const modalTitle = document.getElementById('detailModalTitle');
-            const modalContent = document.getElementById('detailModalContent');
-            
-            modalTitle.textContent = 'Upcoming Sessions';
-            modalContent.innerHTML = `
-                <div class="detail-section">
-                    <h3>Sessions Scheduled for the Next 7 Days</h3>
-                    <div class="detail-list">
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Letago Ramautla</strong>
-                                <span class="detail-meta">Communication • Aug 5, 2025 - 2:00 PM • Google Meet</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Join Meeting</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Praise Rynn</strong>
-                                <span class="detail-meta">Leadership • Aug 7, 2025 - 10:00 AM • Zoom</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Join Meeting</button>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1rem; padding: 1rem; background-color: #f8f9fa; border-radius: 6px;">
-                        <h4>Quick Actions:</h4>
-                        <button class="btn-send" style="margin: 0.5rem 0.5rem 0 0;">Send Reminder</button>
-                        <button class="btn-cancel" style="margin: 0.5rem 0.5rem 0 0;">Reschedule</button>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('detailModal').style.display = 'block';
-            currentModal = document.getElementById('detailModal');
-        }
-
-        function showCompletedSessions() {
-            const modalTitle = document.getElementById('detailModalTitle');
-            const modalContent = document.getElementById('detailModalContent');
-            
-            modalTitle.textContent = 'Completed Sessions';
-            modalContent.innerHTML = `
-                <div class="detail-section">
-                    <h3>Successfully Completed Mentorship Sessions</h3>
-                    <div class="detail-list">
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>John Smith</strong>
-                                <span class="detail-meta">Leadership • Jul 28, 2025 • 8 weeks</span>
-                                <span class="status-badge status-completed">Eligible</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Issue Certificate</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Sarah Johnson</strong>
-                                <span class="detail-meta">Communication • Jul 25, 2025 • 6 weeks</span>
-                                <span class="status-badge status-completed">Eligible</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Issue Certificate</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Mike Davis</strong>
-                                <span class="detail-meta">Problem Solving • Jul 20, 2025 • 10 weeks</span>
-                                <span class="status-badge status-completed">Eligible</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Issue Certificate</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Emma Wilson</strong>
-                                <span class="detail-meta">Emotional Intelligence • Jul 15, 2025 • 4 weeks</span>
-                                <span class="status-badge status-pending">Under Review</span>
-                            </div>
-                            <button class="btn-cancel" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Review Required</button>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1rem; padding: 1rem; background-color: #d4edda; border-radius: 6px;">
-                        <h4 style="color: #155724;">Certificate Eligibility Criteria:</h4>
-                        <ul style="color: #155724; margin-top: 0.5rem;">
-                            <li>Completed minimum 80% of scheduled sessions</li>
-                            <li>Demonstrated improvement in focus area</li>
-                            <li>Submitted all required assignments</li>
-                            <li>Received positive mentor evaluation</li>
-                        </ul>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('detailModal').style.display = 'block';
-            currentModal = document.getElementById('detailModal');
-        }
-
-        function showPendingFeedback() {
-            const modalTitle = document.getElementById('detailModalTitle');
-            const modalContent = document.getElementById('detailModalContent');
-            
-            modalTitle.textContent = 'Pending Feedback';
-            modalContent.innerHTML = `
-                <div class="detail-section">
-                    <h3>Mentees Requiring Session Feedback</h3>
-                    <div class="detail-list">
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Alex Thompson</strong>
-                                <span class="detail-meta">Time Management • Jul 30, 2025 • 4 days pending</span>
-                                <span class="status-badge status-pending">High Priority</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Alex Thompson')">Provide Feedback</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Lisa Chen</strong>
-                                <span class="detail-meta">Public Speaking • Aug 1, 2025 • 2 days pending</span>
-                                <span class="status-badge status-upcoming">Medium Priority</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Lisa Chen')">Provide Feedback</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Robert Brown</strong>
-                                <span class="detail-meta">Conflict Resolution • Aug 2, 2025 • 1 day pending</span>
-                                <span class="status-badge status-upcoming">Low Priority</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Robert Brown')">Provide Feedback</button>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-info">
-                                <strong>Jessica Lee</strong>
-                                <span class="detail-meta">Team Collaboration • Jul 28, 2025 • 6 days pending</span>
-                                <span class="status-badge status-pending">High Priority</span>
-                            </div>
-                            <button class="btn-send" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="showFeedbackForm('Jessica Lee')">Provide Feedback</button>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1rem; padding: 1rem; background-color: #fff3cd; border-radius: 6px;">
-                        <h4 style="color: #856404;">Feedback Guidelines:</h4>
-                        <ul style="color: #856404; margin-top: 0.5rem;">
-                            <li>Provide specific examples of progress made</li>
-                            <li>Highlight areas for continued improvement</li>
-                            <li>Include actionable recommendations</li>
-                            <li>Rate overall session effectiveness (1-5 scale)</li>
-                        </ul>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('detailModal').style.display = 'block';
-            currentModal = document.getElementById('detailModal');
-        }
-
-        // Feedback form function
-        function showFeedbackForm(menteeName) {
-            const modalContent = document.getElementById('detailModalContent');
-            modalContent.innerHTML = `
-                <div class="detail-section">
-                    <h3>Provide Feedback for ${menteeName}</h3>
-                    <form id="feedbackForm">
-                        <div class="form-group">
-                            <label for="sessionRating">Session Effectiveness (1-5):</label>
-                            <select id="sessionRating" name="sessionRating" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;">
-                                <option value="">Select Rating</option>
-                                <option value="5">5 - Excellent</option>
-                                <option value="4">4 - Very Good</option>
-                                <option value="3">3 - Good</option>
-                                <option value="2">2 - Fair</option>
-                                <option value="1">1 - Needs Improvement</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="progressMade">Progress Made:</label>
-                            <textarea id="progressMade" name="progressMade" rows="3" placeholder="Describe specific progress the mentee has made..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="areasImprovement">Areas for Improvement:</label>
-                            <textarea id="areasImprovement" name="areasImprovement" rows="3" placeholder="Identify areas where the mentee can continue to grow..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="recommendations">Recommendations:</label>
-                            <textarea id="recommendations" name="recommendations" rows="3" placeholder="Provide actionable recommendations for future development..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="additionalComments">Additional Comments:</label>
-                            <textarea id="additionalComments" name="additionalComments" rows="2" placeholder="Any additional feedback or observations..."></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn-cancel" onclick="showPendingFeedback()">Back</button>
-                            <button type="submit" class="btn-send">Submit Feedback</button>
-                        </div>
-                    </form>
-                </div>
-            `;
-            
-            // Add form submission handler
-            document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(`Feedback submitted for ${menteeName} successfully!`);
-                showPendingFeedback();
-            });
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && currentModal) {
-                closeAllModals();
-            }
+        // Initialize the dashboard on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('dashboard');
         });
     </script>
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 </body>
 </html>
-
