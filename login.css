@@ -55,403 +55,393 @@ color: #fff;
 font-size: 20px;
 font-weight: lighter;}
 
-#container .card-right{
+/* Right Form Container Styling */
+#container .card-right {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 40px;
     flex: 1;
+    background: #ffffff;
+    position: relative;
 }
 
-#container .card-right .form h2{
-    margin-left: 40px;
+#container .card-right .form {
+    width: 100%;
+    max-width: 480px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+#container .card-right .form h2 {
+    margin: 0 0 10px 0;
     color: #1251c5;
     text-align: left;
-    font-weight: bold;
-    font-size: 45px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
 }
-#container .card-right .form h3{
-    margin-left: 40px;
-    margin: 10px;
-    font-size: 25px;
+
+#container .card-right .form h3 {
+    margin: 0 0 30px 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
 }
-#container .card-right .form fieldset{
+
+#container .card-right .form fieldset {
     border: none;
     width: 100%;
-    margin: 50px;
+    margin: 0;
     padding: 40px;
-    background-color: #fAfAfA;
+    background-color: #ffffff;
     box-sizing: border-box;
-    box-shadow: 0 6px 6px rgba(0,0,0,0.25);
-    backdrop-filter: blur(6px);
-    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    border: 1px solid #eaeaea;
 }
 
-.form-group{
-    margin-bottom: 20px;
+/* Form Elements Styling */
+.form-group {
+    margin-bottom: 24px;
+    position: relative;
 }
 
-.form-group label{
-    font-weight: bold;
-    font-size: 16px;
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.form-group .input-wrapper{
-position: relative;
-display: flex;
-align-items: center;
+.form-group .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.form-group .input-wrapper i{
+.form-group .input-wrapper i {
     position: absolute;
-    left: 12px;
-    font-size: 18px;
+    left: 16px;
+    font-size: 16px;
     color: #888;
+    z-index: 2;
+    transition: color 0.3s ease;
 }
 
-.form-group .input-wrapper input{
-    border: 1px solid #f2f2f2;
+.form-group .input-wrapper input {
+    border: 2px solid #eaeaea;
     width: 100%;
-    padding: 10px 15px 10px 40px;
-    border-radius: 20px;
-    background-color: #f2f2f2;
+    padding: 14px 20px 14px 48px;
+    border-radius: 12px;
+    background-color: #fafafa;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    color: #333;
 }
 
-.form-group .input-wrapper input:focus{
+.form-group .input-wrapper input:focus {
+    outline: none;
     border-color: #1251C5;
     background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(18, 81, 197, 0.1);
 }
 
-#container .card-right .form fieldset form .option{
+.form-group .input-wrapper input:focus + i {
+    color: #1251C5;
+}
+
+/* Form Options */
+#container .card-right .form fieldset form .option {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px;
+    margin: 20px 0;
+    padding: 0 5px;
 }
-#container .card-right .form fieldset form .option .remember-me{
+
+#container .card-right .form fieldset form .option .remember-me {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 16px;
-}
-
-#container .card-right .form fieldset form .option a{
-    text-decoration: none;
-    color: #1251C5;
-    font-size:16px;
-}
-
-#container .card-right .form fieldset form .option a:hover{
-    text-decoration: underline;
-}
-
-#container .card-right .form fieldset form #log-btn{
-    text-align: center;
-    border-radius: 20px;
-    width: 100%;
-    height: 40px;
-    background-color: #1251C5;
-}
-
-#container .card-right .form fieldset form #log-btn a{
-    display: inline-block;
-    margin: 5px;
-    padding: 3px 20px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.signup-text{
-    margin: 18px;
-    text-align: center;
-    font-size: 16px;
-}
-.signup-text a{
-    text-decoration: none;
-    color: #1251C5;
-}
-.signup-text a:hover{
-    text-decoration: underline;
-}
-
-.divider{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 10px 0;
-    color: #1251C5;
-}
-
-.divider::before, .divider::after{
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #000;
-    flex: 1;
-}
-
-#log-btn{ border: 1px solid #000;
-    border-color: #1251C5;
-    color: #fff;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-#log-btn:hover{
-   font-size: 18.5px;
-}
-#googleBtn img{
-     width: 24px;
-     height: 24px;
-}
-
-#googleBtn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 17px;
-    padding: 12px 20px;
-    border-radius: 20px;
-    font-size:18px;
-    font-weight: bold;
-    width: 100%;
-    border: 1px solid #000;
-    background-color: #fff;
+    gap: 8px;
+    font-size: 14px;
+    color: #555;
     cursor: pointer;
 }
 
-#googleBtn:hover{
-    background-color: #f2f2f2;
-    font-size: 19px;
+#container .card-right .form fieldset form .option .remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #1251C5;
+    cursor: pointer;
 }
+
+#container .card-right .form fieldset form .option a {
+    text-decoration: none;
+    color: #1251C5;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#container .card-right .form fieldset form .option a:hover {
+    color: #0a3a9c;
+    text-decoration: underline;
+}
+
+/* Login Button */
+#container .card-right .form fieldset form button[type="submit"] {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #1251C5 0%, #0a3a9c 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(18, 81, 197, 0.2);
+}
+
+#container .card-right .form fieldset form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(18, 81, 197, 0.3);
+}
+
+#container .card-right .form fieldset form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Sign Up Text */
+.signup-text {
+    margin: 24px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.signup-text a {
+    text-decoration: none;
+    color: #1251C5;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.signup-text a:hover {
+    color: #0a3a9c;
+    text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #eaeaea;
+    margin: 0 10px;
+}
+
+/* Google Button */
+#googleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    border: 2px solid #eaeaea;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+#googleBtn:hover {
+    border-color: #1251C5;
+    background-color: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#googleBtn:active {
+    transform: translateY(0);
+}
+
+#googleBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Back Button */
 .back-btn {
-  margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .back-btn a {
-  text-decoration: none;
-  color: #1251C5;
-  font-size: 16px;
-  display: inline-flex;
-  align-items: center;
-  font-weight: bold;
+    text-decoration: none;
+    color: #1251C5;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #f0f5ff;
+}
+
+.back-btn a:hover {
+    color: #0a3a9c;
+    background-color: #e0ebff;
+    text-decoration: none;
 }
 
 .back-btn a i {
-  margin-right: 8px;
-  font-size: 18px;
+    margin-right: 8px;
+    font-size: 14px;
 }
-.back-btn a:hover{
-    text-decoration: underline;
+
+/* Eye icon on the right of password input */
+.input-wrapper #togglePassword {
+    position: absolute;      /* position it relative to the input wrapper */
+    top: 50%;                /* vertically center */
+    right: 10px;             /* distance from right edge */
+    transform: translateY(-50%);
+    cursor: pointer;         /* show pointer on hover */
+    color: #888;             /* default icon color */
+    font-size: 16px;         /* size of the eye icon */
+    transition: color 0.2s;  /* smooth color change on hover */
+    
 }
-/*Mobile devices*/
-@media(max-width:768px){
-    #container{
-        flex-direction: column;
-        height: auto;
+
+.input-wrapper #togglePassword:hover {
+    color: #333;             /* darker color on hover */
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Form */
+@media (max-width: 768px) {
+    #container .card-right {
+        padding: 20px;
+    }
+    
+    #container .card-right .form fieldset {
+        padding: 30px 25px;
         margin: 0;
-        padding: 0;
-        overflow-x: hidden;
     }
-
-    .card-left, .card-right{
-        width: 100vw;
-        flex: none;
-        box-sizing: border-box;
-    }
-
-    .card-left{
-        height: auto;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        width: 100vw;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        height: auto;
-    }
-
-    .card-content{
-        width: 100vw;
-        height: auto;
-        padding: 0;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card-content h1, .card-content h3, .card-content p {
+    
+    #container .card-right .form h2 {
+        font-size: 28px;
         text-align: center;
-        margin: 10px 0;
-        max-width: 100%;
+        margin: 0 0 8px 0;
     }
     
-     .card-content h1{
-    font-size: 28px;
+    #container .card-right .form h3 {
+        font-size: 15px;
+        text-align: center;
+        margin: 0 0 25px 0;
     }
     
-    .card-content h3 {
-    font-size: 20px;
-    }
-
-  .card-content p {
-    font-size: 14px;
-    line-height: 2rem;
-    word-wrap: break-word;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .bottom-text {
-    position: static;
-    text-align: center;
-    font-size: 14px;
-    margin-top: 15px;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .card-right{
-    display: flex;
-    padding: 20px;
-    justify-content: center;
-    align-items: flex-start;
-    box-sizing: border-box;
-  }
-
-  .card-right .form{
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  #container .card-right .form fieldset{
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  
-#container .card-right .form h2 {
-    font-size: 25px;
-    text-align: center;
-    margin: 10px auto;
-  }
-
-  #container .card-right .form h3 {
-    font-size: 18px;
-    text-align: center;
-    margin: 10px auto;
-  }
-
-#container .card-right .form fieldset form .option{
-    display: flex;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    margin: 5px !important;
-}
-
-.option a{
-    margin: 5px;
-    padding: 3px;
-}
-
-.signup-text{
-    text-align: left;
-}
-
-  #log-btn a {
-    font-size: 16px;
-  }
-
-  #googleBtn {
-    font-size: 16px;
-    padding: 10px;
-  }
-}
-
-/*Tablet devices*/
-@media(max-width:1024px){
-    #container{
-        display: flex;
+    #container .card-right .form fieldset form .option {
         flex-direction: column;
-        height: auto;
-        margin: 0;
-    }
-
-    .card-left, .card-right{
-        width: 100%;
-        flex: none;
-        box-sizing: border-box;
-    }
-
-    .card-left{
-        height: 100vh;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        width: 100vw;
-    }
-    .card-content{
-        height: 100%;
-        padding: 10px;
-        text-wrap: wrap;
-    }
-
-    .card-content h1, .card-content h3, .card-content p {
-        text-align: left;
-        margin: 10px 0;
+        gap: 15px;
+        align-items: flex-start;
     }
     
-    .card-content h1{
-    font-size: 45px;
+    .signup-text {
+        text-align: center;
     }
-    
-    .card-content h3 {
-    font-size: 45px;
-    }
-
-  .card-content p {
-    font-size: 24px;
-    line-height: 3rem;
-    padding: 15px;
-    text-wrap: wrap;
-  }
-
-  .bottom-text {
-    position: static;
-    text-align: center;
-    font-size: 20px;
-    margin-top: 10px;
-  }
-
-  .card-right{
-    box-sizing: border-box;
-    padding: 20px;}
-
-  .card-right .form{
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  #container .card-right .form fieldset{
-    margin: 0 auto;
-    padding: 30px;
-    width: 100%;
-  }
-
-  #container .card-right .form fieldset form .option{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
 }
+
+@media (max-width: 480px) {
+    #container .card-right .form fieldset {
+        padding: 25px 20px;
+    }
+    
+    #container .card-right .form h2 {
+        font-size: 24px;
+    }
+    
+    .form-group .input-wrapper input {
+        padding: 12px 16px 12px 44px;
+    }
+    
+    #googleBtn {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    #container .card-right .form fieldset form button[type="submit"] {
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Loading state for form submission */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error message styling */
+.error-message {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    display: none;
 }
