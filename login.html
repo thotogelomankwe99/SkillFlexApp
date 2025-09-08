@@ -22,7 +22,8 @@
                      expext guidance, and smart AI feedback. 
                      <br>
                      <b>Login</b> 
-                     to explore real-world scenarios and  track your progress.</p>
+                     to explore real-world scenarios and  track your progress.
+                </p>
                  <div class="bottom-text">Strength Starts with Soft</div>
                 </div>
         </div>
@@ -35,15 +36,16 @@
                 <h3>Welcome! Login to skillflex to continue</h3>
 
                 <fieldset>
-                    <form id="loginForm">
+                    <form>
                         <div class="form-group ">
                             <label for="email">Email</label>
                             <div class="input-wrapper">
                                 <i class="fa fa-envelope"></i>
-                                <input type="email" id="email" required placeholder="Enter email">
+                                <input type="email" id="email" required>
                             </div>     
                         </div>
                         <div class="form-group">
+
     <label for="password">Password</label>
     <div class="input-wrapper">
         <i class="fa fa-lock"></i>
@@ -54,11 +56,29 @@
                         
 
 <div class="option">
+
+                            <label for="password">Password</label>
+                            <div class="input-wrapper">
+                                <i class="fa fa-lock"></i>
+                            <input type="password" name="password" id="password" required>
+                            </div>
+                        </div>
+                        <div class="option">
+
                             <label class="remember-me"><input type="checkbox">Remember Me</label>
                             <a href="reset-password.html">Forgot Password?</a>
                         </div>
+
+                        <div id="log-btn"><a href="leaner-dashboard.html">Login</a></div>
+
+                        <button type="submit" id="log-btn">Login</button>
+
                         <button type="submit">Login</button>
+
                         <!--<div id="log-btn"><a href="leaner-dashboard.html">Login</a></div>-->
+
+                      
+                      
                         <div class="signup-text">Don't have an account? <a href="sign-up.html">Sign Up</a></div>
                         <div class="divider"><span>or</span></div>
                         <br>
@@ -75,7 +95,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <!-- Firebase Auth -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="login.js"></script>
 </body>
 </html>

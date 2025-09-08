@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    button { padding: 5px 10px; margin-right: 5px; cursor: pointer; }
+    .status-pending { color: orange; font-weight: bold; }
+    .status-approved { color: green; font-weight: bold; }
+    .status-rejected { color: red; font-weight: bold; }
+    button:disabled { background-color: #ccc; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <h1>Admin Requests Dashboard</h1>
+  <table id="requestsTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPtm24veNlKOKHgdwSERv2yL8JttZ3bcw",
+      authDomain: "skillflex-admin.firebaseapp.com",
+      projectId: "skillflex-admin",
+      storageBucket: "skillflex-admin.firebasestorage.app",
+      messagingSenderId: "912388334445",
+      appId: "1:912388334445:web:4fdbdf469508706b263064",
+      measurementId: "G-5GC50N8YX9"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const tbody = document.querySelector('#requestsTable tbody');
+
+    // 🔥 Realtime listener for requests
+    onSnapshot(collection(db, "adminRequests"), (snapshot) => {
+      tbody.innerHTML = ''; // clear table first
+      snapshot.forEach((docSnap) => {
+        const req = docSnap.data();
+        const id = docSnap.id;
+
+        let statusClass = '';
+        if (req.status === 'pending') statusClass = 'status-pending';
+        if (req.status === 'approved') statusClass = 'status-approved';
+        if (req.status === 'rejected') statusClass = 'status-rejected';
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${req.fullName}</td>
+          <td>${req.email}</td>
+          <td>${req.reason}</td>
+          <td class="${statusClass}">${req.status}</td>
+          <td>
+            <button onclick="approveRequest('${id}')" ${req.status !== 'pending' ? 'disabled' : ''}>Approve</button>
+            <button onclick="rejectRequest('${id}')" ${req.status !== 'pending' ? 'disabled' : ''}>Reject</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
+
+    // ✅ Approve request & call backend to send email
+    window.approveRequest = async function(id) {
+      try {
+        // Update Firestore status
+        await updateDoc(doc(db, "adminRequests", id), { status: "approved" });
+
+        // Call backend API to send approval email
+        await fetch("http://localhost:4000/api/admin-requests/" + id + "/approve", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        alert("Request approved & email sent!");
+      } catch (err) {
+        console.error(err);
+        alert("Error approving request");
+      }
+    };
+
+    // ❌ Reject request
+    window.rejectRequest = async function(id) {
+      try {
+        await updateDoc(doc(db, "adminRequests", id), { status: "rejected" });
+        alert("Request rejected!");
+      } catch (err) {
+        console.error(err);
+        alert("Error rejecting request");
+      }
+    };
+  </script>
+
+</body>
+</html>

@@ -252,8 +252,29 @@ font-weight: lighter;}
 .divider::after {
     content: "";
     flex: 1;
+
     border-bottom: 1px solid #eaeaea;
     margin: 0 10px;
+
+    border-bottom: 1px solid #000;
+    flex: 1;
+}
+
+
+#log-btn{ border: 1px solid #000;
+    border-color: #1251C5;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#log-btn:hover{
+   font-size: 18.5px;
+}
+
+#googleBtn img{
+     width: 24px;
+     height: 24px;
 }
 
 /* Google Button */
@@ -330,6 +351,16 @@ font-weight: lighter;}
     font-size: 16px;         /* size of the eye icon */
     transition: color 0.2s;  /* smooth color change on hover */
 }
+
+/*Mobile devices*/
+@media(max-width:768px){
+    #container{
+        flex-direction: column;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
 
 .input-wrapper #togglePassword:hover {
     color: #333;             /* darker color on hover */
