@@ -192,7 +192,6 @@ align-items: center;
     flex: 1;
 }
 
-<<<<<<< HEAD
 #log-btn{ border: 1px solid #000;
     border-color: #1251C5;
     color: #fff;
@@ -203,8 +202,6 @@ align-items: center;
 #log-btn:hover{
    font-size: 18.5px;
 }
-=======
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 #googleBtn img{
      width: 24px;
      height: 24px;
@@ -249,10 +246,6 @@ align-items: center;
 .back-btn a:hover{
     text-decoration: underline;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 6c144cfa31231e72cdd695434e412f4c51cb7c3b
 /*Mobile devices*/
 @media(max-width:768px){
     #container{
