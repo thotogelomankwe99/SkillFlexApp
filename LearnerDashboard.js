@@ -1,250 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Communication Skills</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="L-dashboard.css">
-<!--- <link rel="stylesheet" href="comm.css">-->
+//fecth external html 
+function showPage(page) {
+    fetch(page + '.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('main-content').innerHTML = html;
+        });
+}
 
-<body>
-  <header>
-    <div class="container">
-      <div class="header-content">
-        
-        <!-- Hamburger Menu -->
-         <div class="hamburger" onclick="toggleSidebar()">
-          <div class="hamburger-line"></div>
-          <div class="hamburger-line"></div>
-          <div class="hamburger-line"></div>
-        </div>
-        
-        <!-- Logo and Brand -->
-         <div class="logo-container">
-          <div class="logo-icon">
-            <img src="LOGO-removebg-preview 1.png" alt="SkillFlex logo" class="logo-img"></div>
-            <div class="logo-text">SkillFlex</div>
-          </div>
 
-                <!-- Right Icons -->
-                <div class="header-icons">
-                    <!-- Notifications -->
-                    <button class="icon-button" onclick="showNotifications()">
-                        <i class="material-icons">notifications</i>
-                        <span class="notification-dot"></span>
-                    </button>
-                    
-                    <!-- User Profile -->
-                    <div class="user-avatar" onclick="showUserProfileModal()">
-                        JD
-                    </div>
-                </div>
-            </div>
-        </div>
- </header>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <nav class="sidebar-nav">
-            <ul class="sidebar-list">
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('overview')"  id="active">
-                        <i class="material-icons">dashboard</i>Dashboard
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showSkillsOverview('skills')">
-                        <i class="material-icons">check_circle</i>Skills Categories
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('quiz')">
-                        <i class="material-icons">quiz</i>Quiz
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('ai-chatbot')">
-                        <i class="material-icons">chat</i>AI Chatbot
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('mentor-booking')">
-                        <i class="material-icons">person</i>Mentor Booking
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('progress')">
-                        <i class="material-icons">assessment</i>Progress Tracking
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('reflection')">
-                        <i class="material-icons">forum</i>Reflection
-                    </button>
-                </li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showPage('certificates')">
-                        <i class="material-icons">workspace_premium</i>Certificates
-                    </button>
-                </li>
-                <li class="sidebar-divider"></li>
-                <li class="sidebar-item">
-                    <button class="sidebar-button sidebar-help" onclick="showWalkthrough()">
-                        <i class="material-icons">help</i>How It Works
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Overlay for sidebar -->
-    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
-
-    <main>
-    <!-- Show video here instead of card -->
-    <div class="video-container">
-      <video controls>
-        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/mpqs1POx3xo?si=8jygJqSmZ5VpLR4d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
-        <source src="https://youtu.be/mpqs1POx3xo?si=8jygJqSmZ5VpLR4d" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  <div class="skill-detail-page">
-    <h2>Communication Skills</h2>
-    <p>Communication Skills are the most important personal skills you can ever develop for your success in life. Life is a series of communications.
-      <br>Those who develop strong communication skills do well in school, secure jobs, and <br>
-      promotions and often ascend to the highest levels of leadership in corporations, governments, and civic life.
-      <br><br> People who fail to develop communication skills often have their careers stagnate or plateau in the mid-range. Sadly, presentation skills are either not taught in primary or secondary education or are taught poorly.
-      <br><br>The Complete Communication Skills course is your way to get a Master's level education on how to communicate effectively.
-      <br>This course is designed to be a one-stop shop for all your communication skills training needs. This course covers a vast array of communication needs and scenarios, from how to communicate during a job interview, pitching investors, asking for a raise, speaking one on one, or to large groups. <br>
-      And it covers how to speak to big corporations when you have a problem with service, plus public speaking for kids, how to deliver a wedding speech, and even a eulogy. 
-      <br>You will also become a master of persuasion, assertiveness, and all aspects of business communication. Your leadership abilities will expand dramatically as your social skills grow to allow you to communicate effectively in every situation.</p>
-
-  <section class="skill-overview">
-    <!-- What You'll Learn -->
-                    <div class="benefits-section">
-                        <h3>What You'll Learn</h3>
-                        <ul class="benefits-list" id="overview-skill-benefits">
-                          <li>Active listening techniques</li>
-                          <li>Verbal and non-verbal communication </li>
-                         <li>Clear and persuasive speaking</li>
-                         <li>Giving and receiving constructive feedback</li>
-                         <li>Building confidence in presentations</li>
-                         <li>Tailoring your message to different audiences</li>
-                        </ul>
-                    </div>
-
-                    <!-- Learning Path -->
-                    <div class="learning-path">
-                        <h3>Learning Path</h3>
-                        <div class="path-grid">
-                            <div class="path-item blue">
-                                <i class="material-icons">play_circle</i>
-                                <h4>1. Watch Video</h4>
-                                <p>Learn core concepts</p>
-                            </div>
-                            <div class="path-item purple">
-                                <i class="material-icons">quiz</i>
-                                <h4>2. Take Quiz</h4>
-                                <p>Test your knowledge</p>
-                            </div>
-                            <div class="path-item green">
-                                <i class="material-icons">chat</i>
-                                <h4>3. AI Practice</h4>
-                                <p>Scenario-based learning</p>
-                            </div>
-                            <div class="path-item orange">
-                                <i class="material-icons">person</i>
-                                <h4>4. Mentor Session</h4>
-                                <p>Expert guidance</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Course Stats -->
-                    <div class="stats-grid-modal">
-                        <div class="stat-item">
-                            <i class="material-icons">schedule</i>
-                            <p>2-3 hours</p>
-                            <p>Estimated time</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="material-icons">people</i>
-                            <p>1,234+</p>
-                            <p>Learners enrolled</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="material-icons">star</i>
-                            <p>4.8/5</p>
-                            <p>Average rating</p>
-                        </div>
-                    </div>
-
-                    <!-- Action Button -->
-                    <div class="modal-action">
-                        <button class="modal-action-button" onclick="startOverviewQuiz()">Take Quiz Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-
-    </main>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-brand">
-                        <div class="footer-brand-icon">
-                            <img src="LOGO-removebg-preview 1.png" alt="SkillFlex logo" class="logo-img">
-                        </div>
-                        <div class="footer-brand-text">SkillFlex</div>
-                    </div>
-                    <p>SkillFlex helps you develop essential soft skills through personalized learning paths, practice scenarios, and mentor guidance.</p>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><button onclick="showPage('overview')">Dashboard</button></li>
-                        <li><button onclick="showPage('skills')">Skills Categories</button></li>
-                        <li><button onclick="showPage('quiz')">Take Quiz</button></li>
-                        <li><button onclick="showPage('ai-chatbot')">SkillBot AI</button></li>
-                        <li><button onclick="showPage('mentor-booking')">Book Mentor</button></li>
-                        <li><button onclick="showPage('certificates')">Certificates</button></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <div class="contact-item">
-                        <i class="material-icons">email</i>
-                        <div class="contact-info">
-                            <p>Email:</p>
-                            <a href="mailto:support@skillflex.com">support@skillflex.com</a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <!-- Copyright -->
-            <div class="footer-bottom">
-                <button>Terms of Service</button>
-                <div class="copyright">© 2025 SkillFlex. All rights reserved.</div>
-                <button>Help & Support</button>
-            </div>
-        </div>
-
-    </footer>
-    <script src="LearnerDashboard.js"></script>
-    <script>
-        // Global variables
+// Global variables
 let currentSlide = 0;
 let selectedQuizSkill = null;
 let selectedChatbotSkill = null;
@@ -530,9 +294,8 @@ function resetQuiz() {
     document.getElementById('progress-bar').style.width = '20%';
     document.getElementById('current-question').textContent = '1';
 }
-    </script>
-    <script>
-        // Chatbot scenarios
+
+// Chatbot scenarios
 const chatbotScenarios = {
     communication: [
         "Your team member keeps interrupting you during meetings. How would you address this professionally?",
@@ -667,7 +430,7 @@ function selectChatbotSkill(skill) {
     selectedChatbotSkill = skill;
     chatbotActive = true;
     
-    // Hide skill selection, show chat interface
+// Hide skill selection, show chat interface
     document.getElementById('chatbot-skill-selection').style.display = 'none';
     document.getElementById('chat-messages').style.display = 'block';
     document.getElementById('complete-chatbot-btn').style.display = 'block';
@@ -757,7 +520,7 @@ function sendResponse() {
 
 // Generate AI response (simulated)
 function generateAIResponse(userMessage) {
-    // In a real app, this would call an AI API
+    // In a real app, this would call an AI API ((how dO WE DO IT??????))
     // For this demo, we'll use predefined responses
     
     const positiveFeedback = [
@@ -781,7 +544,7 @@ function generateAIResponse(userMessage) {
     
     addAIMessage(`${randomPositive} ${randomConstructive}`);
     
-    // After feedback, present another scenario
+ // After feedback, present another scenario
     setTimeout(() => {
         presentNextScenario();
     }, 2000);
@@ -798,9 +561,8 @@ function resetChatbot() {
     document.getElementById('user-response').value = '';
 }
 
-    </script>
-    <script>
-        // DOM Content Loaded Event
+
+// DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the application
     initializeApp();
@@ -1253,6 +1015,4 @@ document.querySelectorAll('.slide-indicator').forEach(indicator => {
         updateWalkthrough();
     });
 });
-    </script>
-</body>
-</html>
+

@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Communication Skills</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Teamwork & Collaboration</title>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="L-dashboard.css">
-<!--- <link rel="stylesheet" href="comm.css">-->
-
+</head>
 <body>
+  <!-- Header + Sidebar (same as communication) -->
   <header>
-    <div class="container">
-      <div class="header-content">
-        
-        <!-- Hamburger Menu -->
-         <div class="hamburger" onclick="toggleSidebar()">
-          <div class="hamburger-line"></div>
-          <div class="hamburger-line"></div>
-          <div class="hamburger-line"></div>
-        </div>
-        
-        <!-- Logo and Brand -->
-         <div class="logo-container">
-          <div class="logo-icon">
-            <img src="LOGO-removebg-preview 1.png" alt="SkillFlex logo" class="logo-img"></div>
-            <div class="logo-text">SkillFlex</div>
-          </div>
+     <div class="container">
+            <div class="header-content">
+                <!-- Hamburger Menu -->
+                <div class="hamburger" onclick="toggleSidebar()">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <!-- Logo and Brand -->
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="LOGO-removebg-preview 1.png" alt="SkillFlex logo" class="logo-img">
+                    </div>
+                    <div class="logo-text">SkillFlex</div>
+                </div>
 
                 <!-- Right Icons -->
                 <div class="header-icons">
@@ -45,11 +45,9 @@
                 </div>
             </div>
         </div>
- </header>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <nav class="sidebar-nav">
+  </header>
+  <div class="sidebar">
+     <nav class="sidebar-nav">
             <ul class="sidebar-list">
                 <li class="sidebar-item">
                     <button class="sidebar-button" onclick="showPage('overview')"  id="active">
@@ -57,7 +55,7 @@
                     </button>
                 </li>
                 <li class="sidebar-item">
-                    <button class="sidebar-button" onclick="showSkillsOverview('skills')">
+                    <button class="sidebar-button" onclick="showPage('skills')">
                         <i class="material-icons">check_circle</i>Skills Categories
                     </button>
                 </li>
@@ -102,44 +100,35 @@
     </div>
 
     <!-- Overlay for sidebar -->
-    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
 
-    <main>
-    <!-- Show video here instead of card -->
+  <main>
     <div class="video-container">
       <video controls>
-        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/mpqs1POx3xo?si=8jygJqSmZ5VpLR4d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
-        <source src="https://youtu.be/mpqs1POx3xo?si=8jygJqSmZ5VpLR4d" type="video/mp4">
+        <source src="teamwork-video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     </div>
-  <div class="skill-detail-page">
-    <h2>Communication Skills</h2>
-    <p>Communication Skills are the most important personal skills you can ever develop for your success in life. Life is a series of communications.
-      <br>Those who develop strong communication skills do well in school, secure jobs, and <br>
-      promotions and often ascend to the highest levels of leadership in corporations, governments, and civic life.
-      <br><br> People who fail to develop communication skills often have their careers stagnate or plateau in the mid-range. Sadly, presentation skills are either not taught in primary or secondary education or are taught poorly.
-      <br><br>The Complete Communication Skills course is your way to get a Master's level education on how to communicate effectively.
-      <br>This course is designed to be a one-stop shop for all your communication skills training needs. This course covers a vast array of communication needs and scenarios, from how to communicate during a job interview, pitching investors, asking for a raise, speaking one on one, or to large groups. <br>
-      And it covers how to speak to big corporations when you have a problem with service, plus public speaking for kids, how to deliver a wedding speech, and even a eulogy. 
-      <br>You will also become a master of persuasion, assertiveness, and all aspects of business communication. Your leadership abilities will expand dramatically as your social skills grow to allow you to communicate effectively in every situation.</p>
 
-  <section class="skill-overview">
-    <!-- What You'll Learn -->
-                    <div class="benefits-section">
-                        <h3>What You'll Learn</h3>
-                        <ul class="benefits-list" id="overview-skill-benefits">
-                          <li>Active listening techniques</li>
-                          <li>Verbal and non-verbal communication </li>
-                         <li>Clear and persuasive speaking</li>
-                         <li>Giving and receiving constructive feedback</li>
-                         <li>Building confidence in presentations</li>
-                         <li>Tailoring your message to different audiences</li>
-                        </ul>
-                    </div>
+    <div class="skill-detail-page">
+      <h2>Teamwork & Collaboration</h2>
+      <p>Learn to collaborate effectively in diverse group settings, build trust, and solve problems together...</p>
 
-                    <!-- Learning Path -->
-                    <div class="learning-path">
+      <section class="skill-overview">
+        <div class="benefits-section">
+          <h3>What You'll Learn</h3>
+          <ul class="benefits-list">
+            <li>Building trust and accountability</li>
+            <li>Conflict resolution strategies</li>
+            <li>Collaborative problem-solving</li>
+            <li>Effective group communication</li>
+            <li>Adapting to diverse working styles</li>
+            <li>Supporting and motivating team members</li>
+          </ul>
+        </div>
+
+        <!-- Learning Path, Stats, Action Button (same as communication) -->
+        <div class="learning-path">
                         <h3>Learning Path</h3>
                         <div class="path-grid">
                             <div class="path-item blue">
@@ -164,39 +153,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Course Stats -->
-                    <div class="stats-grid-modal">
-                        <div class="stat-item">
-                            <i class="material-icons">schedule</i>
-                            <p>2-3 hours</p>
-                            <p>Estimated time</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="material-icons">people</i>
-                            <p>1,234+</p>
-                            <p>Learners enrolled</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="material-icons">star</i>
-                            <p>4.8/5</p>
-                            <p>Average rating</p>
-                        </div>
-                    </div>
-
-                    <!-- Action Button -->
-                    <div class="modal-action">
-                        <button class="modal-action-button" onclick="startOverviewQuiz()">Take Quiz Now</button>
-                    </div>
-                </div>
-            </div>
         </div>
-</div>
+        <div class="stats-grid-modal">…</div>
+        <div class="modal-action">
+          <button class="modal-action-button">Take Quiz Now</button>
+        </div>
+      </section>
+    </div>
+  </main>
 
-    </main>
-    <!-- Footer -->
-    <footer>
-        <div class="container">
+  <footer>
+       <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-brand">
@@ -229,7 +196,13 @@
                             <a href="mailto:support@skillflex.com">support@skillflex.com</a>
                         </div>
                     </div>
-                    
+                    <div class="contact-item">
+                        <i class="material-icons">phone</i>
+                        <div class="contact-info">
+                            <p>Phone:</p>
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -240,10 +213,9 @@
                 <button>Help & Support</button>
             </div>
         </div>
-
-    </footer>
-    <script src="LearnerDashboard.js"></script>
-    <script>
+  </footer>
+  <script src="LearnerDashboard.js"></script>
+  <script>
         // Global variables
 let currentSlide = 0;
 let selectedQuizSkill = null;
