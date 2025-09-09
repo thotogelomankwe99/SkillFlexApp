@@ -1,22 +1,22 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: Montserrat;
 }
 
-/*SignUp Page*/
-#container{
+/* SignUp Page */
+#container {
     display: flex;
     height: 100vh;
 }
-.card-left, .card-right{
-    /*border: 1px solid #000;*/
+
+.card-left, .card-right {
     flex: 1;
     padding: 40px;
     display: flex;
 }
 
-.card-left{
+.card-left {
     background-image: url(background.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,22 +24,21 @@
     background-color: #1251c5; /* Fallback color if image doesn't load */
 }
 
-#container .card-left .card-content h1{
+#container .card-left .card-content h1 {
    color: #fff;
-   margin-left: 0;
    font-size: 45px;
 }
 
-#container .card-left .card-content h3{
+#container .card-left .card-content h3 {
     font-size: 45px;
     margin-top: 100px;
     font-weight: bold;
     color: #fff;
     text-align: left;
 }
-#container .card-left .card-content p{
+
+#container .card-left .card-content p {
     color: #fdfdfd;
-    position: relative;
     text-align: left;
     margin: 10px;
     margin-top: 30px;
@@ -49,8 +48,7 @@
     text-wrap: wrap;
 }
 
-#container .card-left .card-content .bottom-text{
-
+#container .card-left .card-content .bottom-text {
     position: absolute;
     bottom: 0;
     text-align: left;
@@ -60,22 +58,12 @@
     font-weight: lighter;
 }
 
-position: absolute;
-bottom: 0;
-text-align: left;
-padding: 10px;
-color: #fff;
-font-size: 20px;
-font-weight: lighter;}
-
-
 /* Right Form Container Styling */
 #container .card-right {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 40px;
-    flex: 1;
     background: #ffffff;
     position: relative;
 }
@@ -162,18 +150,16 @@ font-weight: lighter;}
     border-color: #1251C5;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(18, 81, 197, 0.1);
-
 }
 
 .form-group .input-wrapper input:focus + i {
     color: #1251C5;
 }
 
-/* Password Toggle Eye Icon - Fixed positioning */
+/* Password Toggle Eye Icon */
 .input-wrapper .toggle-password {
     position: absolute;
     right: 16px !important;
-    left: auto !important;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -188,18 +174,11 @@ font-weight: lighter;}
     color: #1251C5;
 }
 
-/* Ensure password input has proper right padding for the eye icon */
+/* Ensure password input has proper right padding */
 .form-group .input-wrapper input[type="password"],
 .form-group .input-wrapper input[type="text"] {
     padding-right: 48px !important;
 }
-
-}
-
-.form-group .input-wrapper input:focus + i {
-    color: #1251C5;
-}
-
 
 /* Form Options */
 #container .card-right .form fieldset form .option {
@@ -239,7 +218,7 @@ font-weight: lighter;}
     text-decoration: underline;
 }
 
-/* Login Button */
+/* Submit Button */
 #container .card-right .form fieldset form button[type="submit"] {
     width: 100%;
     padding: 14px 20px;
@@ -358,7 +337,6 @@ font-weight: lighter;}
 .back-btn a:hover {
     color: #0a3a9c;
     background-color: #e0ebff;
-    text-decoration: none;
 }
 
 .back-btn a i {
@@ -378,7 +356,13 @@ font-weight: lighter;}
     }
 }
 
-/* Responsive Design for Form */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     #container {
         flex-direction: column;
@@ -408,60 +392,6 @@ font-weight: lighter;}
         text-align: center;
         margin: 0 0 25px 0;
     }
-    
-/* Eye icon on the right of password input */
-.input-wrapper #togglePassword {
-    position: absolute;      /* position it relative to the input wrapper */
-    top: 50%;                /* vertically center */
-    right: 10px;             /* distance from right edge */
-    transform: translateY(-50%);
-    cursor: pointer;         /* show pointer on hover */
-    color: #888;             /* default icon color */
-    font-size: 16px;         /* size of the eye icon */
-    transition: color 0.2s;  /* smooth color change on hover */
-    
-}
-
-.input-wrapper #togglePassword:hover {
-    color: #333;             /* darker color on hover */
-}
-
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Design for Form */
-@media (max-width: 768px) {
-    #container .card-right {
-        padding: 20px;
-    }
-    
-    #container .card-right .form fieldset {
-        padding: 30px 25px;
-        margin: 0;
-    }
-    
-    #container .card-right .form h2 {
-        font-size: 28px;
-        text-align: center;
-        margin: 0 0 8px 0;
-    }
-    
-    #container .card-right .form h3 {
-        font-size: 15px;
-        text-align: center;
-        margin: 0 0 25px 0;
-    }
-    
 
     #container .card-right .form fieldset form .option {
         flex-direction: column;
@@ -484,9 +414,7 @@ font-weight: lighter;}
     }
     
     .form-group .input-wrapper input {
-
-        padding: 12px 44px 12px 44px;
-
+        padding: 12px 44px;
     }
     
     #googleBtn {
@@ -500,7 +428,7 @@ font-weight: lighter;}
     }
 }
 
-/* Loading state for form submission */
+/* Loading state */
 .loading {
     position: relative;
     pointer-events: none;
@@ -521,13 +449,7 @@ font-weight: lighter;}
     animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Error message styling */
+/* Error message */
 .error-message {
     color: #dc3545;
     background: #f8d7da;
