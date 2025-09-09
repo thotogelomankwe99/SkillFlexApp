@@ -1,6 +1,8 @@
-*{margin: 0;
-padding: 0;
-font-family: Montserrat;}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
 
 /*SignUp Page*/
 #container{
@@ -19,6 +21,7 @@ font-family: Montserrat;}
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: #1251c5; /* Fallback color if image doesn't load */
 }
 
 #container .card-left .card-content h1{
@@ -47,6 +50,16 @@ font-family: Montserrat;}
 }
 
 #container .card-left .card-content .bottom-text{
+
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    padding: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
 position: absolute;
 bottom: 0;
 text-align: left;
@@ -54,6 +67,7 @@ padding: 10px;
 color: #fff;
 font-size: 20px;
 font-weight: lighter;}
+
 
 /* Right Form Container Styling */
 #container .card-right {
@@ -148,11 +162,44 @@ font-weight: lighter;}
     border-color: #1251C5;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(18, 81, 197, 0.1);
+
 }
 
 .form-group .input-wrapper input:focus + i {
     color: #1251C5;
 }
+
+/* Password Toggle Eye Icon - Fixed positioning */
+.input-wrapper .toggle-password {
+    position: absolute;
+    right: 16px !important;
+    left: auto !important;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    z-index: 10;
+    padding: 4px;
+}
+
+.input-wrapper .toggle-password:hover {
+    color: #1251C5;
+}
+
+/* Ensure password input has proper right padding for the eye icon */
+.form-group .input-wrapper input[type="password"],
+.form-group .input-wrapper input[type="text"] {
+    padding-right: 48px !important;
+}
+
+}
+
+.form-group .input-wrapper input:focus + i {
+    color: #1251C5;
+}
+
 
 /* Form Options */
 #container .card-right .form fieldset form .option {
@@ -319,6 +366,49 @@ font-weight: lighter;}
     font-size: 14px;
 }
 
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Form */
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+    }
+    
+    .card-left {
+        min-height: 300px;
+    }
+    
+    #container .card-right {
+        padding: 20px;
+    }
+    
+    #container .card-right .form fieldset {
+        padding: 30px 25px;
+        margin: 0;
+    }
+    
+    #container .card-right .form h2 {
+        font-size: 28px;
+        text-align: center;
+        margin: 0 0 8px 0;
+    }
+    
+    #container .card-right .form h3 {
+        font-size: 15px;
+        text-align: center;
+        margin: 0 0 25px 0;
+    }
+    
 /* Eye icon on the right of password input */
 .input-wrapper #togglePassword {
     position: absolute;      /* position it relative to the input wrapper */
@@ -372,6 +462,7 @@ font-weight: lighter;}
         margin: 0 0 25px 0;
     }
     
+
     #container .card-right .form fieldset form .option {
         flex-direction: column;
         gap: 15px;
@@ -393,7 +484,9 @@ font-weight: lighter;}
     }
     
     .form-group .input-wrapper input {
-        padding: 12px 16px 12px 44px;
+
+        padding: 12px 44px 12px 44px;
+
     }
     
     #googleBtn {

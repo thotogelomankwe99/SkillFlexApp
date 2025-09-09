@@ -6,10 +6,9 @@
   <title>SkillFlex Sign Up</title>
   <link rel="stylesheet" href="signup.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-   
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -30,87 +29,84 @@
     <div class="form-section">
       <div class="form">
         <div class="back-btn">
-                    <a href="index.html"><i class="fas fa-arrow-left"></i> Back</a>
-                </div>
-      <h2>Sign Up</h2>
-      <h3>Create an account to continue with SkillFlex</h3>
-      <form class="signup-form">
-        <div class="form-group">
-          <label for="name">Full name <span class="required-asterisk">*</span></label>
-          <div class="input-container">
-            <i class="fas fa-user"></i>
-            <input type="text" id="name" required />
+          <a href="index.html"><i class="fas fa-arrow-left"></i> Back</a>
+        </div>
+        <h2>Sign Up</h2>
+        <h3>Create an account to continue with SkillFlex</h3>
+        
+        <form class="signup-form">
+          <div class="form-group">
+            <label for="name">Full name <span class="required-asterisk">*</span></label>
+            <div class="input-container">
+              <i class="fas fa-user"></i>
+              <input type="text" id="name" required placeholder="Enter your full name" />
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="email">Email address <span class="required-asterisk">*</span></label>
-          <div class="input-container">
-            <i class="fas fa-envelope"></i>
-            <input type="email" id="email"  required />
+          <div class="form-group">
+            <label for="email">Email address <span class="required-asterisk">*</span></label>
+            <div class="input-container">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="email" required placeholder="Enter your email" />
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="password">Password <span class="required-asterisk">*</span></label>
-          <div class="input-container">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="password" required />
+          <div class="form-group">
+            <label for="password">Password <span class="required-asterisk">*</span></label>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="password" required placeholder="Enter password" />
+              <i class="fas fa-eye-slash toggle-password" id="togglePassword"></i>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="confirm-password">Confirm Password <span class="required-asterisk">*</span></label>
-          <div class="input-container">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="confirm-password" required />
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password <span class="required-asterisk">*</span></label>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="confirm-password" required placeholder="Confirm password" />
+              <i class="fas fa-eye-slash toggle-password" id="toggleConfirmPassword"></i>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="role">Role Selection <span class="required-asterisk">*</span></label>
-         
-          <div class="radio-group">
-            <label><input type="radio" name="role" value="learner" required /> Learner</label>
-            <label><input type="radio" name="role" value="mentor" /> Mentor</label>
-            <!--<label><input type="radio" name="role" value="admin" /> Admin</label>-->
+          <div class="form-group">
+            <label for="role">Role Selection <span class="required-asterisk">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="role" value="learner" required /> Learner</label>
+              <label><input type="radio" name="role" value="mentor" /> Mentor</label>
+              <label><input type="radio" name="role" value="admin" /> <a href="admin-request.html">Admin</a></label>
+            </div>
           </div>
-          
-          <div class="admin-button-container">
-            <a href="admin-request.html" class="admin-button">
-              <div class="admin-button-box"></div>
-              <span class="admin-button-text">Admin</span>
-            </a>
+
+          <div class="terms">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">I agree to the <a href="terms.html" target="_blank">Terms & Privacy Policy</a></label>
           </div>
-        </div>
 
-        <div class="terms">
-          <input type="checkbox" id="terms" required />
-          <label for="terms">I agree to the <a href="terms.html" target="_blank">Terms & Privacy Policy</a></label>
-        </div>
+          <button type="submit" class="submit-btn">Sign Up</button>
 
-        <button type="submit" class="submit-btn">Sign Up</button>
+          <div class="login-prompt">
+            Already have an account? <a href="login.html">Log in</a>
+          </div>
 
-        <div class="login-prompt">
-          Already have an account? <a href="login.html">Log in</a>
-        </div>
+          <div class="divider-container">
+            <div class="divider-line"></div>
+            <span class="divider-text">or</span>
+            <div class="divider-line"></div>
+          </div>
 
-        <div class="divider-container">
-          <div class="divider-line"></div>
-          <span class="divider-text">or</span>
-          <div class="divider-line"></div>
-        </div>
-
-        <button type="button" id="google-btn" class="google-btn">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google icon" />
-          Continue with Google
-        </button> 
-      </form>
+          <button type="button" id="google-btn" class="google-btn">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google icon" />
+            Continue with Google
+          </button> 
+        </form>
       </div>
     </div>
   </div>
+  
   <!--  Link to external JavaScript file as ES module -->
   <script type="module" src="signup.js"></script>
 </body>
+
 
 </html>
