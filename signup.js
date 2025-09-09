@@ -1,6 +1,6 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup, GoogleAuthProvider} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {getFirestore, doc, setDoc, serverTimestamp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import {getFirestore, doc, setDoc, serverTimestamp, getDoc} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"; // Added getDoc import
 
 // Firebase configuration
 const firebaseConfig = {
@@ -196,6 +196,8 @@ if (signupForm) {
             // Reset the form after successful signup
             setTimeout(() => {
                 signupForm.reset();
+                // Redirect to login page after successful signup
+                window.location.href = "login.html";
             }, 2000);
 
         } catch (error) {
@@ -259,13 +261,25 @@ if (googleBtn) {
                 showSuccess("Google signup successful! Redirecting to dashboard...");
                 
                 setTimeout(() => {
-                    window.location.href = "leaner-dashboard.html";
+                    // Fixed redirect URL (was "leaner-dashboard.html")
+                    window.location.href = "learner-dashboard.html";
                 }, 2000);
             } else {
-                // Existing user
-                showError("Account already exists. Redirecting to login...");
+                // Existing user - redirect to appropriate dashboard based on role
+                const userData = userDoc.data();
+                showSuccess("Login successful! Redirecting...");
+                
                 setTimeout(() => {
-                    window.location.href = "login.html";
+                    // Redirect based on user role
+                    if (userData.role === 'learner') {
+                        window.location.href = "learner-dashboard.html";
+                    } else if (userData.role === 'mentor') {
+                        window.location.href = "mentor-dashboard.html";
+                    } else if (userData.role === 'admin') {
+                        window.location.href = "admin-dashboard.html";
+                    } else {
+                        window.location.href = "dashboard.html";
+                    }
                 }, 2000);
             }
             
