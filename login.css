@@ -1,22 +1,22 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: Montserrat;
 }
 
-/*SignUp Page*/
-#container{
+/* SignUp Page */
+#container {
     display: flex;
     height: 100vh;
 }
-.card-left, .card-right{
-    /*border: 1px solid #000;*/
+
+.card-left, .card-right {
     flex: 1;
     padding: 40px;
     display: flex;
 }
 
-.card-left{
+.card-left {
     background-image: url(background.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,22 +24,21 @@
     background-color: #1251c5; /* Fallback color if image doesn't load */
 }
 
-#container .card-left .card-content h1{
+#container .card-left .card-content h1 {
    color: #fff;
-   margin-left: 0;
    font-size: 45px;
 }
 
-#container .card-left .card-content h3{
+#container .card-left .card-content h3 {
     font-size: 45px;
     margin-top: 100px;
     font-weight: bold;
     color: #fff;
     text-align: left;
 }
-#container .card-left .card-content p{
+
+#container .card-left .card-content p {
     color: #fdfdfd;
-    position: relative;
     text-align: left;
     margin: 10px;
     margin-top: 30px;
@@ -49,7 +48,7 @@
     text-wrap: wrap;
 }
 
-#container .card-left .card-content .bottom-text{
+#container .card-left .card-content .bottom-text {
     position: absolute;
     bottom: 0;
     text-align: left;
@@ -65,7 +64,6 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
-    flex: 1;
     background: #ffffff;
     position: relative;
 }
@@ -158,11 +156,10 @@
     color: #1251C5;
 }
 
-/* Password Toggle Eye Icon - Fixed positioning */
+/* Password Toggle Eye Icon */
 .input-wrapper .toggle-password {
     position: absolute;
     right: 16px !important;
-    left: auto !important;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -177,7 +174,7 @@
     color: #1251C5;
 }
 
-/* Ensure password input has proper right padding for the eye icon */
+/* Ensure password input has proper right padding */
 .form-group .input-wrapper input[type="password"],
 .form-group .input-wrapper input[type="text"] {
     padding-right: 48px !important;
@@ -221,7 +218,7 @@
     text-decoration: underline;
 }
 
-/* Login Button */
+/* Submit Button */
 #container .card-right .form fieldset form button[type="submit"] {
     width: 100%;
     padding: 14px 20px;
@@ -340,7 +337,6 @@
 .back-btn a:hover {
     color: #0a3a9c;
     background-color: #e0ebff;
-    text-decoration: none;
 }
 
 .back-btn a i {
@@ -360,7 +356,13 @@
     }
 }
 
-/* Responsive Design for Form */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     #container {
         flex-direction: column;
@@ -390,7 +392,7 @@
         text-align: center;
         margin: 0 0 25px 0;
     }
-    
+
     #container .card-right .form fieldset form .option {
         flex-direction: column;
         gap: 15px;
@@ -412,7 +414,7 @@
     }
     
     .form-group .input-wrapper input {
-        padding: 12px 44px 12px 44px;
+        padding: 12px 44px;
     }
     
     #googleBtn {
@@ -426,7 +428,7 @@
     }
 }
 
-/* Loading state for form submission */
+/* Loading state */
 .loading {
     position: relative;
     pointer-events: none;
@@ -447,13 +449,7 @@
     animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Error message styling */
+/* Error message */
 .error-message {
     color: #dc3545;
     background: #f8d7da;
