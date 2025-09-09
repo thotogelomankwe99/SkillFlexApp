@@ -89,13 +89,13 @@ if (loginForm) {
             setTimeout(() => {
                 switch (role) {
                     case "admin":
-                        window.location.href = "admin-dashboard.html";
+                        window.location.href = "new-admin.dashboard.html";
                         break;
                     case "mentor":
                         window.location.href = "mentorDashboard.html";
                         break;
                     case "learner":
-                        window.location.href = "leaner-dashboard.html";
+                        window.location.href = "LearnerDashboard.html";
                         break;
                     default:
                         showError("Role not defined. Contact support.");
@@ -163,13 +163,13 @@ if (googleBtn) {
                 // Redirect based on role
                 switch (role) {
                     case "admin":
-                        window.location.href = "admin-dashboard.html";
+                        window.location.href = "new-admin.dashboard.html";
                         break;
                     case "mentor":
                         window.location.href = "mentorDashboard.html";
                         break;
                     case "learner":
-                        window.location.href = "leaner-dashboard.html";
+                        window.location.href = "LearnerDashboard.html";
                         break;
                     default:
                         showError("Role not defined. Contact support.");
