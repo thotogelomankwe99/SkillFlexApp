@@ -1,13 +1,3 @@
-//fecth external html 
-function showPage(page) {
-    fetch(page + '.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('main-content').innerHTML = html;
-        });
-}
-
-
 // Global variables
 let currentSlide = 0;
 let selectedQuizSkill = null;

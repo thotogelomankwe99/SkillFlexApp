@@ -50,6 +50,7 @@
 }
 
 #container .card-left .card-content .bottom-text{
+
     position: absolute;
     bottom: 0;
     text-align: left;
@@ -58,6 +59,15 @@
     font-size: 20px;
     font-weight: lighter;
 }
+
+position: absolute;
+bottom: 0;
+text-align: left;
+padding: 10px;
+color: #fff;
+font-size: 20px;
+font-weight: lighter;}
+
 
 /* Right Form Container Styling */
 #container .card-right {
@@ -152,6 +162,7 @@
     border-color: #1251C5;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(18, 81, 197, 0.1);
+
 }
 
 .form-group .input-wrapper input:focus + i {
@@ -182,6 +193,13 @@
 .form-group .input-wrapper input[type="text"] {
     padding-right: 48px !important;
 }
+
+}
+
+.form-group .input-wrapper input:focus + i {
+    color: #1251C5;
+}
+
 
 /* Form Options */
 #container .card-right .form fieldset form .option {
@@ -391,6 +409,60 @@
         margin: 0 0 25px 0;
     }
     
+/* Eye icon on the right of password input */
+.input-wrapper #togglePassword {
+    position: absolute;      /* position it relative to the input wrapper */
+    top: 50%;                /* vertically center */
+    right: 10px;             /* distance from right edge */
+    transform: translateY(-50%);
+    cursor: pointer;         /* show pointer on hover */
+    color: #888;             /* default icon color */
+    font-size: 16px;         /* size of the eye icon */
+    transition: color 0.2s;  /* smooth color change on hover */
+    
+}
+
+.input-wrapper #togglePassword:hover {
+    color: #333;             /* darker color on hover */
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Form */
+@media (max-width: 768px) {
+    #container .card-right {
+        padding: 20px;
+    }
+    
+    #container .card-right .form fieldset {
+        padding: 30px 25px;
+        margin: 0;
+    }
+    
+    #container .card-right .form h2 {
+        font-size: 28px;
+        text-align: center;
+        margin: 0 0 8px 0;
+    }
+    
+    #container .card-right .form h3 {
+        font-size: 15px;
+        text-align: center;
+        margin: 0 0 25px 0;
+    }
+    
+
     #container .card-right .form fieldset form .option {
         flex-direction: column;
         gap: 15px;
@@ -412,7 +484,9 @@
     }
     
     .form-group .input-wrapper input {
+
         padding: 12px 44px 12px 44px;
+
     }
     
     #googleBtn {
