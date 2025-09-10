@@ -3,28 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - SkillFlex</title>
     <link rel="stylesheet" href="login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
 </head>
 <body>
     <div id="container">
         <div class="card-left">
             <div class="card-content">
                 <h1>SKILLFLEX</h1>
-                <h3> Welcome to<br> SKILLFLEX!</h3>
-                <p>Your gateway to learning soft skills thorugh interactive practice,<br>
-                     expext guidance, and smart AI feedback. 
-                     <br>
-                     <b>Login</b> 
-                     to explore real-world scenarios and  track your progress.</p>
-                 <div class="bottom-text">Strength Starts with Soft</div>
-                </div>
+                <h3>Welcome to<br>SKILLFLEX!</h3>
+                <p>Your gateway to learning soft skills through interactive practice,<br>
+                   expert guidance, and smart AI feedback.<br>
+                   <b>Login</b> to explore real-world scenarios and track your progress.</p>
+                <div class="bottom-text">Strength Starts with Soft</div>
+            </div>
         </div>
         <div class="card-right">
             <div class="form">
@@ -32,41 +28,30 @@
                     <a href="index.html"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
                 <h2>Log in</h2>
-                <h3>Welcome! Login to skillflex to continue</h3>
+                <h3>Welcome! Login to SkillFlex to continue</h3>
 
                 <fieldset>
                     <form id="loginForm">
-                        <div class="form-group ">
-                            <label for="email">Email</label>
+                        <div class="form-group">
+                            <label for="email">EMAIL</label>
                             <div class="input-wrapper">
                                 <i class="fa fa-envelope"></i>
                                 <input type="email" id="email" required placeholder="Enter email">
                             </div>     
                         </div>
                         <div class="form-group">
-
-    <label for="password">Password</label>
-    <div class="input-wrapper">
-        <i class="fa fa-lock"></i>
-        <input type="password" name="password" id="password" required placeholder="Enter password">
-        <i class="fa fa-eye toggle-password" id="togglePassword"></i>
-    </div>
-</div>
-                        
-
-
-
-                            <label for="password">Password</label>
+                            <label for="password">PASSWORD</label>
                             <div class="input-wrapper">
                                 <i class="fa fa-lock"></i>
                                 <input type="password" name="password" id="password" required placeholder="Enter password">
                                 <i class="fa fa-eye toggle-password" id="togglePassword"></i>
                             </div>
                         </div>
-                        
 
                         <div class="option">
-                            <label class="remember-me"><input type="checkbox">Remember Me</label>
+                            <label class="remember-me">
+                                <input type="checkbox"> Remember Me
+                            </label>
                             <a href="reset-password.html">Forgot Password?</a>
                         </div>
                         <button type="submit">Login</button>
@@ -74,24 +59,22 @@
                         <div class="signup-text">Don't have an account? <a href="sign-up.html">Sign Up</a></div>
                         <div class="divider"><span>or</span></div>
                         <br>
-                        <button id="googleBtn">
-                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google icon" />
-                         Continue with Google
+                        <button type="button" id="googleBtn">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google icon" />
+                            Continue with Google
                         </button>
                     </form>
                 </fieldset>
             </div>
         </div>
     </div>
-    <!-- Firebase App (core) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<!-- Firebase Auth -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-<script src="login.js"></script>
-
-<script type="module" src="login.js"></script>
-
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="login.js"></script>
 </body>
 </html>
