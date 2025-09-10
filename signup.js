@@ -262,7 +262,7 @@ if (googleBtn) {
                 
                 setTimeout(() => {
                     // Fixed redirect URL (was "leaner-dashboard.html")
-                    window.location.href = "learner-dashboard.html";
+                    window.location.href = "LearnerDashboard.html";
                 }, 2000);
             } else {
                 // Existing user - redirect to appropriate dashboard based on role
@@ -272,11 +272,11 @@ if (googleBtn) {
                 setTimeout(() => {
                     // Redirect based on user role
                     if (userData.role === 'learner') {
-                        window.location.href = "learner-dashboard.html";
+                        window.location.href = "LearnerDashboard.html";
                     } else if (userData.role === 'mentor') {
-                        window.location.href = "mentor-dashboard.html";
+                        window.location.href = "mentorDashboard.html";
                     } else if (userData.role === 'admin') {
-                        window.location.href = "admin-dashboard.html";
+                        window.location.href = "new-admin.dashboard.html";
                     } else {
                         window.location.href = "dashboard.html";
                     }
